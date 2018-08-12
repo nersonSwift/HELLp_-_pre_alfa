@@ -16,6 +16,9 @@ class Main: UIViewController {
     
 
     @IBAction func StartGame(_ sender: Any) {
+        if !castPlayer.playerSet{
+            return
+        }
         if let nextViewController = area.storyboardInstance() {
             nextViewController.brain.castPlayer = castPlayer
             castPlayer.newPlayer()

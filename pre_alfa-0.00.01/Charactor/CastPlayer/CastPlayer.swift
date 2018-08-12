@@ -13,6 +13,7 @@ class CastPlayer{
     var player = Player()
     var defaultPlayer = Player()
     var map = Map()
+    var playerSet = false
     
     init() {
         map = Map(castPlayer: self)

@@ -10,6 +10,7 @@ import UIKit
 import Darwin
 
 class Room {
+    var firstVisiting = true
     var nameRoom = "ob"
     var inRoom = false
     var enemys: [Enemy] = []
@@ -20,8 +21,16 @@ class Room {
     }
     var Doors = ["DoorUp" : Door.noDoor, "DoorRight" : Door.noDoor, "DoorDown" : Door.noDoor, "DoorLeft" : Door.noDoor]
     
+    private func firstVisitingInRoom(castPlayer: CastPlayer){
+        castPlayer.player.stats.counterRoom += 1
+    }
+    
     public func InRoom(castPlayer: CastPlayer){
         inRoom = true
+        if firstVisiting{
+            firstVisitingInRoom(castPlayer: castPlayer)
+            firstVisiting = false
+        }
     }
     public func NoInRoom(){
         inRoom = false

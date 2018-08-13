@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,6 +19,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WRY-77-mD4">
+                                <rect key="frame" x="0.0" y="0.0" width="29" height="667"/>
+                                <color key="backgroundColor" red="0.58039215686274515" green="0.58039215686274515" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WRY-77-mD4" secondAttribute="height" multiplier="1:23" id="u4G-cK-ZlU"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdQ-Rf-C9h">
+                                <rect key="frame" x="346" y="0.0" width="29" height="667"/>
+                                <color key="backgroundColor" red="0.58039215686274515" green="0.58039215686274515" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="tdQ-Rf-C9h" secondAttribute="height" multiplier="1:23" id="qEC-ef-ssc"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QJ3-ZV-Rbv">
+                                <rect key="frame" x="0.0" y="638" width="375" height="29"/>
+                                <color key="backgroundColor" red="0.58039215686274515" green="0.58039215686274515" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QJ3-ZV-Rbv" secondAttribute="height" multiplier="375:29" id="9ar-Hz-EjW"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="paS-Ij-hk5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
+                                <color key="backgroundColor" red="0.58039215686274515" green="0.58039215686274515" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="paS-Ij-hk5" secondAttribute="height" multiplier="375:29" id="mWC-r2-eAI"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5i-X3-2XO">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
@@ -75,27 +104,52 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YME-Xo-AB9">
+                                <rect key="frame" x="143" y="108" width="88" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="88" id="01e-oa-GEj"/>
+                                    <constraint firstAttribute="height" constant="43" id="w3W-m5-WJ3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="textColor" red="0.58039215690000001" green="0.58039215690000001" blue="0.58039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="WRY-77-mD4" firstAttribute="bottom" secondItem="8JU-1Y-duT" secondAttribute="bottom" id="0kt-ur-Aat"/>
                             <constraint firstItem="8JU-1Y-duT" firstAttribute="trailing" secondItem="VHv-Cg-Fl3" secondAttribute="trailing" constant="16" id="1nP-dg-7S1"/>
+                            <constraint firstItem="QJ3-ZV-Rbv" firstAttribute="leading" secondItem="8JU-1Y-duT" secondAttribute="leading" id="6ab-nV-1fX"/>
                             <constraint firstItem="s5i-X3-2XO" firstAttribute="leading" secondItem="8JU-1Y-duT" secondAttribute="leading" id="9dl-Yj-Eyx"/>
+                            <constraint firstItem="WRY-77-mD4" firstAttribute="leading" secondItem="8JU-1Y-duT" secondAttribute="leading" id="DbL-wz-Nf3"/>
+                            <constraint firstItem="paS-Ij-hk5" firstAttribute="trailing" secondItem="8JU-1Y-duT" secondAttribute="trailing" id="FmR-Bm-1Ty"/>
+                            <constraint firstItem="YME-Xo-AB9" firstAttribute="centerX" secondItem="8JU-1Y-duT" secondAttribute="centerX" id="IZS-Ll-KET"/>
                             <constraint firstItem="VHv-Cg-Fl3" firstAttribute="centerY" secondItem="8JU-1Y-duT" secondAttribute="centerY" id="LG6-L8-rVp"/>
                             <constraint firstItem="s5i-X3-2XO" firstAttribute="bottom" secondItem="8JU-1Y-duT" secondAttribute="bottom" id="OVA-U2-WUv"/>
                             <constraint firstItem="bw9-g1-bwx" firstAttribute="centerY" secondItem="8JU-1Y-duT" secondAttribute="centerY" id="RiL-x1-Vcm"/>
+                            <constraint firstItem="paS-Ij-hk5" firstAttribute="top" secondItem="KTU-Oo-ZMi" secondAttribute="top" id="SVr-lC-0aS"/>
+                            <constraint firstItem="tdQ-Rf-C9h" firstAttribute="bottom" secondItem="8JU-1Y-duT" secondAttribute="bottom" id="ZOV-Cz-Ytm"/>
+                            <constraint firstItem="QJ3-ZV-Rbv" firstAttribute="bottom" secondItem="8JU-1Y-duT" secondAttribute="bottom" id="Zbr-KC-hyY"/>
                             <constraint firstItem="8JU-1Y-duT" firstAttribute="bottom" secondItem="cuV-bk-H9K" secondAttribute="bottom" constant="20" id="aIe-qh-jAU"/>
                             <constraint firstItem="bw9-g1-bwx" firstAttribute="leading" secondItem="8JU-1Y-duT" secondAttribute="leading" constant="9" id="bBO-cf-RXz"/>
+                            <constraint firstItem="tdQ-Rf-C9h" firstAttribute="top" secondItem="KTU-Oo-ZMi" secondAttribute="top" id="cbw-gs-Ufd"/>
                             <constraint firstItem="Ic6-Wd-viR" firstAttribute="centerX" secondItem="8JU-1Y-duT" secondAttribute="centerX" id="cft-UY-XCk"/>
+                            <constraint firstItem="YME-Xo-AB9" firstAttribute="top" secondItem="7yu-uV-rmt" secondAttribute="bottom" constant="51" id="hUw-JE-H5E"/>
                             <constraint firstItem="Ic6-Wd-viR" firstAttribute="centerY" secondItem="8JU-1Y-duT" secondAttribute="centerY" id="iOK-gM-01H"/>
+                            <constraint firstItem="paS-Ij-hk5" firstAttribute="leading" secondItem="8JU-1Y-duT" secondAttribute="leading" id="jzK-TV-NQx"/>
+                            <constraint firstItem="tdQ-Rf-C9h" firstAttribute="trailing" secondItem="8JU-1Y-duT" secondAttribute="trailing" id="lfh-5b-s1c"/>
                             <constraint firstItem="cuV-bk-H9K" firstAttribute="centerX" secondItem="8JU-1Y-duT" secondAttribute="centerX" id="m70-gA-Zr5"/>
+                            <constraint firstItem="WRY-77-mD4" firstAttribute="top" secondItem="KTU-Oo-ZMi" secondAttribute="top" id="nHd-Gr-K6d"/>
                             <constraint firstItem="s5i-X3-2XO" firstAttribute="trailing" secondItem="8JU-1Y-duT" secondAttribute="trailing" id="pLw-kL-LFc"/>
                             <constraint firstItem="7yu-uV-rmt" firstAttribute="centerX" secondItem="8JU-1Y-duT" secondAttribute="centerX" id="uYG-99-4n7"/>
+                            <constraint firstItem="QJ3-ZV-Rbv" firstAttribute="trailing" secondItem="8JU-1Y-duT" secondAttribute="trailing" id="uqL-Iy-uli"/>
                             <constraint firstItem="7yu-uV-rmt" firstAttribute="top" secondItem="8JU-1Y-duT" secondAttribute="top" constant="20" id="uz7-R7-TzW"/>
                             <constraint firstItem="s5i-X3-2XO" firstAttribute="top" secondItem="KTU-Oo-ZMi" secondAttribute="top" id="yno-Q5-DEG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8JU-1Y-duT"/>
                     </view>
                     <connections>
+                        <outlet property="countRoom" destination="YME-Xo-AB9" id="bXH-15-Rqe"/>
                         <outlet property="doorDown" destination="cuV-bk-H9K" id="emB-Lw-CCk"/>
                         <outlet property="doorLeft" destination="bw9-g1-bwx" id="VCf-mb-IYS"/>
                         <outlet property="doorRight" destination="VHv-Cg-Fl3" id="ev5-0T-Lii"/>

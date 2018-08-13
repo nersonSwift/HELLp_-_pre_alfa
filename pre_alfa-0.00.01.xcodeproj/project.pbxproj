@@ -240,8 +240,8 @@
 		51A2C2872105312300E8ADC4 /* Area */ = {
 			isa = PBXGroup;
 			children = (
-				5157930120EA1E7A00327D91 /* area.swift */,
 				512863252120B1A90047326D /* area.storyboard */,
+				5157930120EA1E7A00327D91 /* area.swift */,
 				51A2C2852103FF2A00E8ADC4 /* BrainArea.swift */,
 				51F24BDA2106AFB800912E15 /* AnimArea.swift */,
 			);
@@ -251,8 +251,8 @@
 		51C20B562114A74200A63B7E /* FIghtAren */ = {
 			isa = PBXGroup;
 			children = (
-				518F2F63210E5E1A008C036E /* FightAren.swift */,
 				512863232120B1120047326D /* FightAren.storyboard */,
+				518F2F63210E5E1A008C036E /* FightAren.swift */,
 				51C20B572114A78800A63B7E /* BrainFightAren.swift */,
 				51C373E4211EFC950091A34F /* EnemyInAren.swift */,
 				5143160921202E38003A0C11 /* CardInAren.swift */,

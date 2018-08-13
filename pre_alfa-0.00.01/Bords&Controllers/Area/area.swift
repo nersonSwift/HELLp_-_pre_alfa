@@ -34,7 +34,8 @@ class area: UIViewController {
     @IBOutlet weak var doorRight: UILabel!
     @IBOutlet weak var doorDown: UILabel!
     @IBOutlet weak var doorLeft: UILabel!
- 
+    @IBOutlet weak var countRoom: UILabel!
+    
     
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////

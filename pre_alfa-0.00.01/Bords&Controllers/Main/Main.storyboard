@@ -18,24 +18,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Main Menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJx-Cm-ubR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main Menu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJx-Cm-ubR">
                                 <rect key="frame" x="145" y="207" width="85" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LB0-7W-gWm">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LB0-7W-gWm">
                                 <rect key="frame" x="170" y="248" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="QBJ-fa-WZd"/>
+                                    <constraint firstAttribute="width" constant="34" id="cYT-EG-ElX"/>
+                                </constraints>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="StartGame:" destination="OPO-39-Pvz" eventType="touchUpInside" id="h0W-le-fSl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcn-36-FuB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcn-36-FuB">
                                 <rect key="frame" x="166" y="286" width="43" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Odr-wA-8Fi"/>
+                                    <constraint firstAttribute="width" constant="43" id="xg2-e5-1Nf"/>
+                                </constraints>
                                 <state key="normal" title="Player"/>
                                 <connections>
                                     <action selector="PalyerCast:" destination="OPO-39-Pvz" eventType="touchUpInside" id="lTx-5T-dKx"/>
@@ -43,6 +48,14 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vJx-Cm-ubR" firstAttribute="top" secondItem="rTY-Zr-bh5" secondAttribute="top" constant="187" id="J9b-2E-AnO"/>
+                            <constraint firstItem="LB0-7W-gWm" firstAttribute="top" secondItem="vJx-Cm-ubR" secondAttribute="bottom" constant="20" id="MaZ-Fs-hrL"/>
+                            <constraint firstItem="LB0-7W-gWm" firstAttribute="centerX" secondItem="rTY-Zr-bh5" secondAttribute="centerX" id="jA3-jq-2Xg"/>
+                            <constraint firstItem="dcn-36-FuB" firstAttribute="top" secondItem="LB0-7W-gWm" secondAttribute="bottom" constant="8" id="m3r-73-c3R"/>
+                            <constraint firstItem="dcn-36-FuB" firstAttribute="centerX" secondItem="rTY-Zr-bh5" secondAttribute="centerX" id="pGG-yO-KCW"/>
+                            <constraint firstItem="vJx-Cm-ubR" firstAttribute="centerX" secondItem="rTY-Zr-bh5" secondAttribute="centerX" id="yWt-Ge-GfM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="rTY-Zr-bh5"/>
                     </view>
                     <connections>

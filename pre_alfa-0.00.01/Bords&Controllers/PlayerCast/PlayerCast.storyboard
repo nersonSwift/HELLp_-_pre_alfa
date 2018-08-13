@@ -18,17 +18,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6o7-OI-1zL">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6o7-OI-1zL">
                                 <rect key="frame" x="255" y="239" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="cqq-L8-T8I"/>
+                                    <constraint firstAttribute="height" constant="30" id="w08-VV-4Wc"/>
+                                </constraints>
                                 <state key="normal" title="Player 2"/>
                                 <connections>
                                     <action selector="Player2:" destination="xOt-nf-Tzz" eventType="touchUpInside" id="wsX-tJ-5Jx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpl-cW-9Xx">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpl-cW-9Xx">
                                 <rect key="frame" x="73" y="239" width="53" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="53" id="9Rl-T8-TZN"/>
+                                    <constraint firstAttribute="height" constant="30" id="J3i-p9-Bt1"/>
+                                </constraints>
                                 <state key="normal" title="Player 1"/>
                                 <connections>
                                     <action selector="Player1:" destination="xOt-nf-Tzz" eventType="touchUpInside" id="dGP-dX-ARD"/>
@@ -36,6 +42,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hpl-cW-9Xx" firstAttribute="leading" secondItem="e4z-6Z-1TU" secondAttribute="leading" constant="73" id="FW8-uq-hv8"/>
+                            <constraint firstItem="6o7-OI-1zL" firstAttribute="top" secondItem="e4z-6Z-1TU" secondAttribute="top" constant="219" id="Xap-mL-MYB"/>
+                            <constraint firstItem="hpl-cW-9Xx" firstAttribute="top" secondItem="e4z-6Z-1TU" secondAttribute="top" constant="219" id="paH-4y-HtX"/>
+                            <constraint firstItem="e4z-6Z-1TU" firstAttribute="trailing" secondItem="6o7-OI-1zL" secondAttribute="trailing" constant="65" id="tCt-AG-yio"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="e4z-6Z-1TU"/>
                     </view>
                 </viewController>

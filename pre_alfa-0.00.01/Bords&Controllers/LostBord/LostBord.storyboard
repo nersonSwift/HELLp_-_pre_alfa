@@ -25,15 +25,22 @@
                                     <segue destination="IaR-0a-VcK" kind="unwind" unwindAction="unwindToViewControllerWithSender:" id="4Mr-pZ-Dip"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You Lost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTs-X8-T0f">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Lost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTs-X8-T0f">
                                 <rect key="frame" x="154" y="187" width="66" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Xc0-vE-ZwC"/>
+                                    <constraint firstAttribute="width" constant="66" id="p2H-Wg-Q5n"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TTs-X8-T0f" firstAttribute="top" secondItem="Xv7-bm-Rku" secondAttribute="top" constant="167" id="USk-A5-UMd"/>
+                            <constraint firstItem="TTs-X8-T0f" firstAttribute="centerX" secondItem="Xv7-bm-Rku" secondAttribute="centerX" id="wVT-yb-ZOY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Xv7-bm-Rku"/>
                     </view>
                 </viewController>

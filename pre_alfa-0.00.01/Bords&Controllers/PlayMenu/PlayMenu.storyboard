@@ -18,16 +18,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pauz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFy-kv-dEX">
-                                <rect key="frame" x="166" y="111" width="38" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pauz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFy-kv-dEX">
+                                <rect key="frame" x="168.5" y="111" width="38" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="8mE-cC-Bvd"/>
+                                    <constraint firstAttribute="width" constant="38" id="Odd-KP-VsI"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJU-VH-DTO">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJU-VH-DTO">
                                 <rect key="frame" x="129" y="175" width="117" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="117" id="fKv-ib-WiH"/>
+                                    <constraint firstAttribute="height" constant="30" id="rIl-4y-fPY"/>
+                                </constraints>
                                 <state key="normal" title="Go to Main Menu"/>
                                 <connections>
                                     <segue destination="EHZ-Cy-o3P" kind="unwind" unwindAction="unwindToViewControllerWithSender:" id="Fsw-xY-Hc5"/>
@@ -35,6 +41,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TJU-VH-DTO" firstAttribute="top" secondItem="OFy-kv-dEX" secondAttribute="bottom" constant="43" id="2Jt-Pg-XXb"/>
+                            <constraint firstItem="OFy-kv-dEX" firstAttribute="top" secondItem="nnw-AC-xS5" secondAttribute="top" constant="91" id="Fdf-yf-0ur"/>
+                            <constraint firstItem="OFy-kv-dEX" firstAttribute="centerX" secondItem="nnw-AC-xS5" secondAttribute="centerX" id="K8J-y3-Rha"/>
+                            <constraint firstItem="TJU-VH-DTO" firstAttribute="centerX" secondItem="nnw-AC-xS5" secondAttribute="centerX" id="Vb1-5s-0pG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="nnw-AC-xS5"/>
                     </view>
                 </viewController>

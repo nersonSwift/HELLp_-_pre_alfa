@@ -24,16 +24,16 @@ class DifRoom: Room {
         let roomLeft    = castPlayer.map.mapRooms[String(x-1) + String(y)]
         
         if roomUp is NoDoorRoom{
-            Doors["DoorUp"] = Door.noDoor
+            Doors["Up"] = Door.noDoor
         }
         if roomRight is NoDoorRoom{
-            Doors["DoorRight"] = Door.noDoor
+            Doors["Right"] = Door.noDoor
         }
         if roomDown is NoDoorRoom{
-            Doors["DoorDown"] = Door.noDoor
+            Doors["Down"] = Door.noDoor
         }
         if roomLeft is NoDoorRoom{
-            Doors["DoorLeft"] = Door.noDoor
+            Doors["Left"] = Door.noDoor
         }
     }
 }

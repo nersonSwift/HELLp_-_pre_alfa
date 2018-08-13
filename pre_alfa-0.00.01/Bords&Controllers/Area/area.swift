@@ -84,6 +84,7 @@ class area: UIViewController {
         if second == calendar.component(.second, from: date){
             if let nextViewController = PlayMenu.storyboardInstance() {
                 nextViewController.modalPresentationStyle = .custom
+                nextViewController.scene = brain.castPlayer.map.map3D.scene
                 self.present(nextViewController, animated: true, completion: nil)
             }
         }else{

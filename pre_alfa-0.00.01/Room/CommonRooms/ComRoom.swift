@@ -36,7 +36,7 @@ class ComRoom: Room {
     
     init(castPlayer: CastPlayer){
         super.init()
-        //enemys = [Skeleton(),Soul()]
+        nameRoom = "ComRoom"
         createCommonEnemy()
         
         Ginirate()

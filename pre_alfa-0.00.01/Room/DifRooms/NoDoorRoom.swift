@@ -11,8 +11,8 @@ import UIKit
 class NoDoorRoom: DifRoom {
     override init(x: Int, y: Int, castPlayer: CastPlayer) {
         super.init(x: x, y: y, castPlayer: castPlayer)
-        self.nameRoom = "NoD"
-        Doors = ["DoorUp" : Door.noDoor, "DoorRight" : Door.noDoor, "DoorDown" : Door.noDoor, "DoorLeft" : Door.noDoor]
+        self.nameRoom = "NoDoorRoom"
+        Doors = ["Up" : Door.noDoor, "Right" : Door.noDoor, "Down" : Door.noDoor, "Left" : Door.noDoor]
     }
 }
 

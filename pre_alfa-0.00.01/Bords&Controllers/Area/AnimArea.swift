@@ -11,10 +11,10 @@ import UIKit
 class AnimArea: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
     
     weak var transitionContext: UIViewControllerContextTransitioning?
-    var dir = " "
+    var dir = Dir.Down
     
     init(dir: Dir) {
-        self.dir = dir.rawValue
+        self.dir = dir
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -29,20 +29,18 @@ class AnimArea: NSObject, UIViewControllerAnimatedTransitioning, UIViewControlle
         var offScreenSecond = CGAffineTransform(translationX: 0, y: container.frame.height)
         
         switch dir {
-        case "DoorUp":
+        case .Up:
             offScreenFirst = CGAffineTransform(translationX: 0, y: -container.frame.height)
             offScreenSecond = CGAffineTransform(translationX: 0, y: container.frame.height)
-        case "DoorRight":
+        case .Right:
             offScreenFirst = CGAffineTransform(translationX: container.frame.width, y: 0)
             offScreenSecond = CGAffineTransform(translationX: -container.frame.width, y: 0)
-        case "DoorDown":
+        case .Down:
             offScreenFirst = CGAffineTransform(translationX: 0, y: container.frame.height)
             offScreenSecond = CGAffineTransform(translationX: 0, y: -container.frame.height)
-        case "DoorLeft":
+        case .Left:
             offScreenFirst = CGAffineTransform(translationX: -container.frame.width, y: 0)
             offScreenSecond = CGAffineTransform(translationX: container.frame.width, y: 0)
-            
-        default: break
         }
         
         toView.transform = offScreenFirst

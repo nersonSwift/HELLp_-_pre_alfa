@@ -12,14 +12,14 @@ class CloseRoom: DifRoom {
     override init(x: Int, y: Int, castPlayer: CastPlayer){
         super.init(x: x, y: y, castPlayer: castPlayer)
         self.nameRoom = "CloseRoom"
-        Doors = ["DoorUp" : Door.closeDoor, "DoorRight" : Door.closeDoor, "DoorDown" : Door.closeDoor, "DoorLeft" : Door.closeDoor]
+        Doors = ["Up" : Door.closeDoor, "Right" : Door.closeDoor, "Down" : Door.closeDoor, "Left" : Door.closeDoor]
         
         CheckNoRoom(castPlayer: castPlayer)
     }
     
     override func InRoom(castPlayer: CastPlayer) {
         super.InRoom(castPlayer: castPlayer)
-        Doors = ["DoorUp" : Door.openDoor, "DoorRight" : Door.openDoor, "DoorDown" : Door.openDoor, "DoorLeft" : Door.openDoor]
+        Doors = ["Up" : Door.openDoor, "Right" : Door.openDoor, "Down" : Door.openDoor, "Left" : Door.openDoor]
         
         CheckNoRoom(castPlayer: castPlayer)
         
@@ -29,16 +29,16 @@ class CloseRoom: DifRoom {
         let roomLeft    = castPlayer.map.mapRooms[String(x-1) + String(y)]
         
         if (roomUp != nil) && !(roomUp is NoDoorRoom){
-            roomUp!.Doors["DoorDown"] = Door.openDoor
+            roomUp!.Doors["Down"] = Door.openDoor
         }
         if roomRight != nil && !(roomRight is NoDoorRoom){
-            roomRight!.Doors["DoorLeft"] = Door.openDoor
+            roomRight!.Doors["Left"] = Door.openDoor
         }
         if roomDown != nil && !(roomDown is NoDoorRoom){
-            roomDown!.Doors["DoorUp"] = Door.openDoor
+            roomDown!.Doors["Up"] = Door.openDoor
         }
         if roomLeft != nil && !(roomLeft is NoDoorRoom){
-            roomLeft!.Doors["DoorRight"] = Door.openDoor
+            roomLeft!.Doors["Right"] = Door.openDoor
         }
         
         

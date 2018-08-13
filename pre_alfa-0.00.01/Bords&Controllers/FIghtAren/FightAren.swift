@@ -271,7 +271,7 @@ class FightAren: UIViewController {
         if hitResults.count > 0 {
             let a = hitResults[0]
             
-            if a.node.name == "WinBox"{
+            if a.node.name == "WinBox" && endAnimStep{
                 self.dismiss(animated: true, completion: nil)
             }
             

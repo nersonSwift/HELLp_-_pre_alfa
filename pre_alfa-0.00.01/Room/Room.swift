@@ -11,7 +11,7 @@ import Darwin
 
 class Room {
     var firstVisiting = true
-    var nameRoom = "ob"
+    var nameRoom = ""
     var inRoom = false
     var enemys: [Enemy] = []
     var x = 0
@@ -19,7 +19,7 @@ class Room {
     var xy: String{
         return String(x) + String(y)
     }
-    var Doors = ["DoorUp" : Door.noDoor, "DoorRight" : Door.noDoor, "DoorDown" : Door.noDoor, "DoorLeft" : Door.noDoor]
+    var Doors = ["Up" : Door.noDoor, "Right" : Door.noDoor, "Down" : Door.noDoor, "Left" : Door.noDoor]
     
     private func firstVisitingInRoom(castPlayer: CastPlayer){
         castPlayer.player.stats.counterRoom += 1
@@ -29,7 +29,11 @@ class Room {
         inRoom = true
         if firstVisiting{
             firstVisitingInRoom(castPlayer: castPlayer)
+            castPlayer.map.map3D.criateBlockMap(map: castPlayer.map, x: castPlayer.player.x, y: castPlayer.player.y)
+            
             firstVisiting = false
+        }else{
+            castPlayer.map.map3D.refrashBlockMap(map: castPlayer.map, x: castPlayer.player.x, y: castPlayer.player.y)
         }
     }
     public func NoInRoom(){

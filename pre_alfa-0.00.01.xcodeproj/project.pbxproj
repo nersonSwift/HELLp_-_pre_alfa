@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		510F0EA6211D7B8700BF7822 /* ComRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510F0EA5211D7B8700BF7822 /* ComRoom.swift */; };
+		51200F822121D7B10018E53E /* Map3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51200F812121D7B10018E53E /* Map3D.swift */; };
+		51200F842121D8FE0018E53E /* BlockMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51200F832121D8FE0018E53E /* BlockMap.swift */; };
+		51200F872121EDAB0018E53E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51200F862121EDAB0018E53E /* MapView.swift */; };
+		51200F892121EE140018E53E /* MapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51200F882121EE140018E53E /* MapView.storyboard */; };
 		512863222120ADA30047326D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512863212120ADA30047326D /* LaunchScreen.storyboard */; };
 		512863242120B1130047326D /* FightAren.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512863232120B1120047326D /* FightAren.storyboard */; };
 		512863262120B1AA0047326D /* area.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512863252120B1A90047326D /* area.storyboard */; };
@@ -56,6 +60,10 @@
 
 /* Begin PBXFileReference section */
 		510F0EA5211D7B8700BF7822 /* ComRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComRoom.swift; sourceTree = "<group>"; };
+		51200F812121D7B10018E53E /* Map3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map3D.swift; sourceTree = "<group>"; };
+		51200F832121D8FE0018E53E /* BlockMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockMap.swift; sourceTree = "<group>"; };
+		51200F862121EDAB0018E53E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		51200F882121EE140018E53E /* MapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapView.storyboard; sourceTree = "<group>"; };
 		512863212120ADA30047326D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		512863232120B1120047326D /* FightAren.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FightAren.storyboard; sourceTree = "<group>"; };
 		512863252120B1A90047326D /* area.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = area.storyboard; sourceTree = "<group>"; };
@@ -115,6 +123,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51200F852121EBF00018E53E /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				51200F882121EE140018E53E /* MapView.storyboard */,
+				51200F862121EDAB0018E53E /* MapView.swift */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
 		5143160D212091AE003A0C11 /* Players */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +156,8 @@
 			children = (
 				51E42D9B20F36065007DA454 /* Map.swift */,
 				51DE5C57210B505200CC002E /* CastPlayer.swift */,
+				51200F812121D7B10018E53E /* Map3D.swift */,
+				51200F832121D8FE0018E53E /* BlockMap.swift */,
 			);
 			path = CastPlayer;
 			sourceTree = "<group>";
@@ -268,6 +287,7 @@
 				51DE5C60210D235E00CC002E /* LostBord */,
 				51DE5C61210D238100CC002E /* PlayMenu */,
 				51DE5C62210D239800CC002E /* Main */,
+				51200F852121EBF00018E53E /* MapView */,
 				51DE5C63210D23A800CC002E /* PlayerCast */,
 			);
 			path = "Bords&Controllers";
@@ -386,6 +406,7 @@
 				516B10E2211C488D00DDE22A /* scenes.scnassets in Resources */,
 				512863282120B3180047326D /* Main.storyboard in Resources */,
 				5157930720EA1E7C00327D91 /* Assets.xcassets in Resources */,
+				51200F892121EE140018E53E /* MapView.storyboard in Resources */,
 				51DE5C5C210CE63C00CC002E /* LostBord.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,8 +422,10 @@
 				5157168520EFA2FC007FA2F5 /* NoDoorRoom.swift in Sources */,
 				516E27312117A05300409D97 /* AppDelegate.swift in Sources */,
 				512BE7E4210E222D0035DF60 /* Enemy.swift in Sources */,
+				51200F872121EDAB0018E53E /* MapView.swift in Sources */,
 				512BE7E2210E21480035DF60 /* Charactor.swift in Sources */,
 				5186DF1520F0A941006AF275 /* Item.swift in Sources */,
+				51200F842121D8FE0018E53E /* BlockMap.swift in Sources */,
 				51E42D9A20F2384E007DA454 /* DmgRoom.swift in Sources */,
 				51F26F5420FB57C1003D326A /* DifRoom.swift in Sources */,
 				512BE7EA210E244E0035DF60 /* FightStatsEnemy.swift in Sources */,
@@ -414,6 +437,7 @@
 				5189AFC52109F59C00AD159C /* Dir.swift in Sources */,
 				51F24BDB2106AFB800912E15 /* AnimArea.swift in Sources */,
 				51E42D9720F21005007DA454 /* StatsPlayer.swift in Sources */,
+				51200F822121D7B10018E53E /* Map3D.swift in Sources */,
 				512BE7E8210E24340035DF60 /* FightStatsPlayer.swift in Sources */,
 				51DE5C56210B376000CC002E /* Lilit.swift in Sources */,
 				5143160A21202E38003A0C11 /* CardInAren.swift in Sources */,

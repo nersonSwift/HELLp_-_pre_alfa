@@ -9,7 +9,7 @@
 import UIKit
 
 class BrainArea {
-    
+    private var countRoom   = UILabel()
     private var doorUp      = UILabel()
     private var doorRight   = UILabel()
     private var doorDown    = UILabel()
@@ -55,6 +55,8 @@ class BrainArea {
         doorRight.text   = refreshDoor(dir: .Right)
         doorDown.text    = refreshDoor(dir: .Down)
         doorLeft.text    = refreshDoor(dir: .Left)
+        thisRoom.InRoom(castPlayer: castPlayer)
+        countRoom.text = String(castPlayer.player.stats.counterRoom)
         
     }
     
@@ -132,9 +134,9 @@ class BrainArea {
             thisRoom = castPlayer.map.mapRooms[xy]!
         }
         
-        thisRoom.InRoom(castPlayer: castPlayer)
         
         let newViewController = animStep(dir: dir, Area: area)
+        
         
         if castPlayer.player.dieGame{
             if let nextViewController = LostBord.storyboardInstance() {
@@ -142,21 +144,20 @@ class BrainArea {
                 newViewController.present(nextViewController, animated: true, completion: nil)
             }
         }
-        
     }
     
     func startView(area: area) {
         
+        self.countRoom  = area.countRoom
         self.doorUp     = area.doorUp
         self.doorRight  = area.doorRight
         self.doorDown   = area.doorDown
         self.doorLeft   = area.doorLeft
         
-        area.countRoom.text = String(castPlayer.player.stats.counterRoom)
         
         switch thisRoom.nameRoom {
-        case "ob":          area.view.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-        case "DMG":         area.view.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        case "ComRoom":     area.view.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        case "DmgRoom":     area.view.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         case "CloseRoom":   area.view.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
             
         default: break
@@ -168,8 +169,9 @@ class BrainArea {
     
     func StartGame(){
         castPlayer.map.mapRooms = ["00" : thisRoom]
-        thisRoom.InRoom(castPlayer: castPlayer)
+        
         refreshRoom()
+        
     }
     
 }

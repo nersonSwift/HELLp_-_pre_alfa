@@ -12,8 +12,8 @@ class DmgRoom: DifRoom {
     
    override init(x: Int, y: Int, castPlayer: CastPlayer){
         super.init(x: x, y: y, castPlayer: castPlayer)
-        self.nameRoom = "DMG"
-        Doors = ["DoorUp" : Door.dmgDoor, "DoorRight" : Door.dmgDoor, "DoorDown" : Door.dmgDoor, "DoorLeft" : Door.dmgDoor]
+        self.nameRoom = "DmgRoom"
+        Doors = ["Up" : Door.dmgDoor, "Right" : Door.dmgDoor, "Down" : Door.dmgDoor, "Left" : Door.dmgDoor]
     
        CheckNoRoom(castPlayer: castPlayer)
     }

@@ -12,7 +12,7 @@ class Soul: Enemy {
     override init() {
         super.init()
         name = "Soul"
-        taunt = true
+        taunt = false
         fightStats.maxFightHP = 30
         fightStats.attackDmg = 2
     }

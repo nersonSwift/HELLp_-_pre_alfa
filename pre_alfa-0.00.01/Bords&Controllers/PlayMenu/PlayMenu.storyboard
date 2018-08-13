@@ -39,13 +39,26 @@
                                     <segue destination="EHZ-Cy-o3P" kind="unwind" unwindAction="unwindToViewControllerWithSender:" id="Fsw-xY-Hc5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyS-14-5sa">
+                                <rect key="frame" x="164.5" y="241" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="8CK-Xn-hHj"/>
+                                    <constraint firstAttribute="height" constant="30" id="LrD-cU-MdZ"/>
+                                </constraints>
+                                <state key="normal" title="Map"/>
+                                <connections>
+                                    <action selector="map:" destination="COp-cf-uYc" eventType="touchUpInside" id="jXr-8f-Vao"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TJU-VH-DTO" firstAttribute="top" secondItem="OFy-kv-dEX" secondAttribute="bottom" constant="43" id="2Jt-Pg-XXb"/>
+                            <constraint firstItem="yyS-14-5sa" firstAttribute="top" secondItem="TJU-VH-DTO" secondAttribute="bottom" constant="36" id="56Z-fn-2sd"/>
                             <constraint firstItem="OFy-kv-dEX" firstAttribute="top" secondItem="nnw-AC-xS5" secondAttribute="top" constant="91" id="Fdf-yf-0ur"/>
                             <constraint firstItem="OFy-kv-dEX" firstAttribute="centerX" secondItem="nnw-AC-xS5" secondAttribute="centerX" id="K8J-y3-Rha"/>
                             <constraint firstItem="TJU-VH-DTO" firstAttribute="centerX" secondItem="nnw-AC-xS5" secondAttribute="centerX" id="Vb1-5s-0pG"/>
+                            <constraint firstItem="yyS-14-5sa" firstAttribute="centerX" secondItem="nnw-AC-xS5" secondAttribute="centerX" id="zT8-LO-H4D"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nnw-AC-xS5"/>
                     </view>

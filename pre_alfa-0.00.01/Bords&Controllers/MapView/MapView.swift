@@ -43,6 +43,7 @@ class MapView: UIViewController {
         scene.scene = a
         addSwipe()
         scene.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        
         // Do any additional setup after loading the view.
     }
 

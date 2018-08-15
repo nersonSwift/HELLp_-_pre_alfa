@@ -29,14 +29,14 @@ class Map3D{
         directionalLight.light?.type = SCNLight.LightType.directional
         directionalLight.eulerAngles = SCNVector3(-Float.pi/2,0,0)
         directionalLight.position = SCNVector3(0,10,0)
-        directionalLight.light?.intensity = 400
+        directionalLight.light?.intensity = 600
         scene.rootNode.addChildNode(directionalLight)
         
         spotLight.light = SCNLight()
-        spotLight.light?.intensity = 1100
+        spotLight.light?.intensity = 900
         spotLight.light?.type = SCNLight.LightType.spot
         spotLight.eulerAngles = SCNVector3(0,0,0)
-        spotLight.position = SCNVector3(0,0,-13.3)
+        spotLight.position = SCNVector3(0,0,-13.4)
         camera.addChildNode(spotLight)
         
     }

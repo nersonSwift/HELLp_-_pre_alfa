@@ -11,13 +11,14 @@ import UIKit
 class Map{
     weak var castPlayer: CastPlayer?
     var mapRooms = ["00" : Room()]
-    var map3D = Map3D()
+    var map3D: Map3D!
     
     init() {
     }
     
     init(castPlayer: CastPlayer) {
         self.castPlayer = castPlayer
+        map3D = Map3D()
     }
     
     public func createDifRoom(room: Room, dir: Dir) -> Bool{

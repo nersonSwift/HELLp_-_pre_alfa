@@ -10,7 +10,7 @@ import UIKit
 import Darwin
 
 class Room {
-    var firstVisiting = true
+    var firstVisitingTriger = true
     var nameRoom = ""
     var inRoom = false
     var enemys: [Enemy] = []
@@ -21,20 +21,20 @@ class Room {
     }
     var Doors = ["Up" : Door.noDoor, "Right" : Door.noDoor, "Down" : Door.noDoor, "Left" : Door.noDoor]
     
-    private func firstVisitingInRoom(castPlayer: CastPlayer){
-        castPlayer.player.stats.counterRoom += 1
-    }
-    
-    public func InRoom(castPlayer: CastPlayer){
-        inRoom = true
-        if firstVisiting{
-            firstVisitingInRoom(castPlayer: castPlayer)
+    public func firstVisiting(castPlayer: CastPlayer){
+        if firstVisitingTriger{
+            castPlayer.player.stats.counterRoom += 1
             castPlayer.map.map3D.criateBlockMap(map: castPlayer.map, x: castPlayer.player.x, y: castPlayer.player.y)
-            
-            firstVisiting = false
+            firstVisitingTriger = false
         }else{
             castPlayer.map.map3D.refrashBlockMap(map: castPlayer.map, x: castPlayer.player.x, y: castPlayer.player.y)
         }
+    }
+    
+    
+    public func InRoom(castPlayer: CastPlayer){
+        inRoom = true
+        
     }
     public func NoInRoom(){
         inRoom = false

@@ -55,7 +55,7 @@ class BrainArea {
         doorRight.text   = refreshDoor(dir: .Right)
         doorDown.text    = refreshDoor(dir: .Down)
         doorLeft.text    = refreshDoor(dir: .Left)
-        thisRoom.InRoom(castPlayer: castPlayer)
+        thisRoom.firstVisiting(castPlayer: castPlayer)
         countRoom.text = String(castPlayer.player.stats.counterRoom)
         
     }
@@ -134,6 +134,7 @@ class BrainArea {
             thisRoom = castPlayer.map.mapRooms[xy]!
         }
         
+        thisRoom.InRoom(castPlayer: castPlayer)
         
         let newViewController = animStep(dir: dir, Area: area)
         

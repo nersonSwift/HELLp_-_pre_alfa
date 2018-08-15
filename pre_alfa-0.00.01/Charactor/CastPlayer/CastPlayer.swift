@@ -22,6 +22,8 @@ class CastPlayer{
     }
     
     func newPlayer(){
+        map = Map(castPlayer: self)
+        
         switch defaultPlayer.name {
             case "Lilit": player = Lilit()
         default: break

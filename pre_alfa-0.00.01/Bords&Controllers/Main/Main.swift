@@ -21,7 +21,7 @@ class Main: UIViewController {
         }
         if let nextViewController = area.storyboardInstance() {
             nextViewController.brain.castPlayer = castPlayer
-            castPlayer.newPlayer()
+            castPlayer.startGame()
             nextViewController.brain.StartGame()
             present(nextViewController, animated: true, completion: nil)
         }

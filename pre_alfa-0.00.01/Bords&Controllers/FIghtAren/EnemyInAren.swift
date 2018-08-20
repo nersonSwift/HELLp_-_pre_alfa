@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 
 class EnemyInAren: SCNNode {
-    var enemy: Enemy?
+    var enemy: Enemy!
     var positionEnemy: Dir!
     
     static func criateEmemyInAren(positionEnemy: Dir, enemy: Enemy) -> EnemyInAren {

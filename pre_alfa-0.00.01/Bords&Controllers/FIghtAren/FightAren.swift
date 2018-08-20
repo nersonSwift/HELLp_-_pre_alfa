@@ -31,12 +31,10 @@ class FightAren: UIViewController {
     var winBox  = SCNNode()
     
     weak var selectCard : CardInAren?
-    weak var selectEnemy: EnemyInAren?
     
-    
-    weak var CardLeft   : CardInAren?
-    weak var CardMid    : CardInAren?
-    weak var CardRight  : CardInAren?
+    weak var cardLeft   : CardInAren?
+    weak var cardMid    : CardInAren?
+    weak var cardRight  : CardInAren?
     
     var enemyLeft   : EnemyInAren?
     var enemyDown   : EnemyInAren?
@@ -75,14 +73,16 @@ class FightAren: UIViewController {
         winBox.name = "WinBox"
         scene.rootNode.addChildNode(winBox)
         
-        CardLeft    = CardInAren.criateCardInAren(positionCard: .Left)
-        CardMid     = CardInAren.criateCardInAren(positionCard: .Up)
-        CardRight   = CardInAren.criateCardInAren(positionCard: .Right)
+        brain?.setCardsInHand()
         
-        hpWheel.addChildNode(CardLeft!)
-        hpWheel.addChildNode(CardMid!)
-        hpWheel.addChildNode(CardRight!)
-        selectCard = CardMid
+        cardLeft    = CardInAren.criateCardInAren(positionCard: .Left, card: brain!.cardsInHand[0])
+        cardMid     = CardInAren.criateCardInAren(positionCard: .Up, card: brain!.cardsInHand[1])
+        cardRight   = CardInAren.criateCardInAren(positionCard: .Right, card: brain!.cardsInHand[2])
+        
+        hpWheel.addChildNode(cardLeft!)
+        hpWheel.addChildNode(cardMid!)
+        hpWheel.addChildNode(cardRight!)
+        selectCard = cardMid
         
         
         brain!.startFight()
@@ -175,6 +175,14 @@ class FightAren: UIViewController {
         }
     }
     
+    func newCards(){
+        brain?.setCardsInHand()
+        
+        cardLeft?.setNewCard(card: brain!.cardsInHand[0])
+        cardMid?.setNewCard(card: brain!.cardsInHand[1])
+        cardRight?.setNewCard(card: brain!.cardsInHand[2])
+    }
+    
     func cardSelect(card: SCNNode){
         
         selectCard  = card as? CardInAren
@@ -216,36 +224,37 @@ class FightAren: UIViewController {
         }
         
         selectCard?.runAction(SCNAction.fadeOut(duration: 0.3), completionHandler: {
-            self.NewCards()
+            self.newCardsAnim()
             self.brain?.checkEnemysLive()
             self.brain!.EnemyStep()
             self.brain?.checkPlayerLive()
         })
     }
     
-    private func NewCards(){
+    private func newCardsAnim(){
         
-        CardLeft?.runAction(SCNAction.move(to: SCNVector3.init(0, -0.5, 0) , duration: 0.6))
-        CardMid?.runAction(SCNAction.move(to: SCNVector3.init(0, 0, 0), duration: 0.6))
-        CardRight?.runAction(SCNAction.move(to: SCNVector3.init(0, -0.5, 0), duration: 0.6))
+        cardLeft?.runAction(SCNAction.move(to: SCNVector3.init(0, -0.5, 0) , duration: 0.6))
+        cardMid?.runAction(SCNAction.move(to: SCNVector3.init(0, 0, 0), duration: 0.6))
+        cardRight?.runAction(SCNAction.move(to: SCNVector3.init(0, -0.5, 0), duration: 0.6))
         
-        CardLeft?.runAction(SCNAction.fadeOut(duration: 0.6))
-        CardMid?.runAction(SCNAction.fadeOut(duration: 0.6))
-        CardRight?.runAction(SCNAction.fadeOut(duration: 0.6), completionHandler: {
+        cardLeft?.runAction(SCNAction.fadeOut(duration: 0.6))
+        cardMid?.runAction(SCNAction.fadeOut(duration: 0.6))
+        cardRight?.runAction(SCNAction.fadeOut(duration: 0.6), completionHandler: {
             
-            self.CardLeft?.runAction(SCNAction.move(to: SCNVector3.init(-1.476, 0, -2.557) , duration: 0.5))
-            self.CardMid?.runAction(SCNAction.move(to: SCNVector3.init(0, 0, -2.73), duration: 0.5))
-            self.CardRight?.runAction(SCNAction.move(to: SCNVector3.init(1.561, 0, -2.704), duration: 0.5), completionHandler: {
+            self.newCards()
+            self.cardLeft?.runAction(SCNAction.move(to: SCNVector3.init(-1.476, 0, -2.557) , duration: 0.5))
+            self.cardMid?.runAction(SCNAction.move(to: SCNVector3.init(0, 0, -2.73), duration: 0.5))
+            self.cardRight?.runAction(SCNAction.move(to: SCNVector3.init(1.561, 0, -2.704), duration: 0.5), completionHandler: {
                 
-                self.CardLeft?.runAction(SCNAction.move(to: SCNVector3.init(-1.227, 0, -2.125) , duration: 0.25))
-                self.CardMid?.runAction(SCNAction.move(to: SCNVector3.init(0, 0, -2.455), duration: 0.3))
-                self.CardRight?.runAction(SCNAction.move(to: SCNVector3.init(1.227, 0, -2.126), duration: 0.35))
+                self.cardLeft?.runAction(SCNAction.move(to: SCNVector3.init(-1.227, 0, -2.125) , duration: 0.25))
+                self.cardMid?.runAction(SCNAction.move(to: SCNVector3.init(0, 0, -2.455), duration: 0.3))
+                self.cardRight?.runAction(SCNAction.move(to: SCNVector3.init(1.227, 0, -2.126), duration: 0.35))
                 
             })
             
-            self.CardLeft?.runAction(SCNAction.fadeIn(duration: 0.6))
-            self.CardMid?.runAction(SCNAction.fadeIn(duration: 0.6))
-            self.CardRight?.runAction(SCNAction.fadeIn(duration: 0.6), completionHandler: {
+            self.cardLeft?.runAction(SCNAction.fadeIn(duration: 0.6))
+            self.cardMid?.runAction(SCNAction.fadeIn(duration: 0.6))
+            self.cardRight?.runAction(SCNAction.fadeIn(duration: 0.6), completionHandler: {
                 self.endAnimStep = true
             })
             

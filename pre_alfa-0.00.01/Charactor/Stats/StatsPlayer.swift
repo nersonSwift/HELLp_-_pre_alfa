@@ -12,4 +12,6 @@ struct StatsPlayer{
     var maxHP = 0
     var hP = 0
     var counterRoom = 0
+    
+    var cards: [Card]!
 }

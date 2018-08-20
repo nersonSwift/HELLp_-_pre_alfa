@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Charactor {
+class Charactor: NSObject {
     var dieFight : Bool{
         if fightStats.fightHP <= 0{
             return true

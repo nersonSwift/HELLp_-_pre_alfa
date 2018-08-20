@@ -12,15 +12,32 @@ class BrainFightAren{
     weak var fightAren: FightAren?
     weak var room: Room?
     weak var player: Player?
-    
     var selectEnemy: EnemyInAren?
+    var cardsInHand: [Card] = []
+    
+    var allEnemy: [Enemy]{
+        var a: [Enemy] = []
+        for i in fightAren!.liveEnemy{
+            a.append(i.enemy!)
+        }
+        return a
+    }
     
     func setSelectEnemy(enemyInAren: EnemyInAren){
         selectEnemy = enemyInAren
     }
     
     func PlayerStep(){
-        selectEnemy!.enemy!.fightStats.takeDMG(charactor: selectEnemy!.enemy!, dmg: player!.fightStats.attackDmg)
+        fightAren?.selectCard?.card.effect(player: player!, selectEnemy: selectEnemy!.enemy, allEnemy: allEnemy)
+    }
+    
+    func setCardsInHand(){
+        cardsInHand = []
+        for _ in 0...2{
+            let a = arc4random_uniform(UInt32(player!.stats.cards.count))
+            print(player!.stats.cards[Int(a)].name)
+            cardsInHand.append(player!.stats.cards[Int(a)])
+        }
     }
     
     func checkEnemysLive(){

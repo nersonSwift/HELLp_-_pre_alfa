@@ -12,12 +12,14 @@ import SceneKit
 
 class CardInAren: SCNNode {
     var positionCard: Dir!
+    var card: Card!
     
-    static func criateCardInAren(positionCard: Dir) -> CardInAren {
+    static func criateCardInAren(positionCard: Dir, card: Card) -> CardInAren {
         
         let cardInAren = CardInAren()
         cardInAren.positionCard = positionCard
         cardInAren.name = "Card"
+        
         
         switch positionCard{
         case .Up:
@@ -34,15 +36,21 @@ class CardInAren: SCNNode {
         
         cardInAren.geometry = SCNBox(width: 0.909, height: 0.05, length: 1.364, chamferRadius: 0)
         
+        cardInAren.setNewCard(card: card)
+        
+        return cardInAren
+    }
+    
+    func setNewCard(card: Card){
+        self.card = card
         
         let cardTextureFront = SCNMaterial()
         let cardTextureBeck = SCNMaterial()
         
-        cardTextureFront.diffuse.contents   =   #imageLiteral(resourceName: "scenes.scnassets/textures/jo.jpg")
-        cardTextureBeck.diffuse.contents    =   #imageLiteral(resourceName: "scenes.scnassets/textures/back.jpg")
-        cardInAren.geometry?.materials = [cardTextureFront,cardTextureBeck]
+        cardTextureFront.diffuse.contents   =   #imageLiteral(resourceName: "scenes.scnassets/textures/" + String(card.name) +  ".jpg")
+        cardTextureBeck.diffuse.contents    =   #imageLiteral(resourceName: "scenes.scnassets/textures/" + String(card.name) + ".jpg")
+        self.geometry?.materials = [cardTextureFront,cardTextureBeck]
         
-        return cardInAren
     }
 
 }

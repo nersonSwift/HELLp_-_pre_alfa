@@ -37,6 +37,7 @@ class PlayerCast: UIViewController {
         castPlayer.playerSet = true
         castPlayer.defaultPlayer = Lilit()
         castPlayer.defaultPlayer.inventery.AddItem(steckItem: StackItem(item: Key(), quantity: 2))
+        castPlayer.defaultPlayer.stats.cards = [CardAtack(), HpCard()]
         dismiss(animated: true, completion: nil)
     }
     @IBAction func Player2(_ sender: Any) {

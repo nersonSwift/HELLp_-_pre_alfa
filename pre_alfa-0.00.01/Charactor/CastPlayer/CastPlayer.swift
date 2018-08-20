@@ -10,6 +10,7 @@ import UIKit
 import QuartzCore
 import SceneKit
 
+
 class CastPlayer{
     
     var player = Player()
@@ -17,19 +18,21 @@ class CastPlayer{
     var map = Map()
     var playerSet = false
     
+    
     init() {
         map = Map(castPlayer: self)
     }
     
-    func newPlayer(){
+    @objc func startGame(){
         map = Map(castPlayer: self)
         
+       
         switch defaultPlayer.name {
             case "Lilit": player = Lilit()
         default: break
         }
         player.inventery = defaultPlayer.inventery
-        
+        player.stats = defaultPlayer.stats
     }
     
     

@@ -10,6 +10,7 @@ import UIKit
 import QuartzCore
 import SceneKit
 
+
 class FightAren: UIViewController {
     
     static func storyboardInstance() -> FightAren? {

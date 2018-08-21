@@ -8,12 +8,12 @@
 
 import UIKit
 
+
 class Main: UIViewController {
-    
+
     let castPlayer = CastPlayer()
     
     @IBOutlet weak var fgd: UILabel!
-    
 
     @IBAction func StartGame(_ sender: Any) {
         if !castPlayer.playerSet{

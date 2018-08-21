@@ -1,0 +1,6 @@
+framework module Pods_pre_alfa_0_00_01 {
+  umbrella header "Pods-pre_alfa-0.00.01-umbrella.h"
+
+  export *
+  module * { export * }
+}

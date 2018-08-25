@@ -9,7 +9,7 @@
 import UIKit
 import QuartzCore
 import SceneKit
-
+import RealmSwift
 
 class CastPlayer{
     
@@ -17,9 +17,12 @@ class CastPlayer{
     var defaultPlayer = Player()
     var map = Map()
     var playerSet = false
-    
+    let realm = try! Realm()
+    var savedRooms: Results<SaveRoom>!
     
     init() {
+        savedRooms = realm.objects(SaveRoom.self)
+        
         map = Map(castPlayer: self)
     }
     

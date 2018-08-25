@@ -10,7 +10,6 @@ import UIKit
 
 
 class Main: UIViewController {
-
     let castPlayer = CastPlayer()
     
     @IBOutlet weak var fgd: UILabel!
@@ -23,6 +22,46 @@ class Main: UIViewController {
             nextViewController.brain.castPlayer = castPlayer
             castPlayer.startGame()
             nextViewController.brain.StartGame()
+            present(nextViewController, animated: true, completion: nil)
+        }
+    }
+    @IBAction func continueGame(_ sender: Any) {
+        var x = 0
+        var y = 0
+        castPlayer.player = Lilit()
+        castPlayer.player.stats.cards = [CardAtack(),HpCard()]
+        for i in castPlayer.savedRooms{
+            if i.name != "0"{
+                var newRoom: Room
+                
+                switch i.name{
+                case "ComRoom":     newRoom = ComRoom(saveRoom: i, castPlayer: castPlayer)
+                case "CloseRoom":   newRoom = CloseRoom(saveRoom: i, castPlayer: castPlayer)
+                case "NoDoorRoom":  newRoom = NoDoorRoom(saveRoom: i, castPlayer: castPlayer)
+                case "DmgRoom":     newRoom = DmgRoom(saveRoom: i, castPlayer: castPlayer)
+                default: newRoom = Room()
+                }
+                castPlayer.map.mapRooms[String(newRoom.x) + String(newRoom.y)] = newRoom
+                if !newRoom.firstVisitingTriger{
+                    newRoom.criateBlockMapRoom(castPlayer: castPlayer)
+                }
+            }else{
+                x = i.x
+                y = i.y
+            }
+        }
+       
+        for i in castPlayer.map.mapRooms{
+            print(String(i.value.id) + " - " + i.value.nameRoom)
+        }
+        
+        if let nextViewController = area.storyboardInstance() {
+            castPlayer.player.x = x
+            castPlayer.player.y = y
+            nextViewController.brain.castPlayer = castPlayer
+            nextViewController.brain.thisRoom = castPlayer.map.mapRooms[String(x) + String(y)]!
+            nextViewController.brain.thisRoom.InRoom(castPlayer: castPlayer)
+            nextViewController.brain.refreshRoom()
             present(nextViewController, animated: true, completion: nil)
         }
     }

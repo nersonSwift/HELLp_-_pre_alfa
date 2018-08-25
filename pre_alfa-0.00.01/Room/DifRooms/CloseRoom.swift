@@ -16,6 +16,9 @@ class CloseRoom: DifRoom {
         
         CheckNoRoom(castPlayer: castPlayer)
     }
+    override init(saveRoom: SaveRoom, castPlayer: CastPlayer) {
+        super.init(saveRoom: saveRoom, castPlayer: castPlayer)
+    }
     
     override func InRoom(castPlayer: CastPlayer) {
         super.InRoom(castPlayer: castPlayer)

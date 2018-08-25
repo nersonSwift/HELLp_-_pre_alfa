@@ -15,7 +15,7 @@ class BrainArea {
     private var doorDown    = UILabel()
     private var doorLeft    = UILabel()
     
-    var castPlayer = CastPlayer()
+    var castPlayer: CastPlayer!
     var thisRoom: Room = ComRoom(castPlayer: CastPlayer())
     
     var y: Int{
@@ -41,6 +41,7 @@ class BrainArea {
         if thisRoom.Doors[dir.rawValue] == Door.whatDoor {
             let newRoom = castPlayer.map.WhatIsIt(dir: dir)
             if castPlayer.map.createDifRoom(room: newRoom, dir: dir){
+                newRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
                 thisRoom.Doors[dir.rawValue] = castPlayer.map.mapRooms[String(newRoom.x) + String(newRoom.y)]!.Doors[difDir.rawValue]
             }else{
                 thisRoom.Doors[dir.rawValue] = Door.woodDoor
@@ -49,7 +50,7 @@ class BrainArea {
         return thisRoom.Doors[dir.rawValue]!.rawValue
     }
     
-    private func refreshRoom() {
+    func refreshRoom() {
         
         doorUp.text      = refreshDoor(dir: .Up)
         doorRight.text   = refreshDoor(dir: .Right)
@@ -57,6 +58,7 @@ class BrainArea {
         doorLeft.text    = refreshDoor(dir: .Left)
         thisRoom.firstVisiting(castPlayer: castPlayer)
         countRoom.text = String(castPlayer.player.stats.counterRoom)
+        thisRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         
     }
     
@@ -170,6 +172,8 @@ class BrainArea {
     
     func StartGame(){
         castPlayer.map.mapRooms = ["00" : thisRoom]
+        thisRoom.InRoom(castPlayer: castPlayer)
+        
         
         refreshRoom()
         

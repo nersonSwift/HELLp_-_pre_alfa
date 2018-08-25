@@ -15,7 +15,7 @@ class PlayerCast: UIViewController {
         return storyboard.instantiateInitialViewController() as? PlayerCast
     }
     
-    var castPlayer = CastPlayer()
+    var castPlayer: CastPlayer!
     
     func addSwipe() {
         let direction = UISwipeGestureRecognizerDirection.down

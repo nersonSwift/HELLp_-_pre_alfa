@@ -10,7 +10,7 @@ import UIKit
 
 class Map{
     weak var castPlayer: CastPlayer?
-    var mapRooms = ["00" : Room()]
+    var mapRooms = [ "" : Room()]
     var map3D: Map3D!
     
     init() {

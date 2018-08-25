@@ -12,26 +12,19 @@ class ComRoom: Room {
     
     public func Ginirate(){
         for i in Doors{
-            switch arc4random_uniform(100) {
-            case 0...49:  Doors[i.key] = .woodDoor
-            case 50...69: Doors[i.key] = .ironDoor
-            case 70...99: Doors[i.key] = .whatDoor
-                
-            default: break
-            }
+            Doors[i.key] = GetClass.getComDoor()
         }
     }
     
     private func createCommonEnemy(){
-        
         for _ in 0...2{
-            switch arc4random_uniform(100) {
-            case 0...32:    enemys.append(Soul())
-            case 33...66:   enemys.append(Skeleton())
-                
-            default: break
+            if let enemy = GetClass.getComEnemy(){
+              enemys.append(enemy)
             }
         }
+    }
+    override init(saveRoom: SaveRoom, castPlayer: CastPlayer) {
+        super.init(saveRoom: saveRoom, castPlayer: castPlayer)
     }
     
     init(castPlayer: CastPlayer){
@@ -43,23 +36,20 @@ class ComRoom: Room {
         self.x = castPlayer.player.x
         self.y = castPlayer.player.y
         
-        let roomUp      = castPlayer.map.mapRooms[String(x) + String(y+1)]
-        let roomRight   = castPlayer.map.mapRooms[String(x+1) + String(y)]
-        let roomDown    = castPlayer.map.mapRooms[String(x) + String(y-1)]
-        let roomLeft    = castPlayer.map.mapRooms[String(x-1) + String(y)]
+        if let roomUp = castPlayer.map.mapRooms[String(x) + String(y+1)]{
+            Doors[Dir.Up.rawValue] = roomUp.Doors[Dir.Down.rawValue]
+        }
+        if let roomRight = castPlayer.map.mapRooms[String(x+1) + String(y)]{
+            Doors[Dir.Right.rawValue] = roomRight.Doors[Dir.Left.rawValue]
+        }
+        if let roomDown = castPlayer.map.mapRooms[String(x) + String(y-1)]{
+            Doors[Dir.Down.rawValue] = roomDown.Doors[Dir.Up.rawValue]
+        }
+        if let roomLeft = castPlayer.map.mapRooms[String(x-1) + String(y)]{
+            Doors[Dir.Left.rawValue] = roomLeft.Doors[Dir.Right.rawValue]
+        }
         
-        if roomUp != nil{
-            Doors[Dir.Up.rawValue] = roomUp!.Doors[Dir.Down.rawValue]
-        }
-        if roomRight != nil{
-            Doors[Dir.Right.rawValue] = roomRight!.Doors[Dir.Left.rawValue]
-        }
-        if roomDown != nil{
-            Doors[Dir.Down.rawValue] = roomDown!.Doors[Dir.Up.rawValue]
-        }
-        if roomLeft != nil{
-            Doors[Dir.Left.rawValue] = roomLeft!.Doors[Dir.Right.rawValue]
-        }
+        
         
     }
 }

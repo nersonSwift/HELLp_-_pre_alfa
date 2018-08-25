@@ -15,6 +15,9 @@ class DifRoom: Room {
         self.x = x
         self.y = y
     }
+    override init(saveRoom: SaveRoom, castPlayer: CastPlayer) {
+        super.init(saveRoom: saveRoom, castPlayer: castPlayer)
+    }
     
     func CheckNoRoom(castPlayer: CastPlayer){
         

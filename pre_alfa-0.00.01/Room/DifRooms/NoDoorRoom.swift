@@ -14,5 +14,8 @@ class NoDoorRoom: DifRoom {
         self.nameRoom = "NoDoorRoom"
         Doors = ["Up" : Door.noDoor, "Right" : Door.noDoor, "Down" : Door.noDoor, "Left" : Door.noDoor]
     }
+    override init(saveRoom: SaveRoom, castPlayer: CastPlayer) {
+        super.init(saveRoom: saveRoom, castPlayer: castPlayer)
+    }
 }
 

@@ -22,5 +22,8 @@ class DmgRoom: DifRoom {
         super.InRoom(castPlayer: castPlayer)
         castPlayer.player.DMG(dmg: 2)
     }
+    override init(saveRoom: SaveRoom, castPlayer: CastPlayer) {
+        super.init(saveRoom: saveRoom, castPlayer: castPlayer)
+    }
 
 }

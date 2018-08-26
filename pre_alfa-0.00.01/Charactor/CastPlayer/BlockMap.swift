@@ -43,7 +43,7 @@ class BlockMap: SCNNode {
         let blockMapDoorsRight   = SCNNode()
         let blockMapDoorsDown    = SCNNode()
         let blockMapDoorsLeft    = SCNNode()
-        //0.45
+        
         blockMapDoorsUp.geometry     = SCNBox(width: 0.25, height: 0.5, length: 0.125, chamferRadius: 0)
         blockMapDoorsRight.geometry  = SCNBox(width: 0.125, height: 0.5, length: 0.25, chamferRadius: 0)
         blockMapDoorsDown.geometry   = SCNBox(width: 0.25, height: 0.5, length: 0.125, chamferRadius: 0)

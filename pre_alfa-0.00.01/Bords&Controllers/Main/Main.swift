@@ -18,6 +18,11 @@ class Main: UIViewController {
         if !castPlayer.playerSet{
             return
         }
+        try! castPlayer.realm.write {
+            for i in castPlayer.savedRooms{
+                castPlayer.realm.delete(i)
+            }
+        }
         if let nextViewController = area.storyboardInstance() {
             nextViewController.brain.castPlayer = castPlayer
             castPlayer.startGame()
@@ -26,22 +31,20 @@ class Main: UIViewController {
         }
     }
     @IBAction func continueGame(_ sender: Any) {
+        if castPlayer.savedRooms.isEmpty{
+            return
+        }
         var x = 0
         var y = 0
         castPlayer.player = Lilit()
         castPlayer.player.stats.cards = [CardAtack(),HpCard()]
         for i in castPlayer.savedRooms{
             if i.name != "0"{
-                var newRoom: Room
                 
-                switch i.name{
-                case "ComRoom":     newRoom = ComRoom(saveRoom: i, castPlayer: castPlayer)
-                case "CloseRoom":   newRoom = CloseRoom(saveRoom: i, castPlayer: castPlayer)
-                case "NoDoorRoom":  newRoom = NoDoorRoom(saveRoom: i, castPlayer: castPlayer)
-                case "DmgRoom":     newRoom = DmgRoom(saveRoom: i, castPlayer: castPlayer)
-                default: newRoom = Room()
-                }
+                let newRoom = GetClass.getRoom(name: i.name)
+                newRoom.loadRoom(saveRoom: i, castPlayer: castPlayer)
                 castPlayer.map.mapRooms[String(newRoom.x) + String(newRoom.y)] = newRoom
+                
                 if !newRoom.firstVisitingTriger{
                     newRoom.criateBlockMapRoom(castPlayer: castPlayer)
                 }

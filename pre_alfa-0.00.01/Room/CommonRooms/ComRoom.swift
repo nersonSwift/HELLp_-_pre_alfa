@@ -23,9 +23,7 @@ class ComRoom: Room {
             }
         }
     }
-    override init(saveRoom: SaveRoom, castPlayer: CastPlayer) {
-        super.init(saveRoom: saveRoom, castPlayer: castPlayer)
-    }
+    override init(){super.init()}
     
     init(castPlayer: CastPlayer){
         super.init()

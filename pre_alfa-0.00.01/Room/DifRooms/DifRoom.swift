@@ -9,15 +9,14 @@
 import UIKit
 
 class DifRoom: Room {
+    override init(){super.init()}
     
-    init(x: Int, y: Int, castPlayer: CastPlayer) {
-        super.init()
+    
+    func setDifRoom(x: Int, y: Int, castPlayer: CastPlayer){
         self.x = x
         self.y = y
     }
-    override init(saveRoom: SaveRoom, castPlayer: CastPlayer) {
-        super.init(saveRoom: saveRoom, castPlayer: castPlayer)
-    }
+    
     
     func CheckNoRoom(castPlayer: CastPlayer){
         

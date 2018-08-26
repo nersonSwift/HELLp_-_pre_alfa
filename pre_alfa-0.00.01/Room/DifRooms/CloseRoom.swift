@@ -9,15 +9,14 @@
 import UIKit
 
 class CloseRoom: DifRoom {
-    override init(x: Int, y: Int, castPlayer: CastPlayer){
-        super.init(x: x, y: y, castPlayer: castPlayer)
-        self.nameRoom = "CloseRoom"
+    override init(){super.init()}
+    
+    override func setDifRoom(x: Int, y: Int, castPlayer: CastPlayer) {
+        super.setDifRoom(x: x, y: y, castPlayer: castPlayer)
+        nameRoom = "CloseRoom"
         Doors = ["Up" : Door.closeDoor, "Right" : Door.closeDoor, "Down" : Door.closeDoor, "Left" : Door.closeDoor]
         
         CheckNoRoom(castPlayer: castPlayer)
-    }
-    override init(saveRoom: SaveRoom, castPlayer: CastPlayer) {
-        super.init(saveRoom: saveRoom, castPlayer: castPlayer)
     }
     
     override func InRoom(castPlayer: CastPlayer) {
@@ -33,17 +32,21 @@ class CloseRoom: DifRoom {
         
         if (roomUp != nil) && !(roomUp is NoDoorRoom){
             roomUp!.Doors["Down"] = Door.openDoor
+            roomUp!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         }
         if roomRight != nil && !(roomRight is NoDoorRoom){
             roomRight!.Doors["Left"] = Door.openDoor
+            roomRight!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         }
         if roomDown != nil && !(roomDown is NoDoorRoom){
             roomDown!.Doors["Up"] = Door.openDoor
+            roomDown!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         }
         if roomLeft != nil && !(roomLeft is NoDoorRoom){
             roomLeft!.Doors["Right"] = Door.openDoor
+            roomLeft!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         }
-        
+        self.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         
     }
 }

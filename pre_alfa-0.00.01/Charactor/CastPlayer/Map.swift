@@ -53,14 +53,9 @@ class Map{
             case .Left:    x -= 1
         }
         
-        switch arc4random_uniform(100) {
-            case 0...69:  return NoDoorRoom(x: x, y: y, castPlayer: castPlayer!)
-            case 70...79: return DmgRoom(x: x, y: y, castPlayer: castPlayer!)
-            case 80...99: return CloseRoom(x: x, y: y, castPlayer: castPlayer!)
-        
-        default: break
-        }
-        return NoDoorRoom(x: x, y: y, castPlayer: castPlayer!)
+        let newRoom = GetClass.getDifRoom()
+        newRoom.setDifRoom(x: x, y: y, castPlayer: castPlayer!)
+        return newRoom
     }
     
 }

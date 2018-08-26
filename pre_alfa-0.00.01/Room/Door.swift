@@ -12,8 +12,6 @@ enum Door: String{
     case woodDoor   = "woodDoor"
     case ironDoor   = "ironDoor"
     case noDoor     = ""
-    case sicretDoor = "sicretDoor"
-    case bossDoor   = "bossDoor"
     case dmgDoor    = "DMGDoor"
     case whatDoor   = "???"
     case closeDoor  = "closeDoor"

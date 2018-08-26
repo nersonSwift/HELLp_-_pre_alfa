@@ -22,7 +22,7 @@ class FightAren: UIViewController {
         return true
     }
     
-    var brain: BrainFightAren? = BrainFightAren()
+    var brain = BrainFightAren()
     
     @IBOutlet var scnView: SCNView!
     
@@ -74,11 +74,11 @@ class FightAren: UIViewController {
         winBox.name = "WinBox"
         scene.rootNode.addChildNode(winBox)
         
-        brain?.setCardsInHand()
+        brain.setCardsInHand()
         
-        cardLeft    = CardInAren.criateCardInAren(positionCard: .Left, card: brain!.cardsInHand[0])
-        cardMid     = CardInAren.criateCardInAren(positionCard: .Up, card: brain!.cardsInHand[1])
-        cardRight   = CardInAren.criateCardInAren(positionCard: .Right, card: brain!.cardsInHand[2])
+        cardLeft    = CardInAren.criateCardInAren(positionCard: .Left, card: brain.cardsInHand[0])
+        cardMid     = CardInAren.criateCardInAren(positionCard: .Up, card: brain.cardsInHand[1])
+        cardRight   = CardInAren.criateCardInAren(positionCard: .Right, card: brain.cardsInHand[2])
         
         hpWheel.addChildNode(cardLeft!)
         hpWheel.addChildNode(cardMid!)
@@ -86,7 +86,7 @@ class FightAren: UIViewController {
         selectCard = cardMid
         
         
-        brain!.startFight()
+        brain.startFight()
         createEnemys()
         
         addSwipe()
@@ -98,21 +98,21 @@ class FightAren: UIViewController {
     func createEnemys(){
         
         
-        let enemys = brain?.room!.enemys
+        let enemys = brain.room!.enemys
         
-        enemyDown = EnemyInAren.criateEmemyInAren(positionEnemy:  .Down, enemy: enemys![0])
+        enemyDown = EnemyInAren.criateEmemyInAren(positionEnemy:  .Down, enemy: enemys[0])
         scene.rootNode.addChildNode(enemyDown!)
-        brain?.setSelectEnemy(enemyInAren: enemyDown!)
+        brain.setSelectEnemy(enemyInAren: enemyDown!)
         
         liveEnemy.append(enemyDown!)
         
-        if brain!.room!.enemys.count > 1{
-            enemyRight = EnemyInAren.criateEmemyInAren(positionEnemy: .Right , enemy: enemys![1])
+        if brain.room!.enemys.count > 1{
+            enemyRight = EnemyInAren.criateEmemyInAren(positionEnemy: .Right , enemy: enemys[1])
             scene.rootNode.addChildNode(enemyRight!)
             liveEnemy.append(enemyRight!)
         }
-         if brain!.room!.enemys.count > 2{
-            enemyLeft = EnemyInAren.criateEmemyInAren(positionEnemy: .Left , enemy: enemys![2])
+         if brain.room!.enemys.count > 2{
+            enemyLeft = EnemyInAren.criateEmemyInAren(positionEnemy: .Left , enemy: enemys[2])
             scene.rootNode.addChildNode(enemyLeft!)
             liveEnemy.insert(enemyLeft!, at: 0)
             selectLiveEnemy = 1
@@ -156,32 +156,32 @@ class FightAren: UIViewController {
             enemyLeft?.runAction(SCNAction.move(to: down , duration: 0.6))
             enemyDown?.runAction(SCNAction.move(to: right, duration: 0.6))
             enemyRight?.runAction(SCNAction.move(to: left, duration: 0.6))
-            brain?.setSelectEnemy(enemyInAren: enemyLeft!)
+            brain.setSelectEnemy(enemyInAren: enemyLeft!)
             
         case .Down:
             
             enemyLeft?.runAction(SCNAction.move(to: left , duration: 0.6))
             enemyDown?.runAction(SCNAction.move(to: down, duration: 0.6))
             enemyRight?.runAction(SCNAction.move(to: right, duration: 0.6))
-            brain?.setSelectEnemy(enemyInAren: enemyDown!)
+            brain.setSelectEnemy(enemyInAren: enemyDown!)
             
         case .Right:
             
             enemyLeft?.runAction(SCNAction.move(to: right , duration: 0.6))
             enemyDown?.runAction(SCNAction.move(to: left, duration: 0.6))
             enemyRight?.runAction(SCNAction.move(to: down, duration: 0.6))
-            brain?.setSelectEnemy(enemyInAren: enemyRight!)
+            brain.setSelectEnemy(enemyInAren: enemyRight!)
             
         default: break
         }
     }
     
     func newCards(){
-        brain?.setCardsInHand()
+        brain.setCardsInHand()
         
-        cardLeft?.setNewCard(card: brain!.cardsInHand[0])
-        cardMid?.setNewCard(card: brain!.cardsInHand[1])
-        cardRight?.setNewCard(card: brain!.cardsInHand[2])
+        cardLeft?.setNewCard(card: brain.cardsInHand[0])
+        cardMid?.setNewCard(card: brain.cardsInHand[1])
+        cardRight?.setNewCard(card: brain.cardsInHand[2])
     }
     
     func cardSelect(card: SCNNode){
@@ -208,7 +208,7 @@ class FightAren: UIViewController {
             return
         }
         
-        brain!.PlayerStep()
+        brain.PlayerStep()
         
         
         selectCard?.runAction(SCNAction.fadeOpacity(by: 0.001, duration: 1.7)) // Обход бага XCode
@@ -226,9 +226,9 @@ class FightAren: UIViewController {
         
         selectCard?.runAction(SCNAction.fadeOut(duration: 0.3), completionHandler: {
             self.newCardsAnim()
-            self.brain?.checkEnemysLive()
-            self.brain!.EnemyStep()
-            self.brain?.checkPlayerLive()
+            self.brain.checkEnemysLive()
+            self.brain.EnemyStep()
+            self.brain.checkPlayerLive()
         })
     }
     
@@ -282,6 +282,7 @@ class FightAren: UIViewController {
             let a = hitResults[0]
             
             if a.node.name == "WinBox" && endAnimStep{
+                brain.room?.saveThisRoom(realm: brain.castPlayer.realm , sevedRoom: brain.castPlayer.savedRooms)
                 self.dismiss(animated: true, completion: nil)
             }
             

@@ -11,7 +11,10 @@ import UIKit
 class BrainFightAren{
     weak var fightAren: FightAren?
     weak var room: Room?
-    weak var player: Player?
+    weak var castPlayer: CastPlayer!
+    var player: Player{
+        return castPlayer.player
+    }
     var selectEnemy: EnemyInAren?
     var cardsInHand: [Card] = []
     
@@ -28,15 +31,15 @@ class BrainFightAren{
     }
     
     func PlayerStep(){
-        fightAren?.selectCard?.card.effect(player: player!, selectEnemy: selectEnemy!.enemy, allEnemy: allEnemy)
+        fightAren?.selectCard?.card.effect(player: player, selectEnemy: selectEnemy!.enemy, allEnemy: allEnemy)
     }
     
     func setCardsInHand(){
         cardsInHand = []
         for _ in 0...2{
-            let a = arc4random_uniform(UInt32(player!.stats.cards.count))
-            print(player!.stats.cards[Int(a)].name)
-            cardsInHand.append(player!.stats.cards[Int(a)])
+            let a = arc4random_uniform(UInt32(player.stats.cards.count))
+            print(player.stats.cards[Int(a)].name)
+            cardsInHand.append(player.stats.cards[Int(a)])
         }
     }
     
@@ -59,7 +62,7 @@ class BrainFightAren{
         
         if fightAren!.liveEnemy.count == 0{
             room?.enemys = []
-            player?.fightStats.endFight(player: player!)
+            player.fightStats.endFight(player: player)
             fightAren?.endFight()
         }
     }
@@ -67,22 +70,22 @@ class BrainFightAren{
     func EnemyStep(){
         
         for i in fightAren!.liveEnemy{
-            player?.fightStats.takeDMG(charactor: player!, dmg: i.enemy!.fightStats.attackDmg)
-            print(player!.fightStats.fightHP)
+            player.fightStats.takeDMG(charactor: player, dmg: i.enemy!.fightStats.attackDmg)
+            print(player.fightStats.fightHP)
         }
         
     }
     
     func checkPlayerLive(){
-        if player!.fightStats.fightHP <= 0{
-            player!.fightStats.endFight(player: player!)
+        if player.fightStats.fightHP <= 0{
+            player.fightStats.endFight(player: player)
             fightAren!.endFight()
         }
     }
     
     func startFight() {
         
-        player?.fightStats.startFight(charactor: player!)
+        player.fightStats.startFight(charactor: player)
         for i in room!.enemys{
             i.fightStats.startFight(charactor: i)
         }

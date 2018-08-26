@@ -69,9 +69,9 @@ class area: UIViewController {
     @IBAction func Fight(_ sender: Any) {
         if brain.thisRoom.enemys.count != 0{
             if let nextViewController = FightAren.storyboardInstance() {
-                nextViewController.brain!.player = brain.castPlayer.player
-                nextViewController.brain!.room = brain.thisRoom
-                nextViewController.brain!.fightAren = nextViewController
+                nextViewController.brain.castPlayer = brain.castPlayer
+                nextViewController.brain.room = brain.thisRoom
+                nextViewController.brain.fightAren = nextViewController
                 self.present(nextViewController, animated: true, completion: nil)
             }
         }

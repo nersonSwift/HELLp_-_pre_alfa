@@ -14,6 +14,7 @@ class GetClass{
             case 0...49:  return .woodDoor
             case 50...69: return .ironDoor
             case 70...99: return .whatDoor
+            
         default: return .noDoor
         }
     }
@@ -24,6 +25,50 @@ class GetClass{
             case 33...66:   return Skeleton()
             
         default: return nil
+        }
+    }
+    
+    static func getDifRoom() -> DifRoom{
+        switch arc4random_uniform(100) {
+            case 0...69:  return NoDoorRoom()
+            case 70...79: return DmgRoom()
+            case 80...99: return CloseRoom()
+            
+        default: return NoDoorRoom()
+        }
+    }
+    
+    static func getDoor(name: String)  -> Door{
+        switch name {
+            case "woodDoor":    return .woodDoor
+            case "ironDoor":    return .ironDoor
+            case "DMGDoor":     return .dmgDoor
+            case "closeDoor":   return .closeDoor
+            case "openDoor":    return .openDoor
+            case "":            return .noDoor
+            case "???":         return .whatDoor
+            
+        default: return Door.noDoor
+        }
+    }
+    
+    static func getEnemy(name: String)  -> Enemy{
+        switch name {
+            case "Skeleton":    return Skeleton()
+            case "Soul":        return Soul()
+            
+        default: return Enemy()
+        }
+    }
+    
+    static func getRoom(name: String)  -> Room{
+        switch name{
+            case "ComRoom":     return ComRoom()
+            case "CloseRoom":   return CloseRoom()
+            case "NoDoorRoom":  return NoDoorRoom()
+            case "DmgRoom":     return DmgRoom()
+            
+        default: return Room()
         }
     }
     

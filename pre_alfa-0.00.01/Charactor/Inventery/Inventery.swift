@@ -27,13 +27,5 @@ struct Inventery{
             bag[steckItem.name] = nil
         }
         return true
-    }/*
-    mutating func copyInvetrey() -> Inventery{
-        var inventery = Inventery()
-        for i in bag{
-            inventery.bag[i.key] = i.value.copyItem()
-        }
-        return inventery
     }
- */
 }

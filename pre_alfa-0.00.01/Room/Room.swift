@@ -25,8 +25,7 @@ class Room {
     
     init() {}
     
-    init(saveRoom: SaveRoom, castPlayer: CastPlayer) {
-        
+    func loadRoom(saveRoom: SaveRoom, castPlayer: CastPlayer){
         id = saveRoom.id
         nameRoom = saveRoom.name
         firstVisitingTriger = saveRoom.firstVisitingTriger
@@ -34,43 +33,19 @@ class Room {
         x = saveRoom.x
         y = saveRoom.y
         
-        func checkDoor(name: String)  -> Door{
-            switch name {
-            case "woodDoor":    return .woodDoor
-            case "ironDoor":    return .ironDoor
-            case "DMGDoor":     return .dmgDoor
-            case "closeDoor":   return .closeDoor
-            case "openDoor":    return .openDoor
-            case "":            return .noDoor
-            
-            default:break
-            }
-            return Door.noDoor
-        }
-        
-        func checkEnemy(name: String)  -> Enemy{
-            switch name {
-            case "Skeleton":    return Skeleton()
-            case "Soul":        return Soul()
-            
-            default:break
-            }
-            return Enemy()
-        }
-        
-        Doors["Up"]     = checkDoor(name: saveRoom.up)
-        Doors["Right"]  = checkDoor(name: saveRoom.right)
-        Doors["Down"]   = checkDoor(name: saveRoom.down)
-        Doors["Left"]   = checkDoor(name: saveRoom.left)
+        Doors["Up"]     = GetClass.getDoor(name: saveRoom.up)
+        Doors["Right"]  = GetClass.getDoor(name: saveRoom.right)
+        Doors["Down"]   = GetClass.getDoor(name: saveRoom.down)
+        Doors["Left"]   = GetClass.getDoor(name: saveRoom.left)
         
         if saveRoom.enemy0 != ""{
-           enemys.append(checkEnemy(name: saveRoom.enemy0))
+            enemys.append(GetClass.getEnemy(name: saveRoom.enemy0))
         }
         if saveRoom.enemy1 != ""{
-            enemys.append(checkEnemy(name: saveRoom.enemy1))
+            enemys.append(GetClass.getEnemy(name: saveRoom.enemy1))
         }
         if saveRoom.enemy2 != ""{
-            enemys.append(checkEnemy(name: saveRoom.enemy2))
+            enemys.append(GetClass.getEnemy(name: saveRoom.enemy2))
         }
     }
     

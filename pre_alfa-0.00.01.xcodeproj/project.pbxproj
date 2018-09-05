@@ -182,9 +182,6 @@
 			children = (
 				51E42D9B20F36065007DA454 /* Map.swift */,
 				51DE5C57210B505200CC002E /* CastPlayer.swift */,
-				518B7168212466A2005E9A47 /* Card.swift */,
-				518B716C212484B0005E9A47 /* CardAtack.swift */,
-				519FA31C212AACAD00FAE753 /* HpCard.swift */,
 				518B716A212466FD005E9A47 /* Qality.swift */,
 				51200F812121D7B10018E53E /* Map3D.swift */,
 				51200F832121D8FE0018E53E /* BlockMap.swift */,
@@ -215,7 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				515792FE20EA1E7A00327D91 /* pre_alfa-0.00.01 */,
-				518977B8212ED7A300BD8AF9 /* Save */,
 				515792FD20EA1E7A00327D91 /* Products */,
 				0925EEE56BB941CE5D6EF46D /* Pods */,
 				EE1DCD5D787341FB09436086 /* Frameworks */,
@@ -241,6 +237,7 @@
 				51DE5C5F210D231200CC002E /* Bords&Controllers */,
 				5186DF0D20F0A877006AF275 /* Charactor */,
 				5186DF0A20F0A783006AF275 /* Room */,
+				518977B8212ED7A300BD8AF9 /* Save */,
 			);
 			path = "pre_alfa-0.00.01";
 			sourceTree = "<group>";
@@ -263,8 +260,8 @@
 				512BE7E1210E21480035DF60 /* Charactor.swift */,
 				5143160D212091AE003A0C11 /* Players */,
 				5143160E212091CE003A0C11 /* Enemy */,
-				5143160F21209200003A0C11 /* CastPlayer */,
 				51E42D9820F21017007DA454 /* Stats */,
+				5143160F21209200003A0C11 /* CastPlayer */,
 				5186DF1020F0A8E0006AF275 /* Inventery */,
 			);
 			path = Charactor;
@@ -321,6 +318,16 @@
 			path = FIghtAren;
 			sourceTree = "<group>";
 		};
+		51DDD72E2134A6DE00457A6A /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				518B7168212466A2005E9A47 /* Card.swift */,
+				518B716C212484B0005E9A47 /* CardAtack.swift */,
+				519FA31C212AACAD00FAE753 /* HpCard.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
 		51DE5C5F210D231200CC002E /* Bords&Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +381,7 @@
 		51E42D9820F21017007DA454 /* Stats */ = {
 			isa = PBXGroup;
 			children = (
+				51DDD72E2134A6DE00457A6A /* Card */,
 				51E42D9620F21005007DA454 /* StatsPlayer.swift */,
 				512BE7E5210E23190035DF60 /* FightStats.swift */,
 				512BE7E7210E24340035DF60 /* FightStatsPlayer.swift */,

@@ -46,9 +46,8 @@
                                     <action selector="PalyerCast:" destination="OPO-39-Pvz" eventType="touchUpInside" id="lTx-5T-dKx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9o-5R-cvH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9o-5R-cvH">
                                 <rect key="frame" x="156" y="324" width="62" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueGame:" destination="OPO-39-Pvz" eventType="touchUpInside" id="nL2-og-Dbq"/>
@@ -59,6 +58,8 @@
                         <constraints>
                             <constraint firstItem="vJx-Cm-ubR" firstAttribute="top" secondItem="rTY-Zr-bh5" secondAttribute="top" constant="187" id="J9b-2E-AnO"/>
                             <constraint firstItem="LB0-7W-gWm" firstAttribute="top" secondItem="vJx-Cm-ubR" secondAttribute="bottom" constant="20" id="MaZ-Fs-hrL"/>
+                            <constraint firstItem="W9o-5R-cvH" firstAttribute="top" secondItem="dcn-36-FuB" secondAttribute="bottom" constant="8" id="RUA-D6-jUu"/>
+                            <constraint firstItem="W9o-5R-cvH" firstAttribute="centerX" secondItem="rTY-Zr-bh5" secondAttribute="centerX" id="VF3-uH-4iK"/>
                             <constraint firstItem="LB0-7W-gWm" firstAttribute="centerX" secondItem="rTY-Zr-bh5" secondAttribute="centerX" id="jA3-jq-2Xg"/>
                             <constraint firstItem="dcn-36-FuB" firstAttribute="top" secondItem="LB0-7W-gWm" secondAttribute="bottom" constant="8" id="m3r-73-c3R"/>
                             <constraint firstItem="dcn-36-FuB" firstAttribute="centerX" secondItem="rTY-Zr-bh5" secondAttribute="centerX" id="pGG-yO-KCW"/>

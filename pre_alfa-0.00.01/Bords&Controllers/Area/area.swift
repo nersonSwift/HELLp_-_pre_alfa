@@ -86,16 +86,10 @@ class area: UIViewController {
     
     
     @objc func menu(_ sender: UIButton) {
-        let date = Date()
-        let calendar = Calendar.current
-        if second == calendar.component(.second, from: date){
-            if let nextViewController = PlayMenu.storyboardInstance() {
-                nextViewController.modalPresentationStyle = .custom
-                nextViewController.scene = brain.castPlayer.map.map3D.scene
-                self.present(nextViewController, animated: true, completion: nil)
-            }
-        }else{
-            second = calendar.component(.second, from: date)
+        if let nextViewController = PlayMenu.storyboardInstance() {
+            nextViewController.modalPresentationStyle = .custom
+            nextViewController.scene = brain.castPlayer.map.map3D.scene
+            self.present(nextViewController, animated: true, completion: nil)
         }
     }
     
@@ -124,7 +118,7 @@ class area: UIViewController {
         newRoomView.addSubview(doorLeft)
         
         stopButton = UIButton(frame: self.view.bounds)
-        stopButton.addTarget(self, action: #selector(menu), for: .touchUpInside)
+        stopButton.addTarget(self, action: #selector(menu), for: .touchDownRepeat)
         newRoomView.addSubview(stopButton)
     }
     

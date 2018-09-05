@@ -17,6 +17,7 @@ class area: UIViewController {
     }
     private var second = -1
     
+    
     static func storyboardInstance() -> area? {
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
         return storyboard.instantiateInitialViewController() as? area
@@ -25,18 +26,24 @@ class area: UIViewController {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    
-    weak var backViewController: area?
     var brain = BrainArea()
-    var trig = true
     
-    @IBOutlet weak var doorUp: UILabel!
-    @IBOutlet weak var doorRight: UILabel!
-    @IBOutlet weak var doorDown: UILabel!
-    @IBOutlet weak var doorLeft: UILabel!
-    @IBOutlet weak var countRoom: UILabel!
+    var stopButton: UIButton!
     
+    var roomView: UIView!
+    var newRoomView: UIView!
     
+    var doorUp: UIView!
+    var doorRight: UIView!
+    var doorDown: UIView!
+    var doorLeft: UIView!
+    
+    var widthDoor: CGFloat{
+        return self.view.frame.width/10
+    }
+    var heightDoor: CGFloat{
+        return widthDoor
+    }
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -78,7 +85,7 @@ class area: UIViewController {
     }
     
     
-    @IBAction func Menu(_ sender: Any) {
+    @objc func menu(_ sender: UIButton) {
         let date = Date()
         let calendar = Calendar.current
         if second == calendar.component(.second, from: date){
@@ -95,8 +102,38 @@ class area: UIViewController {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     
+    func createRoomView(){
+        
+        newRoomView = UIView(frame: self.view.bounds)
+        self.view.addSubview(newRoomView)
+        
+        let doorUpFrame = CGRect(x:  self.view.frame.width/2 - widthDoor / 2, y: heightDoor / 2, width: widthDoor, height: heightDoor)
+        doorUp = UIView(frame: doorUpFrame)
+        newRoomView.addSubview(doorUp)
+        
+        let doorDownFrame = CGRect(x: self.view.frame.width / 2 - widthDoor / 2, y: self.view.frame.height - heightDoor * 1.5, width: widthDoor, height: heightDoor)
+        doorDown = UIView(frame: doorDownFrame)
+        newRoomView.addSubview(doorDown)
+        
+        let doorRightFrame = CGRect(x:  self.view.frame.width - widthDoor * 1.5, y: self.view.frame.height / 2 - heightDoor / 2, width: widthDoor, height: heightDoor)
+        doorRight = UIView(frame: doorRightFrame)
+        newRoomView.addSubview(doorRight)
+        
+        let doorLeftFrame = CGRect(x: heightDoor / 2, y: self.view.frame.height / 2 - heightDoor / 2, width: widthDoor, height: heightDoor)
+        doorLeft = UIView(frame: doorLeftFrame)
+        newRoomView.addSubview(doorLeft)
+        
+        stopButton = UIButton(frame: self.view.bounds)
+        stopButton.addTarget(self, action: #selector(menu), for: .touchUpInside)
+        newRoomView.addSubview(stopButton)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        createRoomView()
+        roomView = newRoomView
+        
         brain.startView(area: self)
         addSwipe()
         

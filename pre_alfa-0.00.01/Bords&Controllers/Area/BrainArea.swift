@@ -9,11 +9,11 @@
 import UIKit
 
 class BrainArea {
-    private var countRoom   = UILabel()
-    private var doorUp      = UILabel()
-    private var doorRight   = UILabel()
-    private var doorDown    = UILabel()
-    private var doorLeft    = UILabel()
+   // private var countRoom   = UIView()
+    private var doorUp      = UIView()
+    private var doorRight   = UIView()
+    private var doorDown    = UIView()
+    private var doorLeft    = UIView()
     
     var castPlayer: CastPlayer!
     var thisRoom: Room = ComRoom(castPlayer: CastPlayer())
@@ -28,7 +28,7 @@ class BrainArea {
         return String(x) + String(y)
     }
     
-    private func refreshDoor(dir: Dir) -> String{
+    private func refreshDoor(dir: Dir) -> Door{
         var difDir = Dir.Down
         
         switch dir{
@@ -47,41 +47,66 @@ class BrainArea {
                 thisRoom.Doors[dir.rawValue] = Door.woodDoor
             }
         }
-        return thisRoom.Doors[dir.rawValue]!.rawValue
+        return thisRoom.Doors[dir.rawValue]!
     }
+    func setColor(door: Door) -> UIColor{
+        switch door {
+        case .woodDoor:    return #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
+        case .ironDoor:    return #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        case .dmgDoor:     return #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        case .closeDoor:   return #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)
+        case .openDoor:    return #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        case .noDoor:      return #colorLiteral(red: 1, green: 0.9470325112, blue: 1, alpha: 0)
+        case .whatDoor:    return #colorLiteral(red: 1, green: 0.9470325112, blue: 1, alpha: 1)
+        }
+    }
+    
     
     func refreshRoom() {
         
-        doorUp.text      = refreshDoor(dir: .Up)
-        doorRight.text   = refreshDoor(dir: .Right)
-        doorDown.text    = refreshDoor(dir: .Down)
-        doorLeft.text    = refreshDoor(dir: .Left)
+        doorUp.backgroundColor       = setColor(door: refreshDoor(dir: .Up))
+        doorRight.backgroundColor    = setColor(door: refreshDoor(dir: .Right))
+        doorDown.backgroundColor     = setColor(door: refreshDoor(dir: .Down))
+        doorLeft.backgroundColor     = setColor(door: refreshDoor(dir: .Left))
         thisRoom.firstVisiting(castPlayer: castPlayer)
-        countRoom.text = String(castPlayer.player.stats.counterRoom)
+        
+        //countRoom.text = String(castPlayer.player.stats.counterRoom)
         thisRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         
     }
     
-    private func animStep(dir: Dir, Area: area) -> UIViewController{
+    private func animStep(dir: Dir, Area: area){
+        var offScreenFirst: CGAffineTransform
+        var offScreenSecond: CGAffineTransform
         
-        if Area.trig{
-            if let nextViewController = area.storyboardInstance() {
-                nextViewController.brain = self
-                nextViewController.trig = false
-                nextViewController.backViewController = Area
-                let animArea = AnimArea(dir: dir)
-                nextViewController.transitioningDelegate = animArea
-                Area.present(nextViewController, animated: true, completion: nil)
-                return nextViewController
-            }
-        }else{
-            Area.backViewController!.viewDidLoad()
-            let a = AnimArea(dir: dir)
-            Area.transitioningDelegate = a
-            Area.dismiss(animated: true, completion: nil)
-            return Area.backViewController!
+        Area.createRoomView()
+        switch dir {
+        case .Up:
+            offScreenFirst = CGAffineTransform(translationX: 0, y: -Area.view.frame.height)
+            offScreenSecond = CGAffineTransform(translationX: 0, y: Area.view.frame.height)
+        case .Right:
+            offScreenFirst = CGAffineTransform(translationX: Area.view.frame.width, y: 0)
+            offScreenSecond = CGAffineTransform(translationX: -Area.view.frame.width, y: 0)
+        case .Down:
+            offScreenFirst = CGAffineTransform(translationX: 0, y: Area.view.frame.height)
+            offScreenSecond = CGAffineTransform(translationX: 0, y: -Area.view.frame.height)
+        case .Left:
+            offScreenFirst = CGAffineTransform(translationX: -Area.view.frame.width, y: 0)
+            offScreenSecond = CGAffineTransform(translationX: Area.view.frame.width, y: 0)
         }
-        return Area
+        Area.newRoomView.transform = offScreenFirst
+        let oldRoomView = Area.roomView
+        
+        UIView.animate(withDuration: 0.9, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.81, options: [], animations: { () -> Void in
+            Area.newRoomView.transform = Area.view.transform
+            Area.roomView.transform = offScreenSecond
+        }){(finished) -> Void in
+            oldRoomView?.removeFromSuperview()
+        }
+        
+        Area.roomView = Area.newRoomView
+        startView(area: Area)
+        
     }
     
     private func checkIn(dir: Dir) -> Bool{
@@ -138,20 +163,20 @@ class BrainArea {
         
         thisRoom.InRoom(castPlayer: castPlayer)
         
-        let newViewController = animStep(dir: dir, Area: area)
+        animStep(dir: dir, Area: area)
         
         
         if castPlayer.player.dieGame{
             if let nextViewController = LostBord.storyboardInstance() {
                 nextViewController.modalPresentationStyle = .custom
-                newViewController.present(nextViewController, animated: true, completion: nil)
+                //newViewController.present(nextViewController, animated: true, completion: nil)
             }
         }
     }
     
     func startView(area: area) {
         
-        self.countRoom  = area.countRoom
+        //self.countRoom  = area.countRoom
         self.doorUp     = area.doorUp
         self.doorRight  = area.doorRight
         self.doorDown   = area.doorDown
@@ -159,9 +184,9 @@ class BrainArea {
         
         
         switch thisRoom.nameRoom {
-        case "ComRoom":     area.view.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-        case "DmgRoom":     area.view.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-        case "CloseRoom":   area.view.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+        case "ComRoom":     area.roomView.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        case "DmgRoom":     area.roomView.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        case "CloseRoom":   area.roomView.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
             
         default: break
         }

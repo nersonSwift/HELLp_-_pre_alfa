@@ -58,7 +58,6 @@
 		51E42D9720F21005007DA454 /* StatsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E42D9620F21005007DA454 /* StatsPlayer.swift */; };
 		51E42D9A20F2384E007DA454 /* DmgRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E42D9920F2384E007DA454 /* DmgRoom.swift */; };
 		51E42D9C20F36065007DA454 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E42D9B20F36065007DA454 /* Map.swift */; };
-		51F24BDB2106AFB800912E15 /* AnimArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F24BDA2106AFB800912E15 /* AnimArea.swift */; };
 		51F24BDF2107A1AB00912E15 /* PlayMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F24BDE2107A1AB00912E15 /* PlayMenu.swift */; };
 		51F24BE42107A4B800912E15 /* PlayMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51F24BE32107A4B800912E15 /* PlayMenu.storyboard */; };
 		51F26F5420FB57C1003D326A /* DifRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F26F5320FB57C1003D326A /* DifRoom.swift */; };
@@ -119,7 +118,6 @@
 		51E42D9620F21005007DA454 /* StatsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsPlayer.swift; sourceTree = "<group>"; };
 		51E42D9920F2384E007DA454 /* DmgRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DmgRoom.swift; sourceTree = "<group>"; };
 		51E42D9B20F36065007DA454 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
-		51F24BDA2106AFB800912E15 /* AnimArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimArea.swift; sourceTree = "<group>"; };
 		51F24BDE2107A1AB00912E15 /* PlayMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMenu.swift; sourceTree = "<group>"; };
 		51F24BE32107A4B800912E15 /* PlayMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlayMenu.storyboard; sourceTree = "<group>"; };
 		51F26F5320FB57C1003D326A /* DifRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifRoom.swift; sourceTree = "<group>"; };
@@ -301,7 +299,6 @@
 				512863252120B1A90047326D /* area.storyboard */,
 				5157930120EA1E7A00327D91 /* area.swift */,
 				51A2C2852103FF2A00E8ADC4 /* BrainArea.swift */,
-				51F24BDA2106AFB800912E15 /* AnimArea.swift */,
 			);
 			path = Area;
 			sourceTree = "<group>";
@@ -539,7 +536,6 @@
 				512EA5AC2103E72D003AFE21 /* Main.swift in Sources */,
 				5186DF0F20F0A8CE006AF275 /* Player.swift in Sources */,
 				5189AFC52109F59C00AD159C /* Dir.swift in Sources */,
-				51F24BDB2106AFB800912E15 /* AnimArea.swift in Sources */,
 				51E42D9720F21005007DA454 /* StatsPlayer.swift in Sources */,
 				51200F822121D7B10018E53E /* Map3D.swift in Sources */,
 				512BE7E8210E24340035DF60 /* FightStatsPlayer.swift in Sources */,

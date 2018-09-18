@@ -17,6 +17,7 @@ class BrainFightAren{
     }
     var selectEnemy: EnemyInAren?
     var cardsInHand: [Card] = []
+    var chest: [StackItem] = []
     
     var allEnemy: [Enemy]{
         var a: [Enemy] = []
@@ -49,6 +50,9 @@ class BrainFightAren{
             print(i)
             if fightAren!.liveEnemy[i].enemy!.fightStats.fightHP <= 0{
                 
+                if let dropedItem = fightAren!.liveEnemy[i].enemy.dropItem(){
+                    chest.append(dropedItem)
+                }
                 fightAren!.liveEnemy[i].die()
                 fightAren!.liveEnemy.remove(at: i)
                 
@@ -60,7 +64,7 @@ class BrainFightAren{
             fightAren?.swipeEnemy(newSelectEnemy: fightAren!.selectingEnemy(dir: .Right))
         }
         
-        if fightAren!.liveEnemy.count == 0{
+        if fightAren!.liveEnemy.isEmpty{
             room?.enemys = []
             player.fightStats.endFight(player: player)
             fightAren?.endFight()

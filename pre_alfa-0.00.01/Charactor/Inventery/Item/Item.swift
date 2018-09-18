@@ -11,7 +11,6 @@ import UIKit
 class Item{
     var name = ""
     
-    init() {
-    }
+    init() {}
     
 }

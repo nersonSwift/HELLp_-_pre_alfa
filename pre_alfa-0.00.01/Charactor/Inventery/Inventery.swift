@@ -9,10 +9,14 @@
 import UIKit
 
 struct Inventery{
-    var bag = ["": StackItem(item: Item(),quantity: 0)]
+    var bag: [String: StackItem] = [:]
     
     mutating func AddItem(steckItem: StackItem){
-        bag[steckItem.name] = steckItem
+        if bag[steckItem.name] != nil{
+            bag[steckItem.name]?.quantity += steckItem.quantity
+        }else{
+            bag[steckItem.name] = steckItem
+        }
     }
     
     mutating func DellItem(steckItem: StackItem) -> Bool{

@@ -32,9 +32,26 @@ class GetClass{
         switch arc4random_uniform(100) {
             case 0...69:  return NoDoorRoom()
             case 70...79: return DmgRoom()
-            case 80...99: return CloseRoom()
+            case 80...99: return StorRoom()
             
         default: return NoDoorRoom()
+        }
+    }
+    
+    static func getItemInStore() -> String{
+        switch arc4random_uniform(100) {
+        case 0...99: return Key().name
+        
+            
+        default: return ""
+        }
+    }
+    
+    static func getItem(name: String) -> Item{
+        switch name {
+        case "Key":  return Key()
+            
+        default: return Item()
         }
     }
     
@@ -67,9 +84,11 @@ class GetClass{
             case "CloseRoom":   return CloseRoom()
             case "NoDoorRoom":  return NoDoorRoom()
             case "DmgRoom":     return DmgRoom()
+            case "StorRoom":    return StorRoom()
             
         default: return Room()
         }
     }
+    
     
 }

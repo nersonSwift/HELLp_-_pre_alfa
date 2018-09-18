@@ -50,6 +50,14 @@
                                     <action selector="map:" destination="COp-cf-uYc" eventType="touchUpInside" id="jXr-8f-Vao"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPO-t0-J4n">
+                                <rect key="frame" x="155" y="296" width="64" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Inventery"/>
+                                <connections>
+                                    <action selector="inventery:" destination="COp-cf-uYc" eventType="touchUpInside" id="bMn-FA-pyK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>

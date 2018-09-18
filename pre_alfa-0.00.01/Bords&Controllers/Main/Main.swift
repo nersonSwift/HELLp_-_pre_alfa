@@ -23,7 +23,7 @@ class Main: UIViewController {
                 castPlayer.realm.delete(castPlayer.savedRooms)
           //  }
         }
-        if let nextViewController = area.storyboardInstance() {
+        if let nextViewController = Area.storyboardInstance() {
             nextViewController.brain.castPlayer = castPlayer
             castPlayer.startGame()
             nextViewController.brain.StartGame()
@@ -58,7 +58,7 @@ class Main: UIViewController {
             print(String(i.value.id) + " - " + i.value.nameRoom)
         }
         
-        if let nextViewController = area.storyboardInstance() {
+        if let nextViewController = Area.storyboardInstance() {
             castPlayer.player.x = x
             castPlayer.player.y = y
             nextViewController.brain.castPlayer = castPlayer

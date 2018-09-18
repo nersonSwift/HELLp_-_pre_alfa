@@ -9,7 +9,7 @@
 import UIKit
 
 class BrainArea {
-   // private var countRoom   = UIView()
+    private var countRoom   = UILabel()
     private var doorUp      = UIView()
     private var doorRight   = UIView()
     private var doorDown    = UIView()
@@ -49,6 +49,7 @@ class BrainArea {
         }
         return thisRoom.Doors[dir.rawValue]!
     }
+    
     func setColor(door: Door) -> UIColor{
         switch door {
         case .woodDoor:    return #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
@@ -70,42 +71,59 @@ class BrainArea {
         doorLeft.backgroundColor     = setColor(door: refreshDoor(dir: .Left))
         thisRoom.firstVisiting(castPlayer: castPlayer)
         
-        //countRoom.text = String(castPlayer.player.stats.counterRoom)
+        countRoom.text = String(castPlayer.player.stats.counterRoom)
         thisRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         
     }
     
-    private func animStep(dir: Dir, Area: area){
+    private func animStep(dir: Dir, area: Area){
+        
         var offScreenFirst: CGAffineTransform
         var offScreenSecond: CGAffineTransform
         
-        Area.createRoomView()
+        let widthRoom   = area.view.frame.width
+        let heightRoom  = area.view.frame.height
+        
+        area.createRoomView()
         switch dir {
         case .Up:
-            offScreenFirst = CGAffineTransform(translationX: 0, y: -Area.view.frame.height)
-            offScreenSecond = CGAffineTransform(translationX: 0, y: Area.view.frame.height)
+            offScreenFirst = CGAffineTransform(translationX: 0, y: -heightRoom)
+            offScreenSecond = CGAffineTransform(translationX: 0, y: heightRoom)
         case .Right:
-            offScreenFirst = CGAffineTransform(translationX: Area.view.frame.width, y: 0)
-            offScreenSecond = CGAffineTransform(translationX: -Area.view.frame.width, y: 0)
+            offScreenFirst = CGAffineTransform(translationX: widthRoom, y: 0)
+            offScreenSecond = CGAffineTransform(translationX: -widthRoom, y: 0)
         case .Down:
-            offScreenFirst = CGAffineTransform(translationX: 0, y: Area.view.frame.height)
-            offScreenSecond = CGAffineTransform(translationX: 0, y: -Area.view.frame.height)
+            offScreenFirst = CGAffineTransform(translationX: 0, y: heightRoom)
+            offScreenSecond = CGAffineTransform(translationX: 0, y: -heightRoom)
         case .Left:
-            offScreenFirst = CGAffineTransform(translationX: -Area.view.frame.width, y: 0)
-            offScreenSecond = CGAffineTransform(translationX: Area.view.frame.width, y: 0)
+            offScreenFirst = CGAffineTransform(translationX: -widthRoom, y: 0)
+            offScreenSecond = CGAffineTransform(translationX: widthRoom, y: 0)
         }
-        Area.newRoomView.transform = offScreenFirst
-        let oldRoomView = Area.roomView
+        area.newRoomView.transform = offScreenFirst
+        let oldRoomView = area.roomView
         
         UIView.animate(withDuration: 0.9, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.81, options: [], animations: { () -> Void in
-            Area.newRoomView.transform = Area.view.transform
-            Area.roomView.transform = offScreenSecond
+            area.newRoomView.transform = area.view.transform
+            area.roomView.transform = offScreenSecond
         }){(finished) -> Void in
             oldRoomView?.removeFromSuperview()
+            if area.atackView != nil{
+                area.atackView!.isHidden = false
+            }
         }
         
-        Area.roomView = Area.newRoomView
-        startView(area: Area)
+        area.roomView = area.newRoomView
+        startView(area: area)
+        
+    }
+    
+    private func animEnemyView(Area: Area){
+        
+        if Area.atackView != nil{
+            UIView.animate(withDuration: 0.5, delay: 0.9, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.81, options: [], animations: { () -> Void in
+                Area.atackView!.transform.ty += Area.view.frame.height / 2 + Area.atackView!.frame.height / 2
+            })
+        }
         
     }
     
@@ -138,7 +156,7 @@ class BrainArea {
         return true
     }
     
-    func step(dir: Dir, area: area){
+    func step(dir: Dir, area: Area){
         
         if !checkIn(dir: dir) {
             return
@@ -163,8 +181,7 @@ class BrainArea {
         
         thisRoom.InRoom(castPlayer: castPlayer)
         
-        animStep(dir: dir, Area: area)
-        
+        animStep(dir: dir, area: area)
         
         if castPlayer.player.dieGame{
             if let nextViewController = LostBord.storyboardInstance() {
@@ -174,9 +191,9 @@ class BrainArea {
         }
     }
     
-    func startView(area: area) {
+    func startView(area: Area) {
         
-        //self.countRoom  = area.countRoom
+        self.countRoom  = area.countRoom
         self.doorUp     = area.doorUp
         self.doorRight  = area.doorRight
         self.doorDown   = area.doorDown
@@ -192,7 +209,16 @@ class BrainArea {
         }
         
         refreshRoom()
-        
+        animEnemyView(Area: area)
+        if let a = thisRoom as? StorRoom{
+            let widthDoor   = area.view.frame.width/10
+            let heightDoor  = widthDoor
+            let payButtonFrame = CGRect(x:  area.roomView.frame.width/2 - widthDoor / 2, y: area.roomView.frame.height/2 - heightDoor / 2, width: widthDoor, height: heightDoor)
+            let payButton = UIButton(frame: payButtonFrame)
+            a.createLogiсButton(payButton: payButton)
+            payButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            area.roomView.addSubview(payButton)
+        }
     }
     
     func StartGame(){

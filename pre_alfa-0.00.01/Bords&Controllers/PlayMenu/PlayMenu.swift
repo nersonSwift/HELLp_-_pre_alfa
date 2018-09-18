@@ -12,6 +12,7 @@ import SceneKit
 
 class PlayMenu: UIViewController {
     var scene: SCNScene!
+    var player: Player!
     
     static func storyboardInstance() -> PlayMenu? {
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
@@ -20,7 +21,13 @@ class PlayMenu: UIViewController {
     
     @IBAction func map(_ sender: Any) {
         if let nextViewController = MapView.storyboardInstance(scene: scene) {
-            //nextViewController.scene.scene = scene
+            self.present(nextViewController, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func inventery(_ sender: Any) {
+        
+        if let nextViewController = InventeryBoard.storyboardInstance(player: player) {
             self.present(nextViewController, animated: true, completion: nil)
         }
     }

@@ -13,7 +13,7 @@
         <!--Area-->
         <scene sceneID="SOy-wd-J1K">
             <objects>
-                <viewController id="PiZ-dm-phu" customClass="area" customModule="pre_alfa_0_00_01" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PiZ-dm-phu" customClass="Area" customModule="pre_alfa_0_00_01" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KTU-Oo-ZMi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

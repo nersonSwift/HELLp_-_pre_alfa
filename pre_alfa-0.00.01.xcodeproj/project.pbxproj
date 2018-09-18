@@ -15,7 +15,7 @@
 		51200F892121EE140018E53E /* MapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51200F882121EE140018E53E /* MapView.storyboard */; };
 		512863222120ADA30047326D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512863212120ADA30047326D /* LaunchScreen.storyboard */; };
 		512863242120B1130047326D /* FightAren.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512863232120B1120047326D /* FightAren.storyboard */; };
-		512863262120B1AA0047326D /* area.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512863252120B1A90047326D /* area.storyboard */; };
+		512863262120B1AA0047326D /* Area.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512863252120B1A90047326D /* Area.storyboard */; };
 		512863282120B3180047326D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512863272120B3180047326D /* Main.storyboard */; };
 		512BE7E2210E21480035DF60 /* Charactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512BE7E1210E21480035DF60 /* Charactor.swift */; };
 		512BE7E4210E222D0035DF60 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512BE7E3210E222D0035DF60 /* Enemy.swift */; };
@@ -27,7 +27,7 @@
 		5143160A21202E38003A0C11 /* CardInAren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143160921202E38003A0C11 /* CardInAren.swift */; };
 		5143160C2120864E003A0C11 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143160B2120864E003A0C11 /* Skeleton.swift */; };
 		5157168520EFA2FC007FA2F5 /* NoDoorRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157168420EFA2FC007FA2F5 /* NoDoorRoom.swift */; };
-		5157930220EA1E7A00327D91 /* area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157930120EA1E7A00327D91 /* area.swift */; };
+		5157930220EA1E7A00327D91 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157930120EA1E7A00327D91 /* Area.swift */; };
 		5157930720EA1E7C00327D91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5157930620EA1E7C00327D91 /* Assets.xcassets */; };
 		5157931220EA1F5000327D91 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157931120EA1F5000327D91 /* Room.swift */; };
 		516B10E2211C488D00DDE22A /* scenes.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 516B10E1211C488D00DDE22A /* scenes.scnassets */; };
@@ -50,6 +50,7 @@
 		51C20B552114A0B700A63B7E /* Soul.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C20B542114A0B700A63B7E /* Soul.swift */; };
 		51C20B582114A78800A63B7E /* BrainFightAren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C20B572114A78800A63B7E /* BrainFightAren.swift */; };
 		51C373E5211EFC950091A34F /* EnemyInAren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C373E4211EFC950091A34F /* EnemyInAren.swift */; };
+		51D5DDAD214FB0E000420FF2 /* StorRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D5DDAC214FB0E000420FF2 /* StorRoom.swift */; };
 		51DE5C56210B376000CC002E /* Lilit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE5C55210B376000CC002E /* Lilit.swift */; };
 		51DE5C58210B505200CC002E /* CastPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE5C57210B505200CC002E /* CastPlayer.swift */; };
 		51DE5C5A210C165100CC002E /* StackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE5C59210C165100CC002E /* StackItem.swift */; };
@@ -58,6 +59,8 @@
 		51E42D9720F21005007DA454 /* StatsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E42D9620F21005007DA454 /* StatsPlayer.swift */; };
 		51E42D9A20F2384E007DA454 /* DmgRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E42D9920F2384E007DA454 /* DmgRoom.swift */; };
 		51E42D9C20F36065007DA454 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E42D9B20F36065007DA454 /* Map.swift */; };
+		51E4516F2147E4FD00E25903 /* InventeryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51E4516E2147E4FD00E25903 /* InventeryBoard.storyboard */; };
+		51E451712147E52500E25903 /* InventeryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E451702147E52500E25903 /* InventeryBoard.swift */; };
 		51F24BDF2107A1AB00912E15 /* PlayMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F24BDE2107A1AB00912E15 /* PlayMenu.swift */; };
 		51F24BE42107A4B800912E15 /* PlayMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51F24BE32107A4B800912E15 /* PlayMenu.storyboard */; };
 		51F26F5420FB57C1003D326A /* DifRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F26F5320FB57C1003D326A /* DifRoom.swift */; };
@@ -73,7 +76,7 @@
 		51200F882121EE140018E53E /* MapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapView.storyboard; sourceTree = "<group>"; };
 		512863212120ADA30047326D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		512863232120B1120047326D /* FightAren.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FightAren.storyboard; sourceTree = "<group>"; };
-		512863252120B1A90047326D /* area.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = area.storyboard; sourceTree = "<group>"; };
+		512863252120B1A90047326D /* Area.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Area.storyboard; sourceTree = "<group>"; };
 		512863272120B3180047326D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		512BE7E1210E21480035DF60 /* Charactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charactor.swift; sourceTree = "<group>"; };
 		512BE7E3210E222D0035DF60 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
@@ -86,7 +89,7 @@
 		5143160B2120864E003A0C11 /* Skeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
 		5157168420EFA2FC007FA2F5 /* NoDoorRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDoorRoom.swift; sourceTree = "<group>"; };
 		515792FC20EA1E7A00327D91 /* pre_alfa-0.00.01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pre_alfa-0.00.01.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5157930120EA1E7A00327D91 /* area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = area.swift; sourceTree = "<group>"; };
+		5157930120EA1E7A00327D91 /* Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		5157930620EA1E7C00327D91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5157930B20EA1E7C00327D91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5157931120EA1F5000327D91 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
@@ -110,6 +113,7 @@
 		51C20B542114A0B700A63B7E /* Soul.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Soul.swift; sourceTree = "<group>"; };
 		51C20B572114A78800A63B7E /* BrainFightAren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainFightAren.swift; sourceTree = "<group>"; };
 		51C373E4211EFC950091A34F /* EnemyInAren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyInAren.swift; sourceTree = "<group>"; };
+		51D5DDAC214FB0E000420FF2 /* StorRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorRoom.swift; sourceTree = "<group>"; };
 		51DE5C55210B376000CC002E /* Lilit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lilit.swift; sourceTree = "<group>"; };
 		51DE5C57210B505200CC002E /* CastPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastPlayer.swift; sourceTree = "<group>"; };
 		51DE5C59210C165100CC002E /* StackItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackItem.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 		51E42D9620F21005007DA454 /* StatsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsPlayer.swift; sourceTree = "<group>"; };
 		51E42D9920F2384E007DA454 /* DmgRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DmgRoom.swift; sourceTree = "<group>"; };
 		51E42D9B20F36065007DA454 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		51E4516E2147E4FD00E25903 /* InventeryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InventeryBoard.storyboard; sourceTree = "<group>"; };
+		51E451702147E52500E25903 /* InventeryBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventeryBoard.swift; sourceTree = "<group>"; };
 		51F24BDE2107A1AB00912E15 /* PlayMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMenu.swift; sourceTree = "<group>"; };
 		51F24BE32107A4B800912E15 /* PlayMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlayMenu.storyboard; sourceTree = "<group>"; };
 		51F26F5320FB57C1003D326A /* DifRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifRoom.swift; sourceTree = "<group>"; };
@@ -145,6 +151,15 @@
 				EEE14E7AB41F0BBD7C845B03 /* Pods-pre_alfa-0.00.01.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		511AEE622146AD4B007D2A2A /* InventeryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				51E4516E2147E4FD00E25903 /* InventeryBoard.storyboard */,
+				51E451702147E52500E25903 /* InventeryBoard.swift */,
+			);
+			path = InventeryBoard;
 			sourceTree = "<group>";
 		};
 		51200F852121EBF00018E53E /* MapView */ = {
@@ -202,6 +217,7 @@
 				5157168420EFA2FC007FA2F5 /* NoDoorRoom.swift */,
 				51F26F5520FCC876003D326A /* CloseRoom.swift */,
 				51E42D9920F2384E007DA454 /* DmgRoom.swift */,
+				51D5DDAC214FB0E000420FF2 /* StorRoom.swift */,
 			);
 			path = DifRooms;
 			sourceTree = "<group>";
@@ -296,8 +312,8 @@
 		51A2C2872105312300E8ADC4 /* Area */ = {
 			isa = PBXGroup;
 			children = (
-				512863252120B1A90047326D /* area.storyboard */,
-				5157930120EA1E7A00327D91 /* area.swift */,
+				512863252120B1A90047326D /* Area.storyboard */,
+				5157930120EA1E7A00327D91 /* Area.swift */,
 				51A2C2852103FF2A00E8ADC4 /* BrainArea.swift */,
 			);
 			path = Area;
@@ -335,6 +351,7 @@
 				51DE5C62210D239800CC002E /* Main */,
 				51200F852121EBF00018E53E /* MapView */,
 				51DE5C63210D23A800CC002E /* PlayerCast */,
+				511AEE622146AD4B007D2A2A /* InventeryBoard */,
 			);
 			path = "Bords&Controllers";
 			sourceTree = "<group>";
@@ -455,8 +472,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51E4516F2147E4FD00E25903 /* InventeryBoard.storyboard in Resources */,
 				512863222120ADA30047326D /* LaunchScreen.storyboard in Resources */,
-				512863262120B1AA0047326D /* area.storyboard in Resources */,
+				512863262120B1AA0047326D /* Area.storyboard in Resources */,
 				51F24BE42107A4B800912E15 /* PlayMenu.storyboard in Resources */,
 				512863242120B1130047326D /* FightAren.storyboard in Resources */,
 				5189AFCB210A3E6100AD159C /* PlayerCast.storyboard in Resources */,
@@ -518,6 +536,7 @@
 			files = (
 				5186DF1920F0B4B3006AF275 /* key.swift in Sources */,
 				5157168520EFA2FC007FA2F5 /* NoDoorRoom.swift in Sources */,
+				51D5DDAD214FB0E000420FF2 /* StorRoom.swift in Sources */,
 				516E27312117A05300409D97 /* AppDelegate.swift in Sources */,
 				512BE7E4210E222D0035DF60 /* Enemy.swift in Sources */,
 				51200F872121EDAB0018E53E /* MapView.swift in Sources */,
@@ -530,7 +549,7 @@
 				51E42D9A20F2384E007DA454 /* DmgRoom.swift in Sources */,
 				51F26F5420FB57C1003D326A /* DifRoom.swift in Sources */,
 				512BE7EA210E244E0035DF60 /* FightStatsEnemy.swift in Sources */,
-				5157930220EA1E7A00327D91 /* area.swift in Sources */,
+				5157930220EA1E7A00327D91 /* Area.swift in Sources */,
 				51395A9720EAA8970054207E /* Door.swift in Sources */,
 				51DE5C5A210C165100CC002E /* StackItem.swift in Sources */,
 				512EA5AC2103E72D003AFE21 /* Main.swift in Sources */,
@@ -554,6 +573,7 @@
 				51F26F5620FCC876003D326A /* CloseRoom.swift in Sources */,
 				518B716B212466FD005E9A47 /* Qality.swift in Sources */,
 				518F2F64210E5E1A008C036E /* FightAren.swift in Sources */,
+				51E451712147E52500E25903 /* InventeryBoard.swift in Sources */,
 				5143160C2120864E003A0C11 /* Skeleton.swift in Sources */,
 				5186DF1220F0A927006AF275 /* Inventery.swift in Sources */,
 				51A2C2862103FF2A00E8ADC4 /* BrainArea.swift in Sources */,
@@ -688,6 +708,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8Y5GVPPM5T;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "pre_alfa-0.00.01/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -707,6 +728,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8Y5GVPPM5T;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "pre_alfa-0.00.01/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

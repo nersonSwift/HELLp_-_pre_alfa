@@ -11,9 +11,11 @@ import RealmSwift
 
 
 class Room {
+    /*
     var id = 0
     var firstVisitingTriger = true
     var nameRoom = ""
+    var close = false
     var inRoom = false
     var enemys: [Enemy] = []
     var x = 0
@@ -21,13 +23,18 @@ class Room {
     var xy: String{
         return String(x) + String(y)
     }
+    */
+    
+    
     var Doors = ["Up" : Door.noDoor, "Right" : Door.noDoor, "Down" : Door.noDoor, "Left" : Door.noDoor]
     
     init() {}
+    func openRoom(player: Player) -> Bool{return true}
     
     func loadRoom(saveRoom: SaveRoom, castPlayer: CastPlayer){
         id = saveRoom.id
         nameRoom = saveRoom.name
+        close = saveRoom.close
         firstVisitingTriger = saveRoom.firstVisitingTriger
         
         x = saveRoom.x
@@ -82,6 +89,7 @@ class Room {
         
         saveRoom.id = id
         saveRoom.name = nameRoom
+        saveRoom.close = close
         saveRoom.firstVisitingTriger = firstVisitingTriger
         
         saveRoom.x = x

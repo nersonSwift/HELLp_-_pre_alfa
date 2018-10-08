@@ -74,7 +74,6 @@ class BrainArea {
         countRoom.text = String(castPlayer.player.stats.counterRoom)
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
         //thisRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
 =======
         thisRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
@@ -83,9 +82,6 @@ class BrainArea {
 >>>>>>> parent of c3c9056... не большие правики
 =======
 >>>>>>> parent of c3c9056... не большие правики
-=======
-        thisRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
->>>>>>> parent of eba7765... 1
 =======
         thisRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
 >>>>>>> parent of eba7765... 1
@@ -182,7 +178,6 @@ class BrainArea {
 <<<<<<< HEAD
         thisRoom = castPlayer.map.mapRooms[xy]!
 <<<<<<< HEAD
-<<<<<<< HEAD
      //   thisRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
 =======
 =======
@@ -207,8 +202,6 @@ class BrainArea {
 >>>>>>> parent of c3c9056... не большие правики
 =======
 >>>>>>> parent of c3c9056... не большие правики
-=======
->>>>>>> parent of eba7765... 1
 =======
 >>>>>>> parent of eba7765... 1
         thisRoom.InRoom(castPlayer: castPlayer)

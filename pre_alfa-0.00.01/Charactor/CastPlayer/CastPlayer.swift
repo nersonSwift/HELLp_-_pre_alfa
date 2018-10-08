@@ -20,7 +20,6 @@ class CastPlayer{
     let realm = try! Realm()
     
     var savedRooms: Results<SaveRoom>!
-    var a: Results<AllSave>!
     
     init() {
         savedRooms = realm.objects(SaveRoom.self)

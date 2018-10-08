@@ -14,6 +14,7 @@ class Room {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     var saveRoom = SaveRoom()
     
@@ -93,12 +94,17 @@ class Room {
     var inRoom = false
 >>>>>>> parent of c3c9056... не большие правики
 =======
+=======
+>>>>>>> parent of eba7765... 1
     /*
     var id = 0
     var firstVisitingTriger = true
     var nameRoom = ""
     var close = false
     var inRoom = false
+<<<<<<< HEAD
+>>>>>>> parent of eba7765... 1
+=======
 >>>>>>> parent of eba7765... 1
     var enemys: [Enemy] = []
     var x = 0
@@ -106,6 +112,7 @@ class Room {
     var xy: String{
         return String(x) + String(y)
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -130,6 +137,9 @@ class Room {
             return doors
         }
     } // = ["Up" : Door.noDoor, "Right" : Door.noDoor, "Down" : Door.noDoor, "Left" : Door.noDoor]
+=======
+    */
+>>>>>>> parent of eba7765... 1
 =======
     */
 >>>>>>> parent of eba7765... 1
@@ -204,6 +214,7 @@ class Room {
             }
         }
 
+<<<<<<< HEAD
         
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -227,6 +238,22 @@ class Room {
         saveRoom.down   = Doors["Down"]!.rawValue
         saveRoom.left   = Doors["Left"]!.rawValue
         
+=======
+        
+        saveRoom.id = id
+        saveRoom.name = nameRoom
+        saveRoom.close = close
+        saveRoom.firstVisitingTriger = firstVisitingTriger
+        
+        saveRoom.x = x
+        saveRoom.y = y
+        
+        saveRoom.up     = Doors["Up"]!.rawValue
+        saveRoom.right  = Doors["Right"]!.rawValue
+        saveRoom.down   = Doors["Down"]!.rawValue
+        saveRoom.left   = Doors["Left"]!.rawValue
+        
+>>>>>>> parent of eba7765... 1
         if enemys.count >= 1{
             saveRoom.enemy0 = enemys[0].name
         }

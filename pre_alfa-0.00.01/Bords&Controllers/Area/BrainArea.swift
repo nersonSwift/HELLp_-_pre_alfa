@@ -77,9 +77,6 @@ class BrainArea {
 =======
         thisRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         
-<<<<<<< HEAD
->>>>>>> parent of c3c9056... не большие правики
-=======
 >>>>>>> parent of c3c9056... не большие правики
     }
     
@@ -171,12 +168,9 @@ class BrainArea {
         
         thisRoom.NoInRoom()
 <<<<<<< HEAD
-<<<<<<< HEAD
         thisRoom = castPlayer.map.mapRooms[xy]!
      //   thisRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
 =======
-=======
->>>>>>> parent of c3c9056... не большие правики
         
         switch dir{
             case .Up:      castPlayer.player.y += 1
@@ -193,9 +187,6 @@ class BrainArea {
             thisRoom = castPlayer.map.mapRooms[xy]!
         }
         
-<<<<<<< HEAD
->>>>>>> parent of c3c9056... не большие правики
-=======
 >>>>>>> parent of c3c9056... не большие правики
         thisRoom.InRoom(castPlayer: castPlayer)
         

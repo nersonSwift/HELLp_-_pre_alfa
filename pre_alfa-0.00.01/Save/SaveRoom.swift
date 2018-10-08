@@ -14,11 +14,8 @@ class SaveRoom: Object {
     @objc dynamic var name = ""
     @objc dynamic var firstVisitingTriger = true
 <<<<<<< HEAD
-<<<<<<< HEAD
     @objc dynamic var close = false
     @objc dynamic var inRoom = false
-=======
->>>>>>> parent of c3c9056... не большие правики
 =======
 >>>>>>> parent of c3c9056... не большие правики
     

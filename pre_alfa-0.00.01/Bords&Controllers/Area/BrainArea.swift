@@ -79,15 +79,12 @@ class BrainArea {
         thisRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         
 <<<<<<< HEAD
-<<<<<<< HEAD
 >>>>>>> parent of c3c9056... не большие правики
 =======
 >>>>>>> parent of c3c9056... не большие правики
 =======
         thisRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
 >>>>>>> parent of eba7765... 1
-=======
->>>>>>> parent of c3c9056... не большие правики
     }
     
     private func animStep(dir: Dir, area: Area){
@@ -179,13 +176,10 @@ class BrainArea {
         thisRoom.NoInRoom()
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
         thisRoom = castPlayer.map.mapRooms[xy]!
 <<<<<<< HEAD
      //   thisRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
 =======
-=======
->>>>>>> parent of c3c9056... не большие правики
 =======
 >>>>>>> parent of c3c9056... не большие правики
         
@@ -205,14 +199,11 @@ class BrainArea {
         }
         
 <<<<<<< HEAD
-<<<<<<< HEAD
 >>>>>>> parent of c3c9056... не большие правики
 =======
 >>>>>>> parent of c3c9056... не большие правики
 =======
 >>>>>>> parent of eba7765... 1
-=======
->>>>>>> parent of c3c9056... не большие правики
         thisRoom.InRoom(castPlayer: castPlayer)
         
         animStep(dir: dir, area: area)

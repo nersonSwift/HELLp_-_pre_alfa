@@ -11,7 +11,7 @@ import RealmSwift
 
 
 class Room {
-    /*
+    var saveRoom: SaveRoom!
     var id = 0
     var firstVisitingTriger = true
     var nameRoom = ""
@@ -23,7 +23,7 @@ class Room {
     var xy: String{
         return String(x) + String(y)
     }
-    */
+    var trig = true
     
     
     var Doors = ["Up" : Door.noDoor, "Right" : Door.noDoor, "Down" : Door.noDoor, "Left" : Door.noDoor]
@@ -81,6 +81,7 @@ class Room {
         for i in sevedRoom{
             if i.x == x && i.y == y{
                 try! realm.write {
+                    i.id = 0
                     realm.delete(i)
                 }
             }

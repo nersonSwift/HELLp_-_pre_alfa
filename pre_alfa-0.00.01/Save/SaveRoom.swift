@@ -15,6 +15,7 @@ class SaveRoom: Object {
     @objc dynamic var firstVisitingTriger = true
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     @objc dynamic var close = false
 <<<<<<< HEAD
     @objc dynamic var inRoom = false
@@ -24,6 +25,8 @@ class SaveRoom: Object {
 >>>>>>> parent of c3c9056... не большие правики
 =======
 >>>>>>> parent of eba7765... 1
+=======
+>>>>>>> parent of c3c9056... не большие правики
     
     @objc dynamic var x = 0
     @objc dynamic var y = 0

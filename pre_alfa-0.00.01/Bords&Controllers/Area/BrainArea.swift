@@ -18,7 +18,7 @@ class BrainArea {
     weak var area: Area!
     
     var castPlayer: CastPlayer!
-    var thisRoom: Room = ComRoom(castPlayer: CastPlayer())
+    var thisRoom: Room! //= ComRoom(castPlayer: CastPlayer())
     
     var y: Int{
         return castPlayer.player.y
@@ -44,7 +44,6 @@ class BrainArea {
 
         if thisRoom.Doors[dir.rawValue] == Door.whatDoor {
             if let newRoom = castPlayer.map.createDifRoom(dir: dir){
-                newRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
                 thisRoom.Doors[dir.rawValue] = castPlayer.map.mapRooms[String(newRoom.x) + String(newRoom.y)]!.Doors[difDir.rawValue]
             }else{
                 thisRoom.Doors[dir.rawValue] = Door.woodDoor

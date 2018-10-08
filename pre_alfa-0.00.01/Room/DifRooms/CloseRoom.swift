@@ -43,21 +43,21 @@ class CloseRoom: DifRoom {
         
         if (roomUp != nil) && !(roomUp is NoDoorRoom){
             roomUp!.Doors["Down"] = Door.openDoor
-            roomUp!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
+            //roomUp!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         }
         if roomRight != nil && !(roomRight is NoDoorRoom){
             roomRight!.Doors["Left"] = Door.openDoor
-            roomRight!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
+            //roomRight!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         }
         if roomDown != nil && !(roomDown is NoDoorRoom){
             roomDown!.Doors["Up"] = Door.openDoor
-            roomDown!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
+            //roomDown!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         }
         if roomLeft != nil && !(roomLeft is NoDoorRoom){
             roomLeft!.Doors["Right"] = Door.openDoor
-            roomLeft!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
+            //roomLeft!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         }
-        self.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
+        //self.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         
     }
 }

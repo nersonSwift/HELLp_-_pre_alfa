@@ -289,7 +289,7 @@ class FightAren: UIViewController {
             let a = hitResults[0]
             
             if a.node.name == "WinBox" && endAnimStep{
-                brain.room?.saveThisRoom(realm: brain.castPlayer.realm , sevedRoom: brain.castPlayer.savedRooms)
+                //brain.room?.saveThisRoom(realm: brain.castPlayer.realm , sevedRoom: brain.castPlayer.savedRooms)
                 for i in brain.chest{
                     brain.player.inventery.AddItem(steckItem: i)
                 }

@@ -14,13 +14,14 @@ class Room {
     
     var saveRoom = SaveRoom()
     
-    var realm: Realm?
+    let realm = try! Realm()
     var savedRooms: Results<SaveRoom>!
     
     var id: Int{
         set(id) {
-            saveRoom.id = id
-            saveThisRoom(realm: realm, sevedRoom: savedRooms)
+            try! realm.write {
+                saveRoom.id = id
+            }
         }
         get{
             return saveRoom.id
@@ -28,8 +29,9 @@ class Room {
     }
     var firstVisitingTriger: Bool{
         set(firstVisitingTriger) {
-            saveRoom.firstVisitingTriger = firstVisitingTriger
-            saveThisRoom(realm: realm, sevedRoom: savedRooms)
+            try! realm.write {
+                saveRoom.firstVisitingTriger = firstVisitingTriger
+            }
         }
         get{
             return saveRoom.firstVisitingTriger
@@ -37,8 +39,9 @@ class Room {
     }
     var nameRoom : String{
         set(nameRoom) {
-            saveRoom.name = nameRoom
-            saveThisRoom(realm: realm, sevedRoom: savedRooms)
+            try! realm.write {
+                saveRoom.name = nameRoom
+            }
         }
         get{
             return saveRoom.name
@@ -46,8 +49,9 @@ class Room {
     }
     var close: Bool{
         set(firstVisitingTriger) {
-            saveRoom.close = close
-            saveThisRoom(realm: realm, sevedRoom: savedRooms)
+            try! realm.write {
+                saveRoom.close = close
+            }
         }
         get{
             return saveRoom.close
@@ -55,8 +59,9 @@ class Room {
     }
     var x: Int{
         set(x) {
-            saveRoom.x = x
-            saveThisRoom(realm: realm, sevedRoom: savedRooms)
+            try! realm.write {
+                saveRoom.x = x
+            }
         }
         get{
             return saveRoom.x
@@ -64,8 +69,9 @@ class Room {
     }
     var y: Int{
         set(y) {
-            saveRoom.y = y
-            saveThisRoom(realm: realm, sevedRoom: savedRooms)
+            try! realm.write {
+                saveRoom.y = y
+            }
         }
         get{
             return saveRoom.y
@@ -73,8 +79,9 @@ class Room {
     }
     var inRoom : Bool{
         set(inRoom) {
-            saveRoom.inRoom = inRoom
-            saveThisRoom(realm: realm, sevedRoom: savedRooms)
+            try! realm.write {
+                saveRoom.inRoom = inRoom
+            }
         }
         get{
             return saveRoom.inRoom
@@ -87,13 +94,15 @@ class Room {
     }
     var Doors: [String: Door]{
         set(doors){
-            for i in doors{
-                switch i.key{
-                case "Up": saveRoom.up = i.value.rawValue
-                case "Right": saveRoom.right = i.value.rawValue
-                case "Down": saveRoom.down = i.value.rawValue
-                case "Left": saveRoom.left = i.value.rawValue
-                default:break
+            try! realm.write {
+                for i in doors{
+                    switch i.key{
+                    case "Up": saveRoom.up = i.value.rawValue
+                    case "Right": saveRoom.right = i.value.rawValue
+                    case "Down": saveRoom.down = i.value.rawValue
+                    case "Left": saveRoom.left = i.value.rawValue
+                    default:break
+                    }
                 }
             }
         }
@@ -105,34 +114,16 @@ class Room {
             doors["Left"]   = GetClass.getDoor(name: saveRoom.left)
             return doors
         }
-    } // = ["Up" : Door.noDoor, "Right" : Door.noDoor, "Down" : Door.noDoor, "Left" : Door.noDoor]
+    }
     
-    init(){}
+    init(){saveThisRoom()}
     
     func openRoom(player: Player) -> Bool{return true}
     
     func loadRoom(saveRoom: SaveRoom, castPlayer: CastPlayer){
-        id = saveRoom.id
-        nameRoom = saveRoom.name
-        close = saveRoom.close
-        firstVisitingTriger = saveRoom.firstVisitingTriger
-        
-        x = saveRoom.x
-        y = saveRoom.y
-        
-        Doors["Up"]     = GetClass.getDoor(name: saveRoom.up)
-        Doors["Right"]  = GetClass.getDoor(name: saveRoom.right)
-        Doors["Down"]   = GetClass.getDoor(name: saveRoom.down)
-        Doors["Left"]   = GetClass.getDoor(name: saveRoom.left)
-        
-        if saveRoom.enemy0 != ""{
-            enemys.append(GetClass.getEnemy(name: saveRoom.enemy0))
-        }
-        if saveRoom.enemy1 != ""{
-            enemys.append(GetClass.getEnemy(name: saveRoom.enemy1))
-        }
-        if saveRoom.enemy2 != ""{
-            enemys.append(GetClass.getEnemy(name: saveRoom.enemy2))
+        try! realm.write {
+            realm.delete(self.saveRoom)
+            self.saveRoom = saveRoom
         }
     }
     
@@ -154,29 +145,15 @@ class Room {
         }
     }
     
-    func saveThisRoom(realm: Realm?, sevedRoom: Results<SaveRoom>!){
-     //   let saveRoom = SaveRoom()
-       // self.realm = realm
-       // self.sevedRoom = sevedRoom
-        if (sevedRoom == nil) || (realm == nil){
-            return
+    func saveThisRoom(){
+        try! realm.write {
+            realm.add(saveRoom)
         }
-        
-        for i in sevedRoom{
-            if i.x == x && i.y == y{
-                try! realm?.write {
-                    realm?.delete(i)
-                }
-            }
+    }
+    func delRoom(){
+        try! realm.write {
+             realm.delete(self.saveRoom)
         }
-//        print(saveRoom.name)
-        
-        
-        
-        try! realm!.write {
-            realm!.add(saveRoom)
-        }
-        
     }
     
     public func InRoom(castPlayer: CastPlayer){

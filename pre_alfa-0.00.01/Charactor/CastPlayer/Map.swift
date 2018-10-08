@@ -10,7 +10,7 @@ import UIKit
 
 class Map{
     weak var castPlayer: CastPlayer?
-    var mapRooms = [ "" : Room()]
+    var mapRooms:[String: Room] = [:]
     var map3D: Map3D!
     
     init() {
@@ -49,6 +49,7 @@ class Map{
             mapRooms[String(x) + String(y)] = newRoom
             return newRoom
         }
+        newRoom.delRoom()
         return nil
     }
     

@@ -36,11 +36,11 @@ class Main: UIViewController {
         }
         var x = 0
         var y = 0
+        var d = 0
         castPlayer.player = Lilit()
         castPlayer.player.stats.cards = [CardAtack(),HpCard()]
         for i in castPlayer.savedRooms{
-            if i.name != "0"{
-                
+                d += 1
                 let newRoom = GetClass.getRoom(name: i.name)
                 newRoom.loadRoom(saveRoom: i, castPlayer: castPlayer)
                 castPlayer.map.mapRooms[String(newRoom.x) + String(newRoom.y)] = newRoom
@@ -48,7 +48,10 @@ class Main: UIViewController {
                 if !newRoom.firstVisitingTriger{
                     newRoom.criateBlockMapRoom(castPlayer: castPlayer)
                 }
-            }else{
+            
+            print("\(i.name)-\(i.inRoom)-\(d)")
+            if i.inRoom{
+               print("++")
                 x = i.x
                 y = i.y
             }

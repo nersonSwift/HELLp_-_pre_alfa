@@ -13,6 +13,7 @@ import RealmSwift
 class Room {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     var saveRoom = SaveRoom()
     
@@ -91,10 +92,21 @@ class Room {
     var nameRoom = ""
     var inRoom = false
 >>>>>>> parent of c3c9056... не большие правики
+=======
+    /*
+    var id = 0
+    var firstVisitingTriger = true
+    var nameRoom = ""
+    var close = false
+    var inRoom = false
+>>>>>>> parent of eba7765... 1
     var enemys: [Enemy] = []
+    var x = 0
+    var y = 0
     var xy: String{
         return String(x) + String(y)
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     var Doors: [String: Door]{
@@ -118,9 +130,14 @@ class Room {
             return doors
         }
     } // = ["Up" : Door.noDoor, "Right" : Door.noDoor, "Down" : Door.noDoor, "Left" : Door.noDoor]
+=======
+    */
+>>>>>>> parent of eba7765... 1
     
-    init(){}
     
+    var Doors = ["Up" : Door.noDoor, "Right" : Door.noDoor, "Down" : Door.noDoor, "Left" : Door.noDoor]
+    
+    init() {}
     func openRoom(player: Player) -> Bool{return true}
 =======
     var Doors = ["Up" : Door.noDoor, "Right" : Door.noDoor, "Down" : Door.noDoor, "Left" : Door.noDoor]
@@ -175,33 +192,70 @@ class Room {
         }
     }
     
-    func saveThisRoom(realm: Realm?, sevedRoom: Results<SaveRoom>!){
-     //   let saveRoom = SaveRoom()
-       // self.realm = realm
-       // self.sevedRoom = sevedRoom
-        if (sevedRoom == nil) || (realm == nil){
-            return
-        }
-        
+    func saveThisRoom(realm: Realm, sevedRoom: Results<SaveRoom>!){
+        let saveRoom = SaveRoom()
+
+       
         for i in sevedRoom{
             if i.x == x && i.y == y{
-                try! realm?.write {
-                    realm?.delete(i)
+                try! realm.write {
+                    realm.delete(i)
                 }
             }
         }
-//        print(saveRoom.name)
+
         
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         saveRoom.id = id
         saveRoom.name = nameRoom
         saveRoom.firstVisitingTriger = firstVisitingTriger
 >>>>>>> parent of c3c9056... не большие правики
+=======
+        saveRoom.id = id
+        saveRoom.name = nameRoom
+        saveRoom.close = close
+        saveRoom.firstVisitingTriger = firstVisitingTriger
+>>>>>>> parent of eba7765... 1
         
+        saveRoom.x = x
+        saveRoom.y = y
         
-        try! realm!.write {
-            realm!.add(saveRoom)
+        saveRoom.up     = Doors["Up"]!.rawValue
+        saveRoom.right  = Doors["Right"]!.rawValue
+        saveRoom.down   = Doors["Down"]!.rawValue
+        saveRoom.left   = Doors["Left"]!.rawValue
+        
+        if enemys.count >= 1{
+            saveRoom.enemy0 = enemys[0].name
+        }
+        if enemys.count >= 2{
+            saveRoom.enemy1 = enemys[1].name
+        }
+        if enemys.count >= 3{
+            saveRoom.enemy2 = enemys[2].name
+        }
+        
+        if inRoom{
+            for i in sevedRoom{
+                if i.name == "0"{
+                    try! realm.write {
+                        realm.delete(i)
+                    }
+                }
+            }
+            let a = SaveRoom()
+            a.name = "0"
+            a.x = x
+            a.y = y
+            try! realm.write {
+                realm.add(a)
+            }
+        }
+        
+        try! realm.write {
+            realm.add(saveRoom)
         }
         
     }

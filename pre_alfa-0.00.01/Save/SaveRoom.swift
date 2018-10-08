@@ -16,11 +16,14 @@ class SaveRoom: Object {
 <<<<<<< HEAD
 <<<<<<< HEAD
     @objc dynamic var close = false
+<<<<<<< HEAD
     @objc dynamic var inRoom = false
 =======
 >>>>>>> parent of c3c9056... не большие правики
 =======
 >>>>>>> parent of c3c9056... не большие правики
+=======
+>>>>>>> parent of eba7765... 1
     
     @objc dynamic var x = 0
     @objc dynamic var y = 0

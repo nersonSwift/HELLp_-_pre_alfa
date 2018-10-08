@@ -42,13 +42,6 @@ class Area: UIViewController {
     var doorRight: UIView!
     var doorDown: UIView!
     var doorLeft: UIView!
-    
-    var widthRoom: CGFloat{
-        return self.view.frame.width
-    }
-    var heightRoom: CGFloat{
-        return self.view.frame.height
-    }
 
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -104,36 +97,10 @@ class Area: UIViewController {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    func createWall(){
-        
-        let thicknessWall = ((heightRoom + widthRoom) / 2) / 15
-        let a = #imageLiteral(resourceName: "scenes.scnassets/textures/wall.jpg")
-        
-        let rightWallFrame = CGRect(x:  widthRoom - thicknessWall, y: 0, width: thicknessWall, height: heightRoom)
-        let rightWall = UIView(frame: rightWallFrame)
-        rightWall.backgroundColor = UIColor(patternImage: a)
-        newRoomView.addSubview(rightWall)
-        
-        print(thicknessWall)
-        let upWallFrame = CGRect(x:  0, y: 0, width: widthRoom, height: thicknessWall)
-        let upWall = UIView(frame: upWallFrame)
-        upWall.backgroundColor = UIColor(patternImage: a)
-        newRoomView.addSubview(upWall)
-        
-        let leftWallFrame = CGRect(x:  0, y: 0, width: thicknessWall, height: heightRoom)
-        let leftWall = UIView(frame: leftWallFrame)
-        leftWall.backgroundColor = UIColor(patternImage: a)
-        newRoomView.addSubview(leftWall)
-        
-        let downWallFrame = CGRect(x:  0, y: heightRoom - thicknessWall, width: widthRoom, height: thicknessWall)
-        let downWall = UIView(frame: downWallFrame)
-        downWall.backgroundColor = UIColor(patternImage: a)
-        newRoomView.addSubview(downWall)
-        
-    }
-    
-    
     func createRoomView(){
+        
+        let widthRoom   = self.view.frame.width
+        let heightRoom  = self.view.frame.height
         
         let widthDoor   = self.view.frame.width/10
         let heightDoor  = widthDoor
@@ -141,7 +108,6 @@ class Area: UIViewController {
         newRoomView = UIView(frame: self.view.bounds)
         self.view.addSubview(newRoomView)
         
-        createWall()
         let doorUpFrame = CGRect(x:  widthRoom / 2 - widthDoor / 2, y: heightDoor / 2, width: widthDoor, height: heightDoor)
         doorUp = UIView(frame: doorUpFrame)
         newRoomView.addSubview(doorUp)
@@ -158,9 +124,9 @@ class Area: UIViewController {
         doorLeft = UIView(frame: doorLeftFrame)
         newRoomView.addSubview(doorLeft)
         
-        let countRoomFrame = CGRect(x: widthRoom / 2 - widthDoor*1.5, y: heightDoor * 2, width: widthDoor * 3, height: heightDoor)
+        let countRoomFrame = CGRect(x: widthRoom / 2 - widthDoor*1.5, y: heightDoor * 2, width: widthDoor*3, height: heightDoor)
         countRoom = UILabel(frame: countRoomFrame)
-        countRoom.font = UIFont(descriptor: UIFontDescriptor(name: "System", size: 0), size: ((heightRoom + widthRoom) / 2) / 12)
+        countRoom.font = UIFont(descriptor: UIFontDescriptor(name: "System", size: 0), size: 40)
         countRoom.text = "24"
         countRoom.textAlignment = .center
         newRoomView.addSubview(countRoom)
@@ -171,7 +137,7 @@ class Area: UIViewController {
         
         if !brain.thisRoom.enemys.isEmpty{
             
-            let atackViewFrame = CGRect(x:  self.view.frame.width/2 - widthDoor * 3 / 2 , y: -widthDoor * 3, width: widthDoor * 3, height: widthDoor * 3)
+            let atackViewFrame = CGRect(x:  self.view.frame.width/2 - widthDoor * 7 / 2 , y: -widthDoor * 7, width: widthDoor * 7, height: widthDoor * 7)
             atackView = UIView(frame: atackViewFrame)
             atackView!.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
             atackView?.isHidden = true

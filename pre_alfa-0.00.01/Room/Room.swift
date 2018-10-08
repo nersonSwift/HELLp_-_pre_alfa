@@ -14,7 +14,6 @@ class Room {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
     
     var saveRoom = SaveRoom()
     
@@ -95,11 +94,10 @@ class Room {
 >>>>>>> parent of c3c9056... не большие правики
 =======
     /*
-=======
->>>>>>> parent of c3c9056... не большие правики
     var id = 0
     var firstVisitingTriger = true
     var nameRoom = ""
+    var close = false
     var inRoom = false
 >>>>>>> parent of eba7765... 1
     var enemys: [Enemy] = []
@@ -108,7 +106,6 @@ class Room {
     var xy: String{
         return String(x) + String(y)
     }
-<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -142,11 +139,6 @@ class Room {
     
     init() {}
     func openRoom(player: Player) -> Bool{return true}
-=======
-    var Doors = ["Up" : Door.noDoor, "Right" : Door.noDoor, "Down" : Door.noDoor, "Left" : Door.noDoor]
-    
-    init() {}
->>>>>>> parent of c3c9056... не большие правики
 =======
     var Doors = ["Up" : Door.noDoor, "Right" : Door.noDoor, "Down" : Door.noDoor, "Left" : Door.noDoor]
     
@@ -223,6 +215,7 @@ class Room {
 =======
         saveRoom.id = id
         saveRoom.name = nameRoom
+        saveRoom.close = close
         saveRoom.firstVisitingTriger = firstVisitingTriger
 >>>>>>> parent of eba7765... 1
         

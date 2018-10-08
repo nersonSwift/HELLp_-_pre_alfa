@@ -8,18 +8,19 @@
 
 import UIKit
 
-class StorRoom: DifRoom{
+class StorRoom: CloseRoom{
     var itemInStor: [String : Int]!
     weak var player: Player?
     
     override func setDifRoom(x: Int, y: Int, castPlayer: CastPlayer) {
         super.setDifRoom(x: x, y: y, castPlayer: castPlayer)
-        player = castPlayer.player
         nameRoom = "StorRoom"
-        Doors = ["Up" : Door.closeDoor, "Right" : Door.closeDoor, "Down" : Door.closeDoor, "Left" : Door.closeDoor]
-        
-        CheckNoRoom(castPlayer: castPlayer)
         addItems()
+    }
+    
+    override func InRoom(castPlayer: CastPlayer) {
+        super.InRoom(castPlayer: castPlayer)
+        player = castPlayer.player
     }
     
     func addItems(){
@@ -37,38 +38,6 @@ class StorRoom: DifRoom{
             let newStack = StackItem(item: GetClass.getItem(name: i.key), quantity: i.value)
             player?.inventery.AddItem(steckItem: newStack)
         }
-        
-    }
-    
-    
-    override func InRoom(castPlayer: CastPlayer) {
-        super.InRoom(castPlayer: castPlayer)
-        Doors = ["Up" : Door.openDoor, "Right" : Door.openDoor, "Down" : Door.openDoor, "Left" : Door.openDoor]
-        
-        CheckNoRoom(castPlayer: castPlayer)
-        
-        let roomUp      = castPlayer.map.mapRooms[String(x) + String(y+1)]
-        let roomRight   = castPlayer.map.mapRooms[String(x+1) + String(y)]
-        let roomDown    = castPlayer.map.mapRooms[String(x) + String(y-1)]
-        let roomLeft    = castPlayer.map.mapRooms[String(x-1) + String(y)]
-        
-        if (roomUp != nil) && !(roomUp is NoDoorRoom){
-            roomUp!.Doors["Down"] = Door.openDoor
-            roomUp!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
-        }
-        if (roomRight != nil) && !(roomRight is NoDoorRoom){
-            roomRight!.Doors["Left"] = Door.openDoor
-            roomRight!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
-        }
-        if (roomDown != nil) && !(roomDown is NoDoorRoom){
-            roomDown!.Doors["Up"] = Door.openDoor
-            roomDown!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
-        }
-        if (roomLeft != nil) && !(roomLeft is NoDoorRoom){
-            roomLeft!.Doors["Right"] = Door.openDoor
-            roomLeft!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
-        }
-        self.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         
     }
 

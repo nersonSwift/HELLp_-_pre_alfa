@@ -23,7 +23,9 @@
 		512BE7E8210E24340035DF60 /* FightStatsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512BE7E7210E24340035DF60 /* FightStatsPlayer.swift */; };
 		512BE7EA210E244E0035DF60 /* FightStatsEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512BE7E9210E244E0035DF60 /* FightStatsEnemy.swift */; };
 		512EA5AC2103E72D003AFE21 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512EA5AB2103E72D003AFE21 /* Main.swift */; };
+		51309F7A215BB3AF000A8B94 /* AllSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51309F79215BB3AF000A8B94 /* AllSave.swift */; };
 		51395A9720EAA8970054207E /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51395A9620EAA8970054207E /* Door.swift */; };
+		5139D0D321563A3700CC92A3 /* StuelAnimArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5139D0D221563A3700CC92A3 /* StuelAnimArea.swift */; };
 		5143160A21202E38003A0C11 /* CardInAren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143160921202E38003A0C11 /* CardInAren.swift */; };
 		5143160C2120864E003A0C11 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143160B2120864E003A0C11 /* Skeleton.swift */; };
 		5157168520EFA2FC007FA2F5 /* NoDoorRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157168420EFA2FC007FA2F5 /* NoDoorRoom.swift */; };
@@ -84,7 +86,9 @@
 		512BE7E7210E24340035DF60 /* FightStatsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightStatsPlayer.swift; sourceTree = "<group>"; };
 		512BE7E9210E244E0035DF60 /* FightStatsEnemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightStatsEnemy.swift; sourceTree = "<group>"; };
 		512EA5AB2103E72D003AFE21 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		51309F79215BB3AF000A8B94 /* AllSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSave.swift; sourceTree = "<group>"; };
 		51395A9620EAA8970054207E /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
+		5139D0D221563A3700CC92A3 /* StuelAnimArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuelAnimArea.swift; sourceTree = "<group>"; };
 		5143160921202E38003A0C11 /* CardInAren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInAren.swift; sourceTree = "<group>"; };
 		5143160B2120864E003A0C11 /* Skeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
 		5157168420EFA2FC007FA2F5 /* NoDoorRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDoorRoom.swift; sourceTree = "<group>"; };
@@ -193,8 +197,8 @@
 		5143160F21209200003A0C11 /* CastPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				51E42D9B20F36065007DA454 /* Map.swift */,
 				51DE5C57210B505200CC002E /* CastPlayer.swift */,
+				51E42D9B20F36065007DA454 /* Map.swift */,
 				518B716A212466FD005E9A47 /* Qality.swift */,
 				51200F812121D7B10018E53E /* Map3D.swift */,
 				51200F832121D8FE0018E53E /* BlockMap.swift */,
@@ -304,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				518977B9212ED82400BD8AF9 /* SaveRoom.swift */,
+				51309F79215BB3AF000A8B94 /* AllSave.swift */,
 				518977BD2131E9BB00BD8AF9 /* GetClass.swift */,
 			);
 			path = Save;
@@ -315,6 +320,7 @@
 				512863252120B1A90047326D /* Area.storyboard */,
 				5157930120EA1E7A00327D91 /* Area.swift */,
 				51A2C2852103FF2A00E8ADC4 /* BrainArea.swift */,
+				5139D0D221563A3700CC92A3 /* StuelAnimArea.swift */,
 			);
 			path = Area;
 			sourceTree = "<group>";
@@ -446,6 +452,7 @@
 				TargetAttributes = {
 					515792FB20EA1E7A00327D91 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -546,6 +553,7 @@
 				518B7169212466A2005E9A47 /* Card.swift in Sources */,
 				518977BE2131E9BB00BD8AF9 /* GetClass.swift in Sources */,
 				51200F842121D8FE0018E53E /* BlockMap.swift in Sources */,
+				5139D0D321563A3700CC92A3 /* StuelAnimArea.swift in Sources */,
 				51E42D9A20F2384E007DA454 /* DmgRoom.swift in Sources */,
 				51F26F5420FB57C1003D326A /* DifRoom.swift in Sources */,
 				512BE7EA210E244E0035DF60 /* FightStatsEnemy.swift in Sources */,
@@ -565,6 +573,7 @@
 				51C20B582114A78800A63B7E /* BrainFightAren.swift in Sources */,
 				519FA31D212AACAD00FAE753 /* HpCard.swift in Sources */,
 				5189AFC7210A3BBD00AD159C /* PlayerCast.swift in Sources */,
+				51309F7A215BB3AF000A8B94 /* AllSave.swift in Sources */,
 				51C20B552114A0B700A63B7E /* Soul.swift in Sources */,
 				512BE7E6210E23190035DF60 /* FightStats.swift in Sources */,
 				51DE5C5E210CE67900CC002E /* LostBord.swift in Sources */,
@@ -717,7 +726,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "LightStorm.pre-alfa-0-00-01";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -737,7 +746,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "LightStorm.pre-alfa-0-00-01";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

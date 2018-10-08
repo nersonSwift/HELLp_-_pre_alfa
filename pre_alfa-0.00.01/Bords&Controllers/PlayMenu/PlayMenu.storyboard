@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="COp-cf-uYc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="COp-cf-uYc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,9 +50,13 @@
                                     <action selector="map:" destination="COp-cf-uYc" eventType="touchUpInside" id="jXr-8f-Vao"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPO-t0-J4n">
-                                <rect key="frame" x="155" y="296" width="64" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPO-t0-J4n">
+                                <rect key="frame" x="155.5" y="296" width="64" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="ceG-Go-5II"/>
+                                    <constraint firstAttribute="width" secondItem="DPO-t0-J4n" secondAttribute="height" multiplier="32:15" id="llg-xs-A4L"/>
+                                    <constraint firstAttribute="height" constant="30" id="tu6-qj-rbP"/>
+                                </constraints>
                                 <state key="normal" title="Inventery"/>
                                 <connections>
                                     <action selector="inventery:" destination="COp-cf-uYc" eventType="touchUpInside" id="bMn-FA-pyK"/>
@@ -65,7 +69,9 @@
                             <constraint firstItem="yyS-14-5sa" firstAttribute="top" secondItem="TJU-VH-DTO" secondAttribute="bottom" constant="36" id="56Z-fn-2sd"/>
                             <constraint firstItem="OFy-kv-dEX" firstAttribute="top" secondItem="nnw-AC-xS5" secondAttribute="top" constant="91" id="Fdf-yf-0ur"/>
                             <constraint firstItem="OFy-kv-dEX" firstAttribute="centerX" secondItem="nnw-AC-xS5" secondAttribute="centerX" id="K8J-y3-Rha"/>
+                            <constraint firstItem="DPO-t0-J4n" firstAttribute="top" secondItem="yyS-14-5sa" secondAttribute="bottom" constant="25" id="V6Q-fO-c4D"/>
                             <constraint firstItem="TJU-VH-DTO" firstAttribute="centerX" secondItem="nnw-AC-xS5" secondAttribute="centerX" id="Vb1-5s-0pG"/>
+                            <constraint firstItem="DPO-t0-J4n" firstAttribute="centerX" secondItem="nnw-AC-xS5" secondAttribute="centerX" id="rnD-6c-xZu"/>
                             <constraint firstItem="yyS-14-5sa" firstAttribute="centerX" secondItem="nnw-AC-xS5" secondAttribute="centerX" id="zT8-LO-H4D"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nnw-AC-xS5"/>

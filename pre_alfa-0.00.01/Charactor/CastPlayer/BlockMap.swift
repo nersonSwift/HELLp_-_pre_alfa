@@ -11,7 +11,6 @@ import QuartzCore
 import SceneKit
 
 class BlockMap: SCNNode {
-    
     var blocksMap: [String: BlockMap?] = [:]
     var blocksMapDoors: [String: SCNNode]! = [:]
     weak var room: Room!
@@ -71,11 +70,6 @@ class BlockMap: SCNNode {
             blockMap.blocksMapDoors[i.key]!.geometry?.materials = [mat]
             blockMap.addChildNode(blockMap.blocksMapDoors[i.key]!)
         }
-        
-        
-    
-        
-        
         
         return blockMap
     }

@@ -67,7 +67,7 @@ class InventeryBoard: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func addSwipe() {
-        let direction = UISwipeGestureRecognizerDirection.down
+        let direction = UISwipeGestureRecognizer.Direction.down
         let gesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         gesture.direction = direction
         self.view.addGestureRecognizer(gesture)

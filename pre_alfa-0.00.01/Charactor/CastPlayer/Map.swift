@@ -21,19 +21,9 @@ class Map{
         map3D = Map3D()
     }
     
-    public func createDifRoom(dir: Dir) -> DifRoom?{
-        var x = castPlayer!.player.x
-        var y = castPlayer!.player.y
-        
-        switch dir {
-        case .Up:      y += 1
-        case .Right:   x += 1
-        case .Down:    y -= 1
-        case .Left:    x -= 1
-        }
-        
-        let newRoom = GetClass.getDifRoom()
-        newRoom.setDifRoom(x: x, y: y, castPlayer: castPlayer!)
+    public func createDifRoom(room: Room, dir: Dir) -> Bool{
+        let x = room.x
+        let y = room.y
         
         let roomUp      = mapRooms[String(x) + String(y+1)]
         let roomRight   = mapRooms[String(x+1) + String(y)]
@@ -46,10 +36,10 @@ class Map{
         let roomLeftCondition   = ((roomRight == nil) || (roomRight is NoDoorRoom)) || (dir == Dir.Left)
         
         if  roomUpCondition && roomRightCondition && roomDownCondition && roomLeftCondition{
-            mapRooms[String(x) + String(y)] = newRoom
-            return newRoom
+            mapRooms[String(x) + String(y)] = room
+            return true
         }
-        return nil
+        return false
     }
     
     public func WhatIsIt(dir: Dir) -> Room{

@@ -15,14 +15,14 @@ class CastPlayer{
     
     var player = Player()
     var defaultPlayer = Player()
-    var map: Map!
+    var map = Map()
     var playerSet = false
     let realm = try! Realm()
-    
     var savedRooms: Results<SaveRoom>!
     
     init() {
         savedRooms = realm.objects(SaveRoom.self)
+        
         map = Map(castPlayer: self)
     }
     

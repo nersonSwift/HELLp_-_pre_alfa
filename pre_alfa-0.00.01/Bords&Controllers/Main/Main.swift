@@ -19,7 +19,9 @@ class Main: UIViewController {
             return
         }
         try! castPlayer.realm.write {
-            castPlayer.realm.delete(castPlayer.savedRooms)
+           // for i in castPlayer.savedRooms{
+                castPlayer.realm.delete(castPlayer.savedRooms)
+          //  }
         }
         if let nextViewController = Area.storyboardInstance() {
             nextViewController.brain.castPlayer = castPlayer

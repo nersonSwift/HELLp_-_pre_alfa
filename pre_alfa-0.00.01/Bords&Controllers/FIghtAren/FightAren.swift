@@ -59,16 +59,9 @@ class FightAren: UIViewController {
         scnView.scene = scene
         scnView.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         
-        let heightRoom = view.frame.height
-        let widthRoom = view.frame.width
-        
         let cam = SCNNode()
         cam.camera = SCNCamera()
-        if (2.16 < (heightRoom / widthRoom)) && ((heightRoom / widthRoom) < 2.17) {
-            cam.position = SCNVector3(0, 12, -4.5)
-        }else{
-            cam.position = SCNVector3(0, 10, -4.5)
-        }
+        cam.position = SCNVector3(0, 10, -4.5)
         cam.eulerAngles = SCNVector3(-Float.pi/2, 0, 0)
         scene.rootNode.addChildNode(cam)
         
@@ -83,8 +76,8 @@ class FightAren: UIViewController {
         
         brain.setCardsInHand()
         
-        cardLeft    = CardInAren.criateCardInAren(positionCard: .Left,  card: brain.cardsInHand[0])
-        cardMid     = CardInAren.criateCardInAren(positionCard: .Up,    card: brain.cardsInHand[1])
+        cardLeft    = CardInAren.criateCardInAren(positionCard: .Left, card: brain.cardsInHand[0])
+        cardMid     = CardInAren.criateCardInAren(positionCard: .Up, card: brain.cardsInHand[1])
         cardRight   = CardInAren.criateCardInAren(positionCard: .Right, card: brain.cardsInHand[2])
         
         hpWheel.addChildNode(cardLeft!)
@@ -196,11 +189,11 @@ class FightAren: UIViewController {
         selectCard  = card as? CardInAren
         
         switch selectCard!.positionCard {
-        case .Left?:
+        case .Left:
             hpWheel.runAction(SCNAction.rotateTo(x: 0, y: CGFloat(-Float.pi / 6), z: 0, duration: 0.4))
-        case .Up?:
+        case .Up:
             hpWheel.runAction(SCNAction.rotateTo(x: 0, y: 0, z: 0, duration: 0.4))
-        case .Right?:
+        case .Right:
             hpWheel.runAction(SCNAction.rotateTo(x: 0, y: CGFloat(Float.pi / 6), z: 0, duration: 0.4))
         default:break
         }
@@ -222,11 +215,11 @@ class FightAren: UIViewController {
         endAnimStep = false
         
         switch selectCard!.positionCard {
-        case .Left?:
+        case .Left:
                 selectCard?.runAction(SCNAction.move(by: SCNVector3.init(-0.5773, 0, -1) , duration: 0.2))
-        case .Up?:
+        case .Up:
                 selectCard?.runAction(SCNAction.move(by: SCNVector3.init(0, 0, -1.16), duration: 0.2))
-        case .Right?:
+        case .Right:
                 selectCard?.runAction(SCNAction.move(by: SCNVector3.init(0.5773, 0, -1), duration: 0.2))
         default: break
         }
@@ -241,12 +234,12 @@ class FightAren: UIViewController {
     
     private func newCardsAnim(){
         
-        cardLeft?.runAction( SCNAction.move(to: SCNVector3.init(0, -0.5, 0), duration: 0.6))
-        cardMid?.runAction(  SCNAction.move(to: SCNVector3.init(0, 0   , 0), duration: 0.6))
+        cardLeft?.runAction(SCNAction.move(to: SCNVector3.init(0, -0.5, 0) , duration: 0.6))
+        cardMid?.runAction(SCNAction.move(to: SCNVector3.init(0, 0, 0), duration: 0.6))
         cardRight?.runAction(SCNAction.move(to: SCNVector3.init(0, -0.5, 0), duration: 0.6))
         
-        cardLeft?.runAction( SCNAction.fadeOut(duration: 0.6))
-        cardMid?.runAction(  SCNAction.fadeOut(duration: 0.6))
+        cardLeft?.runAction(SCNAction.fadeOut(duration: 0.6))
+        cardMid?.runAction(SCNAction.fadeOut(duration: 0.6))
         cardRight?.runAction(SCNAction.fadeOut(duration: 0.6), completionHandler: {
             
             self.newCards()
@@ -260,8 +253,8 @@ class FightAren: UIViewController {
                 
             })
             
-            self.cardLeft?.runAction( SCNAction.fadeIn(duration: 0.6))
-            self.cardMid?.runAction(  SCNAction.fadeIn(duration: 0.6))
+            self.cardLeft?.runAction(SCNAction.fadeIn(duration: 0.6))
+            self.cardMid?.runAction(SCNAction.fadeIn(duration: 0.6))
             self.cardRight?.runAction(SCNAction.fadeIn(duration: 0.6), completionHandler: {
                 self.endAnimStep = true
             })
@@ -271,7 +264,7 @@ class FightAren: UIViewController {
     }
     
     func addSwipe() {
-        let directions: [UISwipeGestureRecognizer.Direction] = [.right, .left, .up, .down]
+        let directions: [UISwipeGestureRecognizerDirection] = [.right, .left, .up, .down]
         for direction in directions {
             let gesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
             gesture.direction = direction
@@ -319,6 +312,10 @@ class FightAren: UIViewController {
     func endFight(){
         winBox.runAction(SCNAction.move(to: SCNVector3.init(0, 0, -4.3), duration: 0.6))
     }
+    
+   
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

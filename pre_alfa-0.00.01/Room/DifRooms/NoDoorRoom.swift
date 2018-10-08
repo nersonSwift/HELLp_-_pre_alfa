@@ -10,13 +10,11 @@ import UIKit
 
 class NoDoorRoom: DifRoom {
     override init(){super.init()}
-    override func openRoom(player: Player) -> Bool{return false}
     
     override func setDifRoom(x: Int, y: Int, castPlayer: CastPlayer) {
         super.setDifRoom(x: x, y: y, castPlayer: castPlayer)
         self.nameRoom = "NoDoorRoom"
         Doors = ["Up" : Door.noDoor, "Right" : Door.noDoor, "Down" : Door.noDoor, "Left" : Door.noDoor]
-        close = true
     }
 }
 

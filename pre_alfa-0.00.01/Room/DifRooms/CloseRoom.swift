@@ -11,22 +11,11 @@ import UIKit
 class CloseRoom: DifRoom {
     override init(){super.init()}
     
-    override func openRoom(player: Player) -> Bool{
-        if close{
-            if player.inventery.DellItem(steckItem: StackItem(item: Key(), quantity: 1)){
-                close = false
-                return true
-            }
-            return false
-        }
-        return true
-    }
-    
     override func setDifRoom(x: Int, y: Int, castPlayer: CastPlayer) {
         super.setDifRoom(x: x, y: y, castPlayer: castPlayer)
         nameRoom = "CloseRoom"
         Doors = ["Up" : Door.closeDoor, "Right" : Door.closeDoor, "Down" : Door.closeDoor, "Left" : Door.closeDoor]
-        close = true
+        
         CheckNoRoom(castPlayer: castPlayer)
     }
     

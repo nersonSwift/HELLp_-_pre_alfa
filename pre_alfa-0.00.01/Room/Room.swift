@@ -11,6 +11,7 @@ import RealmSwift
 
 
 class Room {
+<<<<<<< HEAD
     
     var saveRoom = SaveRoom()
     
@@ -81,10 +82,17 @@ class Room {
         }
     }
  
+=======
+    var id = 0
+    var firstVisitingTriger = true
+    var nameRoom = ""
+    var inRoom = false
+>>>>>>> parent of c3c9056... не большие правики
     var enemys: [Enemy] = []
     var xy: String{
         return String(x) + String(y)
     }
+<<<<<<< HEAD
     var Doors: [String: Door]{
         set(doors){
             for i in doors{
@@ -110,11 +118,15 @@ class Room {
     init(){}
     
     func openRoom(player: Player) -> Bool{return true}
+=======
+    var Doors = ["Up" : Door.noDoor, "Right" : Door.noDoor, "Down" : Door.noDoor, "Left" : Door.noDoor]
+    
+    init() {}
+>>>>>>> parent of c3c9056... не большие правики
     
     func loadRoom(saveRoom: SaveRoom, castPlayer: CastPlayer){
         id = saveRoom.id
         nameRoom = saveRoom.name
-        close = saveRoom.close
         firstVisitingTriger = saveRoom.firstVisitingTriger
         
         x = saveRoom.x
@@ -171,6 +183,12 @@ class Room {
         }
 //        print(saveRoom.name)
         
+<<<<<<< HEAD
+=======
+        saveRoom.id = id
+        saveRoom.name = nameRoom
+        saveRoom.firstVisitingTriger = firstVisitingTriger
+>>>>>>> parent of c3c9056... не большие правики
         
         
         try! realm!.write {

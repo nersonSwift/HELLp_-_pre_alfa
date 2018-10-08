@@ -33,7 +33,7 @@ class PlayMenu: UIViewController {
     }
     
     func addSwipe() {
-        let direction = UISwipeGestureRecognizer.Direction.down
+        let direction = UISwipeGestureRecognizerDirection.down
         let gesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         gesture.direction = direction
         self.view.addGestureRecognizer(gesture)
@@ -50,7 +50,7 @@ class PlayMenu: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor! = UIColor.white.withAlphaComponent(0.9)
+        view.backgroundColor! = UIColor.white.withAlphaComponent(0.6)
         addSwipe()
     }
 

@@ -74,7 +74,7 @@ class BrainArea {
         thisRoom.firstVisiting(castPlayer: castPlayer)
         
         countRoom.text = String(castPlayer.player.stats.counterRoom)
-        //thisRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
+        thisRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
     }
    
     
@@ -112,7 +112,6 @@ class BrainArea {
         
         thisRoom.NoInRoom()
         thisRoom = castPlayer.map.mapRooms[xy]!
-     //   thisRoom.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         thisRoom.InRoom(castPlayer: castPlayer)
         
         area.stuel.animStep(dir: dir)

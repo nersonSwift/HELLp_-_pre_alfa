@@ -14,7 +14,6 @@ class SaveRoom: Object {
     @objc dynamic var name = ""
     @objc dynamic var firstVisitingTriger = true
     @objc dynamic var close = false
-    @objc dynamic var inRoom = false
     
     @objc dynamic var x = 0
     @objc dynamic var y = 0

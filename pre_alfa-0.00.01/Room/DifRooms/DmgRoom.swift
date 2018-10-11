@@ -15,7 +15,7 @@ class DmgRoom: DifRoom {
         super.setDifRoom(x: x, y: y, castPlayer: castPlayer)
         nameRoom = "CloseRoom"
         self.nameRoom = "DmgRoom"
-        Doors = ["Up" : Door.dmgDoor, "Right" : Door.dmgDoor, "Down" : Door.dmgDoor, "Left" : Door.dmgDoor]
+        Doors = [.Up : Door.dmgDoor, .Right : Door.dmgDoor, .Down : Door.dmgDoor, .Left : Door.dmgDoor]
         
         CheckNoRoom(castPlayer: castPlayer)
     }

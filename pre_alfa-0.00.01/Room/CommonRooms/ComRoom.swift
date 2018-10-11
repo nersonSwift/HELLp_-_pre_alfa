@@ -35,16 +35,16 @@ class ComRoom: Room {
         self.y = castPlayer.player.y
         
         if let roomUp = castPlayer.map.mapRooms[String(x) + String(y+1)]{
-            Doors[Dir.Up.rawValue] = roomUp.Doors[Dir.Down.rawValue]
+            Doors[Dir.Up] = roomUp.Doors[Dir.Down]
         }
         if let roomRight = castPlayer.map.mapRooms[String(x+1) + String(y)]{
-            Doors[Dir.Right.rawValue] = roomRight.Doors[Dir.Left.rawValue]
+            Doors[Dir.Right] = roomRight.Doors[Dir.Left]
         }
         if let roomDown = castPlayer.map.mapRooms[String(x) + String(y-1)]{
-            Doors[Dir.Down.rawValue] = roomDown.Doors[Dir.Up.rawValue]
+            Doors[Dir.Down] = roomDown.Doors[Dir.Up]
         }
         if let roomLeft = castPlayer.map.mapRooms[String(x-1) + String(y)]{
-            Doors[Dir.Left.rawValue] = roomLeft.Doors[Dir.Right.rawValue]
+            Doors[Dir.Left] = roomLeft.Doors[Dir.Right]
         }
         
         

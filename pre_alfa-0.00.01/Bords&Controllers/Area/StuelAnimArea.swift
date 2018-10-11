@@ -21,10 +21,7 @@ class StuelAnimArea{
     var atackButton: UIButton!
     var atackView: UIView?
     
-    var doorUp: UIView!
-    var doorRight: UIView!
-    var doorDown: UIView!
-    var doorLeft: UIView!
+    var doors: [Dir: UIView] = [:]
     
     var k: CGFloat = 0
     var widthRoom: CGFloat{
@@ -38,7 +35,9 @@ class StuelAnimArea{
         self.area = area
         self.areaView = area.view
     }
-    
+//////////////////
+//MARK: - Create//
+//////////////////
     func createWall(){
         
         let thicknessWall = ((heightRoom + widthRoom) / 2) / 15
@@ -67,24 +66,24 @@ class StuelAnimArea{
         
     }
     func createDoor(){
-        let widthDoor   = areaView!.frame.width/10
+        let widthDoor   = ((heightRoom + widthRoom) / 2) / 15
         let heightDoor  = widthDoor
         
-        let doorUpFrame = CGRect(x:  widthRoom / 2 - widthDoor / 2, y: heightDoor / 2, width: widthDoor, height: heightDoor)
-        doorUp = UIView(frame: doorUpFrame)
-        newRoomView.addSubview(doorUp)
+        let doorUpFrame = CGRect(x:  widthRoom / 2 - widthDoor / 2, y: 0, width: widthDoor, height: heightDoor)
+        doors[Dir.Up] = UIView(frame: doorUpFrame)
+        newRoomView.addSubview(doors[Dir.Up]!)
         
-        let doorDownFrame = CGRect(x: widthRoom / 2 - widthDoor / 2, y: heightRoom - heightDoor * 1.5, width: widthDoor, height: heightDoor)
-        doorDown = UIView(frame: doorDownFrame)
-        newRoomView.addSubview(doorDown)
+        let doorDownFrame = CGRect(x: widthRoom / 2 - widthDoor / 2, y: heightRoom - heightDoor, width: widthDoor, height: heightDoor)
+        doors[Dir.Down] = UIView(frame: doorDownFrame)
+        newRoomView.addSubview(doors[Dir.Down]!)
         
-        let doorRightFrame = CGRect(x:  widthRoom - widthDoor * 1.5, y: heightRoom / 2 - heightDoor / 2, width: widthDoor, height: heightDoor)
-        doorRight = UIView(frame: doorRightFrame)
-        newRoomView.addSubview(doorRight)
+        let doorRightFrame = CGRect(x:  widthRoom - widthDoor, y: heightRoom / 2 - heightDoor / 2, width: widthDoor, height: heightDoor)
+        doors[Dir.Right] = UIView(frame: doorRightFrame)
+        newRoomView.addSubview(doors[Dir.Right]!)
         
-        let doorLeftFrame = CGRect(x: heightDoor / 2, y: heightRoom / 2 - heightDoor / 2, width: widthDoor, height: heightDoor)
-        doorLeft = UIView(frame: doorLeftFrame)
-        newRoomView.addSubview(doorLeft)
+        let doorLeftFrame = CGRect(x: 0, y: heightRoom / 2 - heightDoor / 2, width: widthDoor, height: heightDoor)
+        doors[Dir.Left] = UIView(frame: doorLeftFrame)
+        newRoomView.addSubview(doors[Dir.Left]!)
     }
     
     func createRoomView(){
@@ -135,7 +134,9 @@ class StuelAnimArea{
             newRoomView.addSubview(atackView!)
         }
     }
-    
+////////////////
+//MARK: - Anim//
+////////////////
     func animStep(dir: Dir){
         
         var offScreenFirst: CGAffineTransform
@@ -178,5 +179,42 @@ class StuelAnimArea{
             })
         }
     }
+///////////////////
+//MARK: - Оutput//
+//////////////////
+    func setColorDoor(door: Door) -> UIColor{
+        switch door {
+        case .woodDoor:    return #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
+        case .ironDoor:    return #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        case .dmgDoor:     return #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        case .closeDoor:   return #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)
+        case .openDoor:    return #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        case .noDoor:      return #colorLiteral(red: 1, green: 0.9470325112, blue: 1, alpha: 0)
+        case .whatDoor:    return #colorLiteral(red: 1, green: 0.9470325112, blue: 1, alpha: 1)
+        }
+    }
     
+    func outputRoom(room: Room){
+        switch room.nameRoom {
+        case "ComRoom":     area.stuel.roomView.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        case "DmgRoom":     area.stuel.roomView.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        case "CloseRoom":   area.stuel.roomView.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+            
+        default: break
+        }
+        for i in doors{
+            i.value.backgroundColor = setColorDoor(door: room.Doors[i.key]!)
+        }
+        countRoom.text = String(area.brain.castPlayer.player.stats.counterRoom)
+//
+        if let a = room as? StorRoom{
+            let widthDoor   = area.view.frame.width/10
+            let heightDoor  = widthDoor
+            let payButtonFrame = CGRect(x:  area.stuel.roomView.frame.width/2 - widthDoor / 2, y: area.stuel.roomView.frame.height/2 - heightDoor / 2, width: widthDoor, height: heightDoor)
+            let payButton = UIButton(frame: payButtonFrame)
+            a.createLogiсButton(payButton: payButton)
+            payButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            area.stuel.roomView.addSubview(payButton)
+        }
+    }
 }

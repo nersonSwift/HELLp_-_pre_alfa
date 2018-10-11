@@ -15,7 +15,7 @@ class NoDoorRoom: DifRoom {
     override func setDifRoom(x: Int, y: Int, castPlayer: CastPlayer) {
         super.setDifRoom(x: x, y: y, castPlayer: castPlayer)
         self.nameRoom = "NoDoorRoom"
-        Doors = ["Up" : Door.noDoor, "Right" : Door.noDoor, "Down" : Door.noDoor, "Left" : Door.noDoor]
+        Doors = [.Up : Door.noDoor, .Right : Door.noDoor, .Down : Door.noDoor, .Left : Door.noDoor]
         close = true
     }
 }

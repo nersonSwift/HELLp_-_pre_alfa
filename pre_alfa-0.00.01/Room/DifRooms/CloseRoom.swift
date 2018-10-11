@@ -25,14 +25,14 @@ class CloseRoom: DifRoom {
     override func setDifRoom(x: Int, y: Int, castPlayer: CastPlayer) {
         super.setDifRoom(x: x, y: y, castPlayer: castPlayer)
         nameRoom = "CloseRoom"
-        Doors = ["Up" : Door.closeDoor, "Right" : Door.closeDoor, "Down" : Door.closeDoor, "Left" : Door.closeDoor]
+        Doors = [.Up : Door.closeDoor, .Right : Door.closeDoor, .Down : Door.closeDoor, .Left : Door.closeDoor]
         close = true
         CheckNoRoom(castPlayer: castPlayer)
     }
     
     override func InRoom(castPlayer: CastPlayer) {
         super.InRoom(castPlayer: castPlayer)
-        Doors = ["Up" : Door.openDoor, "Right" : Door.openDoor, "Down" : Door.openDoor, "Left" : Door.openDoor]
+        Doors = [.Up : Door.openDoor, .Right : Door.openDoor, .Down : Door.openDoor, .Left : Door.openDoor]
         
         CheckNoRoom(castPlayer: castPlayer)
         
@@ -42,19 +42,19 @@ class CloseRoom: DifRoom {
         let roomLeft    = castPlayer.map.mapRooms[String(x-1) + String(y)]
         
         if (roomUp != nil) && !(roomUp is NoDoorRoom){
-            roomUp!.Doors["Down"] = Door.openDoor
+            roomUp!.Doors[.Down] = Door.openDoor
             //roomUp!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         }
         if roomRight != nil && !(roomRight is NoDoorRoom){
-            roomRight!.Doors["Left"] = Door.openDoor
+            roomRight!.Doors[.Left] = Door.openDoor
             //roomRight!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         }
         if roomDown != nil && !(roomDown is NoDoorRoom){
-            roomDown!.Doors["Up"] = Door.openDoor
+            roomDown!.Doors[.Up] = Door.openDoor
             //roomDown!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         }
         if roomLeft != nil && !(roomLeft is NoDoorRoom){
-            roomLeft!.Doors["Right"] = Door.openDoor
+            roomLeft!.Doors[.Right] = Door.openDoor
             //roomLeft!.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)
         }
         //self.saveThisRoom(realm: castPlayer.realm, sevedRoom: castPlayer.savedRooms)

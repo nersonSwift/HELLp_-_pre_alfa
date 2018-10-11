@@ -11,8 +11,8 @@ import QuartzCore
 import SceneKit
 
 class BlockMap: SCNNode {
-    var blocksMap: [String: BlockMap?] = [:]
-    var blocksMapDoors: [String: SCNNode]! = [:]
+    var blocksMap: [Dir: BlockMap?] = [:]
+    var blocksMapDoors: [Dir: SCNNode]! = [:]
     weak var room: Room!
     
     static func criateBlockMap(map: Map, x: Int, y: Int) -> BlockMap {
@@ -36,7 +36,7 @@ class BlockMap: SCNNode {
         let down    = map.map3D.blocksMap[String(x)+String(y-1)]
         let left    = map.map3D.blocksMap[String(x-1)+String(y)]
         
-        blockMap.blocksMap = ["Up": up, "Right": right, "Down": down, "Left": left]
+        blockMap.blocksMap = [.Up: up, .Right: right, .Down: down, .Left: left]
         
         let blockMapDoorsUp      = SCNNode()
         let blockMapDoorsRight   = SCNNode()
@@ -53,7 +53,7 @@ class BlockMap: SCNNode {
         blockMapDoorsDown.position  = SCNVector3(0,0,-0.45)
         blockMapDoorsLeft.position  = SCNVector3(0.45,0,0)
         
-        blockMap.blocksMapDoors = ["Up": blockMapDoorsUp, "Right": blockMapDoorsRight, "Down": blockMapDoorsDown, "Left": blockMapDoorsLeft]
+        blockMap.blocksMapDoors = [.Up: blockMapDoorsUp, .Right: blockMapDoorsRight, .Down: blockMapDoorsDown, .Left: blockMapDoorsLeft]
         
         for i in blockMap.blocksMapDoors!{
             let mat = SCNMaterial()

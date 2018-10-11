@@ -24,7 +24,7 @@ class Main: UIViewController {
         if let nextViewController = Area.storyboardInstance() {
             nextViewController.brain.castPlayer = castPlayer
             castPlayer.startGame()
-            nextViewController.brain.thisRoom = ComRoom(castPlayer: castPlayer)
+            //nextViewController.brain.thisRoom = ComRoom(castPlayer: castPlayer)
             nextViewController.brain.StartGame()
             present(nextViewController, animated: true, completion: nil)
         }
@@ -64,7 +64,6 @@ class Main: UIViewController {
             nextViewController.brain.castPlayer = castPlayer
             nextViewController.brain.thisRoom = castPlayer.map.mapRooms[String(x) + String(y)]!
             nextViewController.brain.thisRoom.InRoom(castPlayer: castPlayer)
-            nextViewController.brain.refreshRoom()
             present(nextViewController, animated: true, completion: nil)
         }
     }

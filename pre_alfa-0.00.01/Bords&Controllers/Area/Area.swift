@@ -24,8 +24,6 @@ class Area: UIViewController {
         }
         return true
     }
-    private var second = -1
-    
     
     static func storyboardInstance() -> Area? {
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
@@ -53,13 +51,20 @@ class Area: UIViewController {
     }
     
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        var dir: Dir?
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
-                case .down:  brain.step(dir: .Up)
-                case .left:  brain.step(dir: .Right)
-                case .up:    brain.step(dir: .Down)
-                case .right: brain.step(dir: .Left)
+                case .down:     dir = .Up
+                case .left:     dir = .Right
+                case .up:       dir = .Down
+                case .right:    dir = .Left
+                
             default: break
+            }
+            if let nextRoom = brain.step(dir: dir!){
+                stuel.animStep(dir: dir!)
+                stuel.outputRoom(room: nextRoom)
+                stuel.animEnemyView()
             }
         }
     }
@@ -100,7 +105,8 @@ class Area: UIViewController {
         stuel.createRoomView()
         stuel.roomView = stuel.newRoomView
         
-        brain.startView()
+        stuel.outputRoom(room: brain.thisRoom)
+        
         if stuel.atackView != nil{
             stuel.atackView!.isHidden = false
         }
@@ -111,7 +117,6 @@ class Area: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     

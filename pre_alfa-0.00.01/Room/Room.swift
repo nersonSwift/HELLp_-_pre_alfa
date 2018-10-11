@@ -92,26 +92,25 @@ class Room {
     var xy: String{
         return String(x) + String(y)
     }
-    var Doors: [String: Door]{
+    var Doors: [Dir: Door]{
         set(doors){
             try! realm.write {
                 for i in doors{
                     switch i.key{
-                    case "Up": saveRoom.up = i.value.rawValue
-                    case "Right": saveRoom.right = i.value.rawValue
-                    case "Down": saveRoom.down = i.value.rawValue
-                    case "Left": saveRoom.left = i.value.rawValue
-                    default:break
+                    case .Up: saveRoom.up = i.value.rawValue
+                    case .Right: saveRoom.right = i.value.rawValue
+                    case .Down: saveRoom.down = i.value.rawValue
+                    case .Left: saveRoom.left = i.value.rawValue
                     }
                 }
             }
         }
         get{
-            var doors: [String: Door] = [:]
-            doors["Up"]     = GetClass.getDoor(name: saveRoom.up)
-            doors["Right"]  = GetClass.getDoor(name: saveRoom.right)
-            doors["Down"]   = GetClass.getDoor(name: saveRoom.down)
-            doors["Left"]   = GetClass.getDoor(name: saveRoom.left)
+            var doors: [Dir: Door] = [:]
+            doors[.Up]     = GetClass.getDoor(name: saveRoom.up)
+            doors[.Right]  = GetClass.getDoor(name: saveRoom.right)
+            doors[.Down]   = GetClass.getDoor(name: saveRoom.down)
+            doors[.Left]   = GetClass.getDoor(name: saveRoom.left)
             return doors
         }
     }

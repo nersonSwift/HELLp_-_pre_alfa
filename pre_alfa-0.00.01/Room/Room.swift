@@ -48,7 +48,7 @@ class Room {
         }
     }
     var close: Bool{
-        set(firstVisitingTriger) {
+        set(close) {
             try! realm.write {
                 saveRoom.close = close
             }

@@ -196,9 +196,9 @@ class StuelAnimArea{
     
     func outputRoom(room: Room){
         switch room.nameRoom {
-        case "ComRoom":     area.stuel.roomView.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-        case "DmgRoom":     area.stuel.roomView.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-        case "CloseRoom":   area.stuel.roomView.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+        case "ComRoom":     roomView.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        case "DmgRoom":     roomView.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        case "CloseRoom":   roomView.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
             
         default: break
         }
@@ -210,11 +210,11 @@ class StuelAnimArea{
         if let a = room as? StorRoom{
             let widthDoor   = area.view.frame.width/10
             let heightDoor  = widthDoor
-            let payButtonFrame = CGRect(x:  area.stuel.roomView.frame.width/2 - widthDoor / 2, y: area.stuel.roomView.frame.height/2 - heightDoor / 2, width: widthDoor, height: heightDoor)
+            let payButtonFrame = CGRect(x:  roomView.frame.width/2 - widthDoor / 2, y: roomView.frame.height/2 - heightDoor / 2, width: widthDoor, height: heightDoor)
             let payButton = UIButton(frame: payButtonFrame)
             a.createLogiсButton(payButton: payButton)
             payButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-            area.stuel.roomView.addSubview(payButton)
+            roomView.addSubview(payButton)
         }
     }
 }

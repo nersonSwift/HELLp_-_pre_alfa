@@ -350,14 +350,14 @@
 		51DE5C5F210D231200CC002E /* Bords&Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				51C20B562114A74200A63B7E /* FIghtAren */,
-				51A2C2872105312300E8ADC4 /* Area */,
-				51DE5C60210D235E00CC002E /* LostBord */,
-				51DE5C61210D238100CC002E /* PlayMenu */,
 				51DE5C62210D239800CC002E /* Main */,
-				51200F852121EBF00018E53E /* MapView */,
 				51DE5C63210D23A800CC002E /* PlayerCast */,
+				51A2C2872105312300E8ADC4 /* Area */,
+				51C20B562114A74200A63B7E /* FIghtAren */,
+				51DE5C61210D238100CC002E /* PlayMenu */,
+				51200F852121EBF00018E53E /* MapView */,
 				511AEE622146AD4B007D2A2A /* InventeryBoard */,
+				51DE5C60210D235E00CC002E /* LostBord */,
 			);
 			path = "Bords&Controllers";
 			sourceTree = "<group>";

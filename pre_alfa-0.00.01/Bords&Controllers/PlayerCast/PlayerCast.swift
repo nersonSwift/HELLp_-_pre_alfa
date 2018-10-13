@@ -33,7 +33,7 @@ class PlayerCast: UIViewController {
         }
     }
     
-    @IBAction func Player1(_ sender: Any) {
+    @IBAction func player1(_ sender: Any) {
         castPlayer.playerSet = true
         castPlayer.defaultPlayer = Lilit()
         castPlayer.defaultPlayer.stats.cards = [CardAtack(), HpCard()]

@@ -289,7 +289,6 @@ class FightAren: UIViewController {
             let a = hitResults[0]
             
             if a.node.name == "WinBox" && endAnimStep{
-                //brain.room?.saveThisRoom(realm: brain.castPlayer.realm , sevedRoom: brain.castPlayer.savedRooms)
                 for i in brain.chest{
                     brain.player.inventery.AddItem(steckItem: i)
                 }
@@ -321,7 +320,6 @@ class FightAren: UIViewController {
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 

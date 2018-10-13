@@ -17,8 +17,8 @@ class CastPlayer{
     var defaultPlayer = Player()
     var map: Map!
     var playerSet = false
+    var loadGame = false
     let realm = try! Realm()
-    
     var savedRooms: Results<SaveRoom>!
     
     init() {
@@ -28,8 +28,6 @@ class CastPlayer{
     
     @objc func startGame(){
         map = Map(castPlayer: self)
-        
-       
         switch defaultPlayer.name {
             case "Lilit": player = Lilit()
         default: break

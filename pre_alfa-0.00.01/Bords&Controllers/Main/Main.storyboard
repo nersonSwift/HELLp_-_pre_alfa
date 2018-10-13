@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OPO-39-Pvz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OPO-39-Pvz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,7 +32,7 @@
                                 </constraints>
                                 <state key="normal" title="Start"/>
                                 <connections>
-                                    <action selector="StartGame:" destination="OPO-39-Pvz" eventType="touchUpInside" id="h0W-le-fSl"/>
+                                    <action selector="startGame:" destination="OPO-39-Pvz" eventType="touchUpInside" id="h0W-le-fSl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcn-36-FuB">
@@ -43,11 +43,11 @@
                                 </constraints>
                                 <state key="normal" title="Player"/>
                                 <connections>
-                                    <action selector="PalyerCast:" destination="OPO-39-Pvz" eventType="touchUpInside" id="lTx-5T-dKx"/>
+                                    <action selector="palyerCast:" destination="OPO-39-Pvz" eventType="touchUpInside" id="lTx-5T-dKx"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9o-5R-cvH">
-                                <rect key="frame" x="156" y="324" width="62" height="30"/>
+                                <rect key="frame" x="156.5" y="324" width="62" height="30"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueGame:" destination="OPO-39-Pvz" eventType="touchUpInside" id="nL2-og-Dbq"/>
@@ -67,9 +67,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rTY-Zr-bh5"/>
                     </view>
-                    <connections>
-                        <outlet property="fgd" destination="vJx-Cm-ubR" id="3Zh-UM-tbR"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PZn-dJ-oaq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

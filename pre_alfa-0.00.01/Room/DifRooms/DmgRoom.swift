@@ -13,9 +13,9 @@ class DmgRoom: DifRoom {
     
     override func setDifRoom(x: Int, y: Int, castPlayer: CastPlayer) {
         super.setDifRoom(x: x, y: y, castPlayer: castPlayer)
-        nameRoom = "CloseRoom"
-        self.nameRoom = "DmgRoom"
-        Doors = [.Up : Door.dmgDoor, .Right : Door.dmgDoor, .Down : Door.dmgDoor, .Left : Door.dmgDoor]
+        nameRoom = "DmgRoom"
+        typeDoors = Door.dmgDoor
+        Doors = [.Up : typeDoors, .Right : typeDoors, .Down : typeDoors, .Left : typeDoors]
         
         CheckNoRoom(castPlayer: castPlayer)
     }

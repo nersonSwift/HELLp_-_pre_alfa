@@ -25,10 +25,10 @@ class Area: UIViewController {
         return true
     }
     
-    static func storyboardInstance() -> Area? {
+    static func storyboardInstance(castPlayer: CastPlayer) -> Area? {
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
         let area = storyboard.instantiateInitialViewController() as? Area
-        area!.brain = BrainArea(area: area!)
+        area!.castPlayer = castPlayer
         return area
     }
     
@@ -36,7 +36,9 @@ class Area: UIViewController {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     
     var brain: BrainArea!
-    var stuel: StuelAnimArea!
+    private var stuel: StuelAnimArea!
+    
+    var castPlayer: CastPlayer!
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -44,7 +46,8 @@ class Area: UIViewController {
     func addSwipe() {
         let directions: [UISwipeGestureRecognizer.Direction] = [.right, .left, .up, .down]
         for direction in directions {
-            let gesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+            let gesture = UISwipeGestureRecognizer(target: self,
+                                                   action: #selector(self.respondToSwipeGesture))
             gesture.direction = direction
             self.view.addGestureRecognizer(gesture)
         }
@@ -97,10 +100,18 @@ class Area: UIViewController {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        brain = BrainArea(area: self)
         stuel = StuelAnimArea(area: self)
+        brain.castPlayer = castPlayer
+        
+        if castPlayer.loadGame{
+            brain.continueGame()
+        }else{
+            brain.startGame()
+        }
         
         stuel.createRoomView()
         stuel.roomView = stuel.newRoomView

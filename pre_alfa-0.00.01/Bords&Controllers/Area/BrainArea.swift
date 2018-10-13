@@ -27,20 +27,14 @@ class BrainArea {
         self.area = area
     }
     
-    private func refreshDoor(dir: Dir){
-        var difDir: Dir
-        switch dir{
-            case .Up    :difDir = .Down
-            case .Right :difDir = .Left
-            case .Down  :difDir = .Up
-            case .Left  :difDir = .Right
-        }
-
-        if thisRoom.Doors[dir] == Door.whatDoor {
-            if let newRoom = castPlayer.map.createDifRoom(dir: dir){
-                thisRoom.Doors[dir] = castPlayer.map.mapRooms[String(newRoom.x) + String(newRoom.y)]!.Doors[difDir]
-            }else{
-                thisRoom.Doors[dir] = Door.woodDoor
+    private func refreshDoors(){
+        for i in thisRoom.Doors{
+            if i.value == Door.whatDoor {
+                if let newRoom = castPlayer.map.createDifRoom(dir: i.key){
+                    thisRoom.Doors[i.key] = newRoom.typeDoors
+                }else{
+                    thisRoom.Doors[i.key] = Door.woodDoor
+                }
             }
         }
     }
@@ -63,6 +57,7 @@ class BrainArea {
         }
         
         if let nextRoom = castPlayer.map.mapRooms[String(nX) + String(nY)]{
+            print(nextRoom.close)
             if !nextRoom.openRoom(player: castPlayer.player){
                 return nil
             }
@@ -80,24 +75,26 @@ class BrainArea {
         thisRoom.NoInRoom()
         thisRoom = castPlayer.map.mapRooms[xy]!
         thisRoom.InRoom(castPlayer: castPlayer)
-        
-        for i in thisRoom.Doors{
-            refreshDoor(dir: i.key)
-        }
+        refreshDoors()
         thisRoom.firstVisiting(castPlayer: castPlayer)
         return thisRoom
         
     }
     
-    func StartGame(){
+    func startGame(){
+        castPlayer.startGame()
         thisRoom = ComRoom(castPlayer: castPlayer)
         castPlayer.map.mapRooms = ["00" : thisRoom]
         thisRoom.InRoom(castPlayer: castPlayer)
-        
-        for i in thisRoom.Doors{
-            refreshDoor(dir: i.key)
-        }
+        refreshDoors()
         thisRoom.firstVisiting(castPlayer: castPlayer)
+    }
+    
+    func continueGame(){
+        let x = castPlayer.player.x
+        let y = castPlayer.player.y
+        thisRoom = castPlayer!.map.mapRooms[String(x) + String(y)]!
+        thisRoom.InRoom(castPlayer: castPlayer)
     }
     
 }

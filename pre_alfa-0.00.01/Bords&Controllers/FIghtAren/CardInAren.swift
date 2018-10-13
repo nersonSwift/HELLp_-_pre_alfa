@@ -11,8 +11,8 @@ import QuartzCore
 import SceneKit
 
 class CardInAren: SCNNode {
-    var positionCard: Dir!
     var card: Card!
+    var positionCard: Dir!
     
     static func criateCardInAren(positionCard: Dir, card: Card) -> CardInAren {
         

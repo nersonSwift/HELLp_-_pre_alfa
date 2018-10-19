@@ -17,6 +17,9 @@ class Room {
     let realm = try! Realm()
     var savedRooms: Results<SaveRoom>!
     
+////////////////////
+//MARK: - Property//
+////////////////////
     var id: Int{
         set(id) {
             try! realm.write {
@@ -96,35 +99,27 @@ class Room {
         set(doors){
             try! realm.write {
                 for i in doors{
-                    switch i.key{
-                    case .Up: saveRoom.up = i.value.rawValue
-                    case .Right: saveRoom.right = i.value.rawValue
-                    case .Down: saveRoom.down = i.value.rawValue
-                    case .Left: saveRoom.left = i.value.rawValue
-                    }
+                    saveRoom[i.key.rawValue] = i.value.rawValue
                 }
             }
         }
         get{
             var doors: [Dir: Door] = [:]
-            doors[.Up]     = GetClass.getDoor(name: saveRoom.up)
-            doors[.Right]  = GetClass.getDoor(name: saveRoom.right)
-            doors[.Down]   = GetClass.getDoor(name: saveRoom.down)
-            doors[.Left]   = GetClass.getDoor(name: saveRoom.left)
+            let dirDoor: [Dir] = [.Up, .Right, .Down, .Left]
+            for i in dirDoor{
+                let nameRoom = saveRoom[i.rawValue] as! String
+                doors[i] = GetClass.getDoor(name: nameRoom)
+            }
             return doors
         }
     }
     
+/////////////////
+//MARK: - Func//
+////////////////
+    
     init(){saveThisRoom()}
-    
     func openRoom(player: Player) -> Bool{return true}
-    
-    func loadRoom(saveRoom: SaveRoom, castPlayer: CastPlayer){
-        try! realm.write {
-            realm.delete(self.saveRoom)
-            self.saveRoom = saveRoom
-        }
-    }
     
     func criateBlockMapRoom(castPlayer: CastPlayer){
         castPlayer.player.stats.counterRoom += 1
@@ -144,6 +139,18 @@ class Room {
         }
     }
     
+    public func InRoom(castPlayer: CastPlayer){
+        inRoom = true
+        
+    }
+    public func NoInRoom(){
+        inRoom = false
+    }
+    
+/////////////////////
+//MARK: - RealmFunc//
+/////////////////////
+    
     func saveThisRoom(){
         try! realm.write {
             realm.add(saveRoom)
@@ -155,12 +162,11 @@ class Room {
         }
     }
     
-    public func InRoom(castPlayer: CastPlayer){
-        inRoom = true
-        
-    }
-    public func NoInRoom(){
-        inRoom = false
+    func loadRoom(saveRoom: SaveRoom, castPlayer: CastPlayer){
+        try! realm.write {
+            realm.delete(self.saveRoom)
+            self.saveRoom = saveRoom
+        }
     }
     
 }

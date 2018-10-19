@@ -23,8 +23,9 @@ class FightAren: UIViewController {
     }
     
     var brain = BrainFightAren()
+    var stuel = SceneStuel()
     
-    @IBOutlet var scnView: SCNView!
+    var scnView: SCNView!
     
     var scene: SCNScene!
     
@@ -46,31 +47,14 @@ class FightAren: UIViewController {
     var liveEnemy: [EnemyInAren] = []
     var selectLiveEnemy = 0
     
-
-
-    
     var endAnimStep = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        scene = SCNScene()
-        scnView.scene = scene
-        scnView.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        
-        let heightRoom = view.frame.height
-        let widthRoom = view.frame.width
-        
-        let cam = SCNNode()
-        cam.camera = SCNCamera()
-        if (2.16 < (heightRoom / widthRoom)) && ((heightRoom / widthRoom) < 2.17) {
-            cam.position = SCNVector3(0, 12, -4.5)
-        }else{
-            cam.position = SCNVector3(0, 10, -4.5)
-        }
-        cam.eulerAngles = SCNVector3(-Float.pi/2, 0, 0)
-        scene.rootNode.addChildNode(cam)
+        scnView = stuel.createScen(view: self.view)
+        scene = scnView.scene
+        stuel.createCam()
         
         hpWheel.geometry = SCNSphere(radius: 1)
         hpWheel.scale = SCNVector3(1.1, 0.1, 1.1)

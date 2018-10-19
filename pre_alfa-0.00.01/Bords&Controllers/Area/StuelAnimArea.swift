@@ -86,7 +86,7 @@ class StuelAnimArea{
         newRoomView.addSubview(doors[Dir.Left]!)
     }
     
-    func createRoomView(){
+    func createRoomView(room: Room){
         let widthDoor   = areaView!.frame.width/10
         let heightDoor  = widthDoor
         
@@ -117,7 +117,7 @@ class StuelAnimArea{
         stopButton.addTarget(area!, action: #selector(area!.menu), for: .touchDownRepeat)
         newRoomView.addSubview(stopButton)
         
-        if !area!.brain.thisRoom.enemys.isEmpty{
+        if !room.enemys.isEmpty{
             let atackViewFrame = CGRect(x:  areaView!.frame.width/2 - widthDoor * 3 / 2 , y: -widthDoor * 3, width: widthDoor * 3, height: widthDoor * 3)
             atackView = UIView(frame: atackViewFrame)
             atackView!.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
@@ -137,12 +137,12 @@ class StuelAnimArea{
 ////////////////
 //MARK: - Anim//
 ////////////////
-    func animStep(dir: Dir){
+    func animStep(dir: Dir, room: Room){
         
         var offScreenFirst: CGAffineTransform
         var offScreenSecond: CGAffineTransform
         
-        createRoomView()
+        createRoomView(room: room)
         switch dir {
         case .Up:
             offScreenFirst = CGAffineTransform(translationX: 0, y: -heightRoom + k)
@@ -205,7 +205,7 @@ class StuelAnimArea{
         for i in doors{
             i.value.backgroundColor = setColorDoor(door: room.Doors[i.key]!)
         }
-        countRoom.text = String(area.brain.castPlayer.player.stats.counterRoom)
+        countRoom.text = String(area!.castPlayer.player.stats.counterRoom)
 //
         if let a = room as? StorRoom{
             let widthDoor   = area.view.frame.width/10

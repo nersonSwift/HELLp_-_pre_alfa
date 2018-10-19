@@ -9,8 +9,8 @@
 import UIKit
 
 enum Dir: String{
-    case Up     = "Up"
-    case Right  = "Right"
-    case Left   = "Left"
-    case Down   = "Down"
+    case Up     = "up"
+    case Right  = "right"
+    case Left   = "left"
+    case Down   = "down"
 }

@@ -28,6 +28,7 @@
 		5139D0D321563A3700CC92A3 /* StuelAnimArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5139D0D221563A3700CC92A3 /* StuelAnimArea.swift */; };
 		5143160A21202E38003A0C11 /* CardInAren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143160921202E38003A0C11 /* CardInAren.swift */; };
 		5143160C2120864E003A0C11 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143160B2120864E003A0C11 /* Skeleton.swift */; };
+		5147425B217350C300C2227E /* SceneStuel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5147425A217350C300C2227E /* SceneStuel.swift */; };
 		5157168520EFA2FC007FA2F5 /* NoDoorRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157168420EFA2FC007FA2F5 /* NoDoorRoom.swift */; };
 		5157930220EA1E7A00327D91 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157930120EA1E7A00327D91 /* Area.swift */; };
 		5157930720EA1E7C00327D91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5157930620EA1E7C00327D91 /* Assets.xcassets */; };
@@ -91,6 +92,7 @@
 		5139D0D221563A3700CC92A3 /* StuelAnimArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuelAnimArea.swift; sourceTree = "<group>"; };
 		5143160921202E38003A0C11 /* CardInAren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInAren.swift; sourceTree = "<group>"; };
 		5143160B2120864E003A0C11 /* Skeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
+		5147425A217350C300C2227E /* SceneStuel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStuel.swift; sourceTree = "<group>"; };
 		5157168420EFA2FC007FA2F5 /* NoDoorRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDoorRoom.swift; sourceTree = "<group>"; };
 		515792FC20EA1E7A00327D91 /* pre_alfa-0.00.01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pre_alfa-0.00.01.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5157930120EA1E7A00327D91 /* Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
@@ -248,10 +250,10 @@
 			isa = PBXGroup;
 			children = (
 				516E27302117A05300409D97 /* AppDelegate.swift */,
-				5157930620EA1E7C00327D91 /* Assets.xcassets */,
-				516B10E1211C488D00DDE22A /* scenes.scnassets */,
 				5157930B20EA1E7C00327D91 /* Info.plist */,
 				512863212120ADA30047326D /* LaunchScreen.storyboard */,
+				5157930620EA1E7C00327D91 /* Assets.xcassets */,
+				516B10E1211C488D00DDE22A /* scenes.scnassets */,
 				51DE5C5F210D231200CC002E /* Bords&Controllers */,
 				5186DF0D20F0A877006AF275 /* Charactor */,
 				5186DF0A20F0A783006AF275 /* Room */,
@@ -333,6 +335,7 @@
 				51C20B572114A78800A63B7E /* BrainFightAren.swift */,
 				51C373E4211EFC950091A34F /* EnemyInAren.swift */,
 				5143160921202E38003A0C11 /* CardInAren.swift */,
+				5147425A217350C300C2227E /* SceneStuel.swift */,
 			);
 			path = FIghtAren;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				512BE7E8210E24340035DF60 /* FightStatsPlayer.swift in Sources */,
 				51DE5C56210B376000CC002E /* Lilit.swift in Sources */,
 				5143160A21202E38003A0C11 /* CardInAren.swift in Sources */,
+				5147425B217350C300C2227E /* SceneStuel.swift in Sources */,
 				51E42D9C20F36065007DA454 /* Map.swift in Sources */,
 				51F24BDF2107A1AB00912E15 /* PlayMenu.swift in Sources */,
 				51C20B582114A78800A63B7E /* BrainFightAren.swift in Sources */,

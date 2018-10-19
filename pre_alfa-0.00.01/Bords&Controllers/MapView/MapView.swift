@@ -13,12 +13,12 @@ import SceneKit
 class MapView: UIViewController {
 
     @IBOutlet var scene: SCNView!
-    var a: SCNScene!
+    var sceneMap: SCNScene!
     
     static func storyboardInstance(scene: SCNScene) -> MapView? {
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
         let viewController = storyboard.instantiateInitialViewController() as? MapView
-        viewController!.a = scene
+        viewController!.sceneMap = scene
         return viewController
     }
     
@@ -40,16 +40,13 @@ class MapView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scene.scene = a
+        scene.scene = sceneMap
         addSwipe()
         scene.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

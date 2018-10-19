@@ -35,7 +35,7 @@ class Area: UIViewController {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    var brain: BrainArea!
+    private var brain: BrainArea!
     private var stuel: StuelAnimArea!
     
     var castPlayer: CastPlayer!
@@ -65,7 +65,7 @@ class Area: UIViewController {
             default: break
             }
             if let nextRoom = brain.step(dir: dir!){
-                stuel.animStep(dir: dir!)
+                stuel.animStep(dir: dir!, room: nextRoom)
                 stuel.outputRoom(room: nextRoom)
                 stuel.animEnemyView()
             }
@@ -113,7 +113,7 @@ class Area: UIViewController {
             brain.startGame()
         }
         
-        stuel.createRoomView()
+        stuel.createRoomView(room: brain.thisRoom)
         stuel.roomView = stuel.newRoomView
         
         stuel.outputRoom(room: brain.thisRoom)

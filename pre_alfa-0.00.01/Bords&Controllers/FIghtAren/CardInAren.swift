@@ -25,10 +25,10 @@ class CardInAren: SCNNode {
         case .Up:
             cardInAren.position     = SCNVector3(0, 0, -2.455)
         case .Left:
-            cardInAren.position = SCNVector3(-1.227, 0, -2.125)
+            cardInAren.position     = SCNVector3(-1.227, 0, -2.125)
             cardInAren.eulerAngles  = SCNVector3(0, Float.pi/6 , 0)
         case .Right:
-            cardInAren.position = SCNVector3(1.227, 0, -2.126)
+            cardInAren.position     = SCNVector3(1.227, 0, -2.126)
             cardInAren.eulerAngles  = SCNVector3(0, -Float.pi/6 , 0)
         default: break
             

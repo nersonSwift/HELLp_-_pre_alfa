@@ -31,8 +31,8 @@ class BrainFightAren{
         selectEnemy = enemyInAren
     }
     
-    func PlayerStep(){
-        fightAren?.selectCard?.card.effect(player: player, selectEnemy: selectEnemy!.enemy, allEnemy: allEnemy)
+    func PlayerStep(card: Card){
+        card.effect(player: player, selectEnemy: selectEnemy!.enemy, allEnemy: allEnemy)
     }
     
     func setCardsInHand(){
@@ -61,7 +61,8 @@ class BrainFightAren{
         }
         
         if killTrig{
-            fightAren?.swipeEnemy(newSelectEnemy: fightAren!.selectingEnemy(dir: .Right))
+            let a = fightAren!.stuel.swipeEnemy(newSelectEnemy: fightAren!.selectingEnemy(dir: .Right))
+            setSelectEnemy(enemyInAren: a)
         }
         
         if fightAren!.liveEnemy.isEmpty{

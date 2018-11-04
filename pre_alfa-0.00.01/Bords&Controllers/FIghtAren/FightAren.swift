@@ -49,7 +49,7 @@ class FightAren: UIViewController {
         
         
         brain.startFight()
-        createEnemys(a: brain.room!.enemys.count)
+        createEnemys()
         
         addSwipe()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
@@ -57,20 +57,22 @@ class FightAren: UIViewController {
     }
     
     
-    func createEnemys(a: Int){
-        stuel.enemyDown = EnemyInAren.criateEmemyInAren(positionEnemy:  .Down)
+    func createEnemys(){
+        let enemys = brain.room!.enemys
+        
+        stuel.enemyDown = EnemyInAren.criateEmemyInAren(positionEnemy:  .Down, enemy: enemys[0])
         stuel.scene.rootNode.addChildNode(stuel.enemyDown!)
         brain.setSelectEnemy(enemyInAren: stuel.enemyDown!)
         
         liveEnemy.append(stuel.enemyDown!)
         
-        if a > 1{
-            stuel.enemyRight = EnemyInAren.criateEmemyInAren(positionEnemy: .Right)
+        if brain.room!.enemys.count > 1{
+            stuel.enemyRight = EnemyInAren.criateEmemyInAren(positionEnemy: .Right , enemy: enemys[1])
             stuel.scene.rootNode.addChildNode(stuel.enemyRight!)
             liveEnemy.append(stuel.enemyRight!)
         }
-         if a > 2{
-            stuel.enemyLeft = EnemyInAren.criateEmemyInAren(positionEnemy: .Left)
+         if brain.room!.enemys.count > 2{
+            stuel.enemyLeft = EnemyInAren.criateEmemyInAren(positionEnemy: .Left , enemy: enemys[2])
             stuel.scene.rootNode.addChildNode(stuel.enemyLeft!)
             liveEnemy.insert(stuel.enemyLeft!, at: 0)
             selectLiveEnemy = 1

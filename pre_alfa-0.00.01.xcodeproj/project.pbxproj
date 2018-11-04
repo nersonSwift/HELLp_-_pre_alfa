@@ -333,9 +333,9 @@
 				512863232120B1120047326D /* FightAren.storyboard */,
 				518F2F63210E5E1A008C036E /* FightAren.swift */,
 				51C20B572114A78800A63B7E /* BrainFightAren.swift */,
-				5147425A217350C300C2227E /* SceneStuel.swift */,
 				51C373E4211EFC950091A34F /* EnemyInAren.swift */,
 				5143160921202E38003A0C11 /* CardInAren.swift */,
+				5147425A217350C300C2227E /* SceneStuel.swift */,
 			);
 			path = FIghtAren;
 			sourceTree = "<group>";

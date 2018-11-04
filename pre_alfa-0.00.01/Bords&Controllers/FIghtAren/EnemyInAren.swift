@@ -11,13 +11,13 @@ import QuartzCore
 import SceneKit
 
 class EnemyInAren: SCNNode {
-    var enemy: Enemy!
+    //var enemy: Enemy!
     var positionEnemy: Dir!
     
-    static func criateEmemyInAren(positionEnemy: Dir, enemy: Enemy) -> EnemyInAren {
+    static func criateEmemyInAren(positionEnemy: Dir) -> EnemyInAren {
         
         let enemyInAren = EnemyInAren()
-        enemyInAren.enemy = enemy
+        //enemyInAren.enemy = enemy
         enemyInAren.positionEnemy = positionEnemy
         
         switch positionEnemy{
@@ -34,7 +34,7 @@ class EnemyInAren: SCNNode {
         
         let enemyTexture = SCNMaterial()
         let enemyTextureRip = SCNMaterial()
-        enemyTexture.diffuse.contents    =   #imageLiteral(resourceName: "scenes.scnassets/textures/" + enemy.name + ".jpg")
+        enemyTexture.diffuse.contents    = //  #imageLiteral(resourceName: "scenes.scnassets/textures/" + enemy.name + ".jpg")
         enemyTextureRip.diffuse.contents =   #imageLiteral(resourceName: "scenes.scnassets/textures/rip.jpg")
         enemyInAren.geometry?.materials = [enemyTexture,enemyTextureRip]
         

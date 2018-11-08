@@ -25,18 +25,21 @@ class Area: UIViewController {
         return true
     }
     
-    static func storyboardInstance(castPlayer: CastPlayer) -> Area? {
+    static func storyboardInstance(castPlayer: CastPlayer, navigation: NavigationController) -> Area? {
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
         let area = storyboard.instantiateInitialViewController() as? Area
         area!.castPlayer = castPlayer
+        area!.navigation = navigation
         return area
     }
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+    var main: Main!
     
     private var brain: BrainArea!
     private var stuel: StuelAnimArea!
+    var navigation: NavigationController!
     
     var castPlayer: CastPlayer!
     
@@ -86,7 +89,7 @@ class Area: UIViewController {
     
     
     @objc func menu(_ sender: UIButton) {
-        if let nextViewController = PlayMenu.storyboardInstance() {
+        if let nextViewController = PlayMenu.storyboardInstance(area: main,navigation: navigation) {
             nextViewController.modalPresentationStyle = .custom
             nextViewController.scene = castPlayer.map.map3D.scene
             nextViewController.player = castPlayer.player

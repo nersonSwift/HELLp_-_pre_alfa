@@ -13,10 +13,15 @@ import SceneKit
 class PlayMenu: UIViewController {
     var scene: SCNScene!
     var player: Player!
+    var area: Main!
+    var navigation: NavigationController!
     
-    static func storyboardInstance() -> PlayMenu? {
+    static func storyboardInstance(area: Main, navigation: NavigationController) -> PlayMenu? {
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
-        return storyboard.instantiateInitialViewController() as? PlayMenu
+        let playMenu = storyboard.instantiateInitialViewController() as? PlayMenu
+        playMenu?.area = area
+        playMenu!.navigation = navigation
+        return playMenu
     }
     
     @IBAction func map(_ sender: Any) {
@@ -43,7 +48,7 @@ class PlayMenu: UIViewController {
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             if swipeGesture.direction == .down {
-                dismiss(animated: true, completion: nil)
+                navigation.goToArea()
             }
         }
     }
@@ -58,4 +63,7 @@ class PlayMenu: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    @IBAction func goToMainMeny(_ sender: Any) {
+        area.dismiss(animated: true, completion: nil)
+    }
 }

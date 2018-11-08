@@ -13,43 +13,44 @@ import SceneKit
 
 class FightAren: UIViewController {
     
-    static func storyboardInstance() -> FightAren? {
+    static func storyboardInstance(room: Room, castPlayer: CastPlayer) -> FightAren? {
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
-        return storyboard.instantiateInitialViewController() as? FightAren
+        let fightAren = storyboard.instantiateInitialViewController() as? FightAren
+        fightAren!.room = room
+        fightAren!.castPlayer = castPlayer
+        return fightAren
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
-    var brain = BrainFightAren()
-    var stuel = SceneStuel()
+    var room: Room!
+    var castPlayer: CastPlayer!
     
-    var liveEnemy: [EnemyInAren] = []
+    private var brain: BrainFightAren!
+    private var stuel: SceneStuel!
+    
+    var allEnemyInAren: [EnemyInAren?] = [nil, nil, nil]
     var selectLiveEnemy = 0
     
     var endAnimStep = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        brain = BrainFightAren(fightAren: self, castPlayer: castPlayer, room: room)
+        stuel = SceneStuel(fightAren: self)
         
         stuel.createScen(view: self.view)
         stuel.createCam()
         stuel.createHpWheel()
         stuel.createWinBox()
-        
         brain.setCardsInHand()
         
-        var cards: [CardInAren] = []
-        
-        cards.append(CardInAren.criateCardInAren(positionCard: .Left,  card: brain.cardsInHand[0]))
-        cards.append(CardInAren.criateCardInAren(positionCard: .Up,    card: brain.cardsInHand[1]))
-        cards.append(CardInAren.criateCardInAren(positionCard: .Right, card: brain.cardsInHand[2]))
-        stuel.addCards(cards: cards)
-        
+        stuel.createCards(cards: brain.cardsInHand)
+        stuel.createEnemys(enemys: brain.room.enemys)
         
         brain.startFight()
-        createEnemys()
         
         addSwipe()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
@@ -57,49 +58,31 @@ class FightAren: UIViewController {
     }
     
     
-    func createEnemys(){
-        let enemys = brain.room!.enemys
-        
-        stuel.enemyDown = EnemyInAren.criateEmemyInAren(positionEnemy:  .Down, enemy: enemys[0])
-        stuel.scene.rootNode.addChildNode(stuel.enemyDown!)
-        brain.setSelectEnemy(enemyInAren: stuel.enemyDown!)
-        
-        liveEnemy.append(stuel.enemyDown!)
-        
-        if brain.room!.enemys.count > 1{
-            stuel.enemyRight = EnemyInAren.criateEmemyInAren(positionEnemy: .Right , enemy: enemys[1])
-            stuel.scene.rootNode.addChildNode(stuel.enemyRight!)
-            liveEnemy.append(stuel.enemyRight!)
-        }
-         if brain.room!.enemys.count > 2{
-            stuel.enemyLeft = EnemyInAren.criateEmemyInAren(positionEnemy: .Left , enemy: enemys[2])
-            stuel.scene.rootNode.addChildNode(stuel.enemyLeft!)
-            liveEnemy.insert(stuel.enemyLeft!, at: 0)
-            selectLiveEnemy = 1
-        }
-    }
-    
-    func selectingEnemy(dir: Dir) -> Dir {
-        if liveEnemy.count == 0{
-            return .Down
-        }
-        
-        switch dir {
-        case .Left:
-            if selectLiveEnemy <= 0{
-                selectLiveEnemy = liveEnemy.count - 1
-            }else{
-                selectLiveEnemy -= 1
+    func selectingEnemy(dir: Dir) -> Bool {
+        for _ in 0...2{
+            switch dir {
+            case .Left:
+                if selectLiveEnemy <= 0{
+                    selectLiveEnemy = allEnemyInAren.count - 1
+                }else{
+                    selectLiveEnemy -= 1
+                }
+            case .Right:
+                if selectLiveEnemy >= allEnemyInAren.count - 1{
+                    selectLiveEnemy = 0
+                }else{
+                    selectLiveEnemy += 1
+                }
+            default:break
             }
-        case .Right:
-            if selectLiveEnemy >= liveEnemy.count - 1{
-                selectLiveEnemy = 0
-            }else{
-                selectLiveEnemy += 1
+            if let a = allEnemyInAren[selectLiveEnemy]{
+                if !a.enemy!.dieFight{
+                    stuel.swipeEnemy(newSelectEnemy: allEnemyInAren[selectLiveEnemy]!.positionEnemy)
+                    return true
+                }
             }
-        default:break
         }
-        return liveEnemy[selectLiveEnemy].positionEnemy
+        return false
     }
     
     func newCards(){
@@ -136,7 +119,6 @@ class FightAren: UIViewController {
             if a.node.name == "Card"{
                 stuel.cardSelect(card: a.node)
             }
-            
         }
     }
     
@@ -144,15 +126,13 @@ class FightAren: UIViewController {
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
-            case .right: let a = stuel.swipeEnemy(newSelectEnemy: selectingEnemy(dir: .Left))
-                brain.setSelectEnemy(enemyInAren: a)
-            case .left:  let a = stuel.swipeEnemy(newSelectEnemy: selectingEnemy(dir: .Right))
-                brain.setSelectEnemy(enemyInAren: a)
+            case .right: _ = selectingEnemy(dir: .Left)
+            case .left:  _ = selectingEnemy(dir: .Right)
             case .up:
-                brain.PlayerStep(card: stuel.selectCard!.card)
+                brain.playerStep(card: stuel.selectCard!.card)
                 stuel.throwCard(completion: {
                     self.brain.checkEnemysLive()
-                    self.brain.EnemyStep()
+                    self.brain.enemyStep()
                     self.brain.checkPlayerLive()
                     self.stuel.cardReset(completion: {
                         self.newCards()

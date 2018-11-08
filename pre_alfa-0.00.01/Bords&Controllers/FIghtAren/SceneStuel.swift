@@ -12,6 +12,8 @@ import SceneKit
 
 class SceneStuel{
     
+    weak var fightAren: FightAren!
+    
     var scene: SCNScene!
     var scnView: SCNView!
     var view: UIView!
@@ -19,15 +21,40 @@ class SceneStuel{
     var hpWheel = SCNNode()
     var winBox  = SCNNode()
     
-    weak var selectCard : CardInAren?
+    weak var selectCard : CardInAren!
     
-    weak var cardLeft   : CardInAren?
-    weak var cardMid    : CardInAren?
-    weak var cardRight  : CardInAren?
+    weak var cardLeft   : CardInAren!
+    weak var cardMid    : CardInAren!
+    weak var cardRight  : CardInAren!
     
-    var enemyLeft   : EnemyInAren?
-    var enemyDown   : EnemyInAren?
-    var enemyRight  : EnemyInAren?
+    var enemyDown   : EnemyInAren?{
+        set(enemyDown){
+            fightAren.allEnemyInAren[0] = enemyDown
+        }
+        get{
+            return fightAren.allEnemyInAren[0]
+        }
+    }
+    var enemyRight  : EnemyInAren?{
+        set(enemyRight){
+            fightAren.allEnemyInAren[1] = enemyRight
+        }
+        get{
+            return fightAren.allEnemyInAren[1]
+        }
+    }
+    var enemyLeft   : EnemyInAren?{
+        set(enemyLeft){
+            fightAren.allEnemyInAren[2] = enemyLeft
+        }
+        get{
+            return fightAren.allEnemyInAren[2]
+        }
+    }
+    
+    init(fightAren: FightAren) {
+        self.fightAren = fightAren
+    }
     
     func createScen(view: UIView){
         self.view = view
@@ -67,17 +94,33 @@ class SceneStuel{
         scene.rootNode.addChildNode(winBox)
     }
     
-    func addCards(cards: [CardInAren]){
-        cardLeft    = cards[0]
-        cardMid     = cards[1]
-        cardRight   = cards[2]
+    func createEnemys(enemys: [Enemy]){
+        enemyDown = EnemyInAren.criateEmemyInAren(positionEnemy:  .Down, enemy: enemys[0])
+        scene.rootNode.addChildNode(enemyDown!)
+        
+        if enemys.count > 1{
+            enemyRight = EnemyInAren.criateEmemyInAren(positionEnemy: .Right , enemy: enemys[1])
+            scene.rootNode.addChildNode(enemyRight!)
+        }
+        if enemys.count > 2{
+            enemyLeft = EnemyInAren.criateEmemyInAren(positionEnemy: .Left , enemy: enemys[2])
+            scene.rootNode.addChildNode(enemyLeft!)
+        }
+    }
+    
+    func createCards(cards: [Card]){
+        cardLeft    = CardInAren.criateCardInAren(positionCard: .Left,  card: cards[0])
+        cardMid     = CardInAren.criateCardInAren(positionCard: .Up,    card: cards[1])
+        cardRight   = CardInAren.criateCardInAren(positionCard: .Right, card: cards[2])
         
         hpWheel.addChildNode(cardLeft!)
         hpWheel.addChildNode(cardMid!)
         hpWheel.addChildNode(cardRight!)
+        
+        selectCard = cardMid
     }
     
-    func swipeEnemy(newSelectEnemy: Dir) -> EnemyInAren{
+    func swipeEnemy(newSelectEnemy: Dir){
         let down    = SCNVector3(0, 1, -6)
         let left    = SCNVector3(-2.222, 0, -7.87)
         let right   = SCNVector3(2.222, 0, -7.87)
@@ -89,26 +132,23 @@ class SceneStuel{
             enemyLeft?.runAction(SCNAction.move(to: down , duration: 0.6))
             enemyDown?.runAction(SCNAction.move(to: right, duration: 0.6))
             enemyRight?.runAction(SCNAction.move(to: left, duration: 0.6))
-            return enemyLeft!
             
         case .Down:
             
             enemyLeft?.runAction(SCNAction.move(to: left , duration: 0.6))
             enemyDown?.runAction(SCNAction.move(to: down, duration: 0.6))
             enemyRight?.runAction(SCNAction.move(to: right, duration: 0.6))
-            return enemyDown!
             
         case .Right:
             
             enemyLeft?.runAction(SCNAction.move(to: right , duration: 0.6))
             enemyDown?.runAction(SCNAction.move(to: left, duration: 0.6))
             enemyRight?.runAction(SCNAction.move(to: down, duration: 0.6))
-            return enemyRight!
             
         default: break
         }
-        return enemyDown!
     }
+    
     
     func rotationCard() {
         selectCard?.runAction(SCNAction.rotate(by: CGFloat(Float.pi), around: selectCard!.position, duration: 0.7))

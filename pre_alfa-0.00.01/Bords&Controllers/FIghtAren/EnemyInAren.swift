@@ -13,6 +13,7 @@ import SceneKit
 class EnemyInAren: SCNNode {
     var enemy: Enemy!
     var positionEnemy: Dir!
+    var live = true
     
     static func criateEmemyInAren(positionEnemy: Dir, enemy: Enemy) -> EnemyInAren {
         
@@ -41,8 +42,13 @@ class EnemyInAren: SCNNode {
         return enemyInAren
     }
     
-    func die(){
-        self.runAction(SCNAction.rotateBy(x: CGFloat(Float.pi), y: 0, z: 0, duration: 0.6))
+    func die() -> Bool{
+        if live{
+            self.runAction(SCNAction.rotateBy(x: CGFloat(Float.pi), y: 0, z: 0, duration: 0.6))
+            live = false
+            return true
+        }
+        return false
     }
 
 }

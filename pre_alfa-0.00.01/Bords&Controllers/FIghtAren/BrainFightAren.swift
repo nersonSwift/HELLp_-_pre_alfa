@@ -9,29 +9,36 @@
 import UIKit
 
 class BrainFightAren{
-    weak var fightAren: FightAren?
-    weak var room: Room?
+    weak var fightAren: FightAren!
+    weak var room: Room!
     weak var castPlayer: CastPlayer!
+    
     var player: Player{
         return castPlayer.player
     }
-    var selectEnemy: EnemyInAren?
+    var selectEnemy: EnemyInAren?{
+        return fightAren!.allEnemyInAren[fightAren!.selectLiveEnemy]
+    }
     var cardsInHand: [Card] = []
     var chest: [StackItem] = []
     
     var allEnemy: [Enemy]{
-        var a: [Enemy] = []
-        for i in fightAren!.liveEnemy{
-            a.append(i.enemy!)
+        var allEnemy: [Enemy] = []
+        for i in fightAren!.allEnemyInAren{
+            if let enemyInAren = i{
+                allEnemy.append(enemyInAren.enemy!)
+            }
         }
-        return a
+        return allEnemy
     }
     
-    func setSelectEnemy(enemyInAren: EnemyInAren){
-        selectEnemy = enemyInAren
+    init(fightAren: FightAren, castPlayer: CastPlayer, room: Room) {
+        self.fightAren  = fightAren
+        self.castPlayer = castPlayer
+        self.room       = room
     }
     
-    func PlayerStep(card: Card){
+    func playerStep(card: Card){
         card.effect(player: player, selectEnemy: selectEnemy!.enemy, allEnemy: allEnemy)
     }
     
@@ -45,38 +52,34 @@ class BrainFightAren{
     }
     
     func checkEnemysLive(){
-        var killTrig = false
-        for i in (0 ..< fightAren!.liveEnemy.count).reversed(){
-            print(i)
-            if fightAren!.liveEnemy[i].enemy!.fightStats.fightHP <= 0{
+        for i in fightAren!.allEnemyInAren{
+            if let enemyInAren = i{
                 
-                if let dropedItem = fightAren!.liveEnemy[i].enemy.dropItem(){
-                    chest.append(dropedItem)
+                if enemyInAren.enemy!.dieFight{
+                    
+                    if enemyInAren.die(){
+                        
+                        if let dropedItem = enemyInAren.enemy.dropItem(){
+                            chest.append(dropedItem)
+                        }
+                        
+                        if !fightAren!.selectingEnemy(dir: .Right){
+                            room?.enemys = []
+                            player.fightStats.endFight(player: player)
+                            fightAren?.endFight()
+                        }
+                    }
                 }
-                fightAren!.liveEnemy[i].die()
-                fightAren!.liveEnemy.remove(at: i)
-                
-                killTrig = true
             }
-        }
-        
-        if killTrig{
-            let a = fightAren!.stuel.swipeEnemy(newSelectEnemy: fightAren!.selectingEnemy(dir: .Right))
-            setSelectEnemy(enemyInAren: a)
-        }
-        
-        if fightAren!.liveEnemy.isEmpty{
-            room?.enemys = []
-            player.fightStats.endFight(player: player)
-            fightAren?.endFight()
         }
     }
     
-    func EnemyStep(){
+    func enemyStep(){
         
-        for i in fightAren!.liveEnemy{
-            player.fightStats.takeDMG(charactor: player, dmg: i.enemy!.fightStats.attackDmg)
-            print(player.fightStats.fightHP)
+        for i in fightAren!.allEnemyInAren{
+            if let enemyInAren = i{
+                player.fightStats.takeDMG(charactor: player, dmg: enemyInAren.enemy!.fightStats.attackDmg)
+            }
         }
         
     }
@@ -89,7 +92,6 @@ class BrainFightAren{
     }
     
     func startFight() {
-        
         player.fightStats.startFight(charactor: player)
         for i in room!.enemys{
             i.fightStats.startFight(charactor: i)

@@ -78,10 +78,7 @@ class Area: UIViewController {
     
    @objc func fight(_ sender: UIButton) {
         if !brain.thisRoom.enemys.isEmpty{
-            if let nextViewController = FightAren.storyboardInstance() {
-                nextViewController.brain.castPlayer = brain.castPlayer
-                nextViewController.brain.room = brain.thisRoom
-                nextViewController.brain.fightAren = nextViewController
+            if let nextViewController = FightAren.storyboardInstance(room: brain.thisRoom, castPlayer: castPlayer) {
                 self.present(nextViewController, animated: true, completion: nil)
             }
         }
@@ -91,8 +88,8 @@ class Area: UIViewController {
     @objc func menu(_ sender: UIButton) {
         if let nextViewController = PlayMenu.storyboardInstance() {
             nextViewController.modalPresentationStyle = .custom
-            nextViewController.scene = brain.castPlayer.map.map3D.scene
-            nextViewController.player = brain.castPlayer.player
+            nextViewController.scene = castPlayer.map.map3D.scene
+            nextViewController.player = castPlayer.player
             self.present(nextViewController, animated: true, completion: nil)
         }
     }

@@ -10,15 +10,8 @@ import UIKit
 
 
 class Main: UIViewController {
-    var castPlayer: CastPlayer!
-    var navigation = NavigationController()
+    let castPlayer = CastPlayer()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        castPlayer = navigation.castPlayer
-        navigation.controllers.append(self)
-    }
-    
     @IBAction func startGame(_ sender: Any) {
         if !castPlayer.playerSet{
             return
@@ -27,7 +20,9 @@ class Main: UIViewController {
             castPlayer.realm.delete(castPlayer.savedRooms)
         }
         castPlayer.loadGame = false
-        navigation.goToArea()
+        if let nextViewController = Area.storyboardInstance(castPlayer: castPlayer) {
+            present(nextViewController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func continueGame(_ sender: Any) {
@@ -62,7 +57,9 @@ class Main: UIViewController {
             print(String(i.value.id) + " - " + i.value.nameRoom)
         }
         
-        navigation.goToArea()
+        if let nextViewController = Area.storyboardInstance(castPlayer: castPlayer) {
+            present(nextViewController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func palyerCast(_ sender: Any) {
@@ -71,5 +68,7 @@ class Main: UIViewController {
             present(nextViewController, animated: true, completion: nil)
         }
     }
+    
+    @IBAction func unwindToViewController (sender: UIStoryboardSegue){}
 }
 

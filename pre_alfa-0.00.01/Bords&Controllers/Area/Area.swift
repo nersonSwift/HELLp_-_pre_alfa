@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class Area: UIViewController {
+class Area: UIViewController, NavigationProtocol {
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return UIStatusBarStyle.lightContent
@@ -25,10 +25,12 @@ class Area: UIViewController {
         return true
     }
     
-    static func storyboardInstance(castPlayer: CastPlayer) -> Area? {
+    static func storyboardInstance(navigation: Navigation) -> UIViewController? {
+        print(String(describing: self))
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
         let area = storyboard.instantiateInitialViewController() as? Area
-        area!.castPlayer = castPlayer
+        area!.navigation = navigation
+        area!.castPlayer = navigation.castPlayer
         return area
     }
     
@@ -37,6 +39,7 @@ class Area: UIViewController {
     
     private var brain: BrainArea!
     private var stuel: StuelAnimArea!
+    var navigation: Navigation!
     
     var castPlayer: CastPlayer!
     
@@ -77,21 +80,15 @@ class Area: UIViewController {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     
    @objc func fight(_ sender: UIButton) {
-        if !brain.thisRoom.enemys.isEmpty{
-            if let nextViewController = FightAren.storyboardInstance(room: brain.thisRoom, castPlayer: castPlayer) {
-                self.present(nextViewController, animated: true, completion: nil)
-            }
-        }
+        navigation.transitionToView(viewControllerType: FightAren(), special: nil )
     }
     
     
     @objc func menu(_ sender: UIButton) {
-        if let nextViewController = PlayMenu.storyboardInstance() {
-            nextViewController.modalPresentationStyle = .custom
-            nextViewController.scene = castPlayer.map.map3D.scene
-            nextViewController.player = castPlayer.player
-            self.present(nextViewController, animated: true, completion: nil)
-        }
+        navigation.transitionToView(viewControllerType: PlayMenu(), special: {(nextViewController: UIViewController) in
+            let playMenu = nextViewController as? PlayMenu
+            playMenu?.modalPresentationStyle = .custom
+        })
     }
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -10,17 +10,20 @@ import UIKit
 import QuartzCore
 import SceneKit
 
-class MapView: UIViewController {
+class MapView: UIViewController, NavigationProtocol  {
+    var navigation: Navigation!
+    
+    static func storyboardInstance(navigation: Navigation) -> UIViewController? {
+        let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
+        let viewController = storyboard.instantiateInitialViewController() as? MapView
+        viewController!.sceneMap = navigation.castPlayer.map.map3D.scene
+        viewController!.navigation = navigation
+        return viewController
+    }
+    
 
     @IBOutlet var scene: SCNView!
     var sceneMap: SCNScene!
-    
-    static func storyboardInstance(scene: SCNScene) -> MapView? {
-        let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
-        let viewController = storyboard.instantiateInitialViewController() as? MapView
-        viewController!.sceneMap = scene
-        return viewController
-    }
     
     func addSwipe() {
         let direction = UISwipeGestureRecognizer.Direction.down
@@ -33,7 +36,10 @@ class MapView: UIViewController {
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             if swipeGesture.direction == .down {
-                dismiss(animated: true, completion: nil)
+                navigation.transitionToView(viewControllerType: PlayMenu(), special: {(nextViewController: UIViewController) in
+                    let playMenu = nextViewController as? PlayMenu
+                    playMenu?.modalPresentationStyle = .custom
+                })
             }
         }
     }

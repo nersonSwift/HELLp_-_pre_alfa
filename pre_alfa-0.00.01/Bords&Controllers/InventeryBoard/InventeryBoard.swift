@@ -8,13 +8,15 @@
 
 import UIKit
 
-class InventeryBoard: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    static func storyboardInstance(player: Player) -> InventeryBoard? {
+class InventeryBoard: UIViewController, UITableViewDelegate, UITableViewDataSource, NavigationProtocol  {
+    var navigation: Navigation!
+    
+    static func storyboardInstance(navigation: Navigation) -> UIViewController? {
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
-        let a = storyboard.instantiateInitialViewController() as? InventeryBoard
-        a?.player = player
-        return a
+        let inventeryBoard = storyboard.instantiateInitialViewController() as? InventeryBoard
+        inventeryBoard?.navigation = navigation
+        inventeryBoard?.player = navigation.castPlayer.player
+        return inventeryBoard
     }
     
     var nrt: [String] = []
@@ -77,7 +79,10 @@ class InventeryBoard: UIViewController, UITableViewDelegate, UITableViewDataSour
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             if swipeGesture.direction == .down {
-                dismiss(animated: true, completion: nil)
+                navigation.transitionToView(viewControllerType: PlayMenu(), special: {(nextViewController: UIViewController) in
+                    let playMenu = nextViewController as? PlayMenu
+                    playMenu?.modalPresentationStyle = .custom
+                })
             }
         }
     }

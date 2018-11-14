@@ -8,14 +8,17 @@
 
 import UIKit
 
-class PlayerCast: UIViewController {
-
-    static func storyboardInstance() -> PlayerCast? {
-        let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
-        return storyboard.instantiateInitialViewController() as? PlayerCast
-    }
-    
+class PlayerCast: UIViewController, NavigationProtocol {
+    var navigation: Navigation!
     var castPlayer: CastPlayer!
+    
+    static func storyboardInstance(navigation: Navigation) -> UIViewController? {
+        let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
+        let playerCast = storyboard.instantiateInitialViewController() as? PlayerCast
+        playerCast!.navigation = navigation
+        playerCast!.castPlayer = navigation.castPlayer
+        return playerCast
+    }
     
     func addSwipe() {
         let direction = UISwipeGestureRecognizer.Direction.down
@@ -28,7 +31,7 @@ class PlayerCast: UIViewController {
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             if swipeGesture.direction == .down {
-                dismiss(animated: true, completion: nil)
+                navigation.transitionToView(viewControllerType: Main(), special: nil)
             }
         }
     }
@@ -37,7 +40,7 @@ class PlayerCast: UIViewController {
         castPlayer.playerSet = true
         castPlayer.defaultPlayer = Lilit()
         castPlayer.defaultPlayer.stats.cards = [CardAtack(), HpCard()]
-        dismiss(animated: true, completion: nil)
+        navigation.transitionToView(viewControllerType: Main(), special: nil)
     }
     @IBAction func Player2(_ sender: Any) {
         

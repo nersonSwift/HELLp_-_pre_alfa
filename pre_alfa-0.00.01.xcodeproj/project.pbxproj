@@ -64,6 +64,8 @@
 		51E42D9C20F36065007DA454 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E42D9B20F36065007DA454 /* Map.swift */; };
 		51E4516F2147E4FD00E25903 /* InventeryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51E4516E2147E4FD00E25903 /* InventeryBoard.storyboard */; };
 		51E451712147E52500E25903 /* InventeryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E451702147E52500E25903 /* InventeryBoard.swift */; };
+		51EBC66721997EED00BA3160 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EBC66621997EED00BA3160 /* Navigation.swift */; };
+		51EBC669219A3D9A00BA3160 /* NavigationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EBC668219A3D9A00BA3160 /* NavigationProtocol.swift */; };
 		51F24BDF2107A1AB00912E15 /* PlayMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F24BDE2107A1AB00912E15 /* PlayMenu.swift */; };
 		51F24BE42107A4B800912E15 /* PlayMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51F24BE32107A4B800912E15 /* PlayMenu.storyboard */; };
 		51F26F5420FB57C1003D326A /* DifRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F26F5320FB57C1003D326A /* DifRoom.swift */; };
@@ -130,6 +132,8 @@
 		51E42D9B20F36065007DA454 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		51E4516E2147E4FD00E25903 /* InventeryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InventeryBoard.storyboard; sourceTree = "<group>"; };
 		51E451702147E52500E25903 /* InventeryBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventeryBoard.swift; sourceTree = "<group>"; };
+		51EBC66621997EED00BA3160 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		51EBC668219A3D9A00BA3160 /* NavigationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationProtocol.swift; sourceTree = "<group>"; };
 		51F24BDE2107A1AB00912E15 /* PlayMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMenu.swift; sourceTree = "<group>"; };
 		51F24BE32107A4B800912E15 /* PlayMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlayMenu.storyboard; sourceTree = "<group>"; };
 		51F26F5320FB57C1003D326A /* DifRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifRoom.swift; sourceTree = "<group>"; };
@@ -361,6 +365,8 @@
 				51200F852121EBF00018E53E /* MapView */,
 				511AEE622146AD4B007D2A2A /* InventeryBoard */,
 				51DE5C60210D235E00CC002E /* LostBord */,
+				51EBC66621997EED00BA3160 /* Navigation.swift */,
+				51EBC668219A3D9A00BA3160 /* NavigationProtocol.swift */,
 			);
 			path = "Bords&Controllers";
 			sourceTree = "<group>";
@@ -571,8 +577,10 @@
 				512BE7E8210E24340035DF60 /* FightStatsPlayer.swift in Sources */,
 				51DE5C56210B376000CC002E /* Lilit.swift in Sources */,
 				5143160A21202E38003A0C11 /* CardInAren.swift in Sources */,
+				51EBC66721997EED00BA3160 /* Navigation.swift in Sources */,
 				5147425B217350C300C2227E /* SceneStuel.swift in Sources */,
 				51E42D9C20F36065007DA454 /* Map.swift in Sources */,
+				51EBC669219A3D9A00BA3160 /* NavigationProtocol.swift in Sources */,
 				51F24BDF2107A1AB00912E15 /* PlayMenu.swift in Sources */,
 				51C20B582114A78800A63B7E /* BrainFightAren.swift in Sources */,
 				519FA31D212AACAD00FAE753 /* HpCard.swift in Sources */,

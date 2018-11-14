@@ -57,7 +57,7 @@ class BrainFightAren{
                 
                 if enemyInAren.enemy!.dieFight{
                     
-                    if enemyInAren.die(){
+                    if enemyInAren.dieAnim(){
                         
                         if let dropedItem = enemyInAren.enemy.dropItem(){
                             chest.append(dropedItem)

@@ -11,13 +11,14 @@ import QuartzCore
 import SceneKit
 
 
-class FightAren: UIViewController {
+class FightAren: UIViewController, NavigationProtocol  {
+    var navigation: Navigation!
     
-    static func storyboardInstance(room: Room, castPlayer: CastPlayer) -> FightAren? {
+    static func storyboardInstance(navigation: Navigation) -> UIViewController? {
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
         let fightAren = storyboard.instantiateInitialViewController() as? FightAren
-        fightAren!.room = room
-        fightAren!.castPlayer = castPlayer
+        fightAren!.castPlayer = navigation.castPlayer
+        fightAren!.room = navigation.castPlayer.map.mapRooms[navigation.castPlayer.player.xy]
         return fightAren
     }
     

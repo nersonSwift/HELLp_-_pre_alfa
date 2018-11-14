@@ -42,7 +42,7 @@ class EnemyInAren: SCNNode {
         return enemyInAren
     }
     
-    func die() -> Bool{
+    func dieAnim() -> Bool{
         if live{
             self.runAction(SCNAction.rotateBy(x: CGFloat(Float.pi), y: 0, z: 0, duration: 0.6))
             live = false

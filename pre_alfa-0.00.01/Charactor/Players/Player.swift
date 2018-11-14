@@ -19,6 +19,9 @@ class Player: Charactor {
     var stats = StatsPlayer()
     var x = 0
     var y = 0
+    var xy: String{
+        return String(x) + String(y)
+    }
     
     public func DMG(dmg: Int){
         self.stats.hP -= dmg

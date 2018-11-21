@@ -9,22 +9,21 @@
 import UIKit
 
 class Navigation{
-    var controllers: [NavigationProtocol] = []
-    var selectView: NavigationProtocol{
+    var controllers: [UIViewController] = []
+    var selectView: UIViewController{
         return controllers.last!
     }
     var gameDataStorage = GameDataStorage()
     
-    init(viewController: NavigationProtocol) {
+    init(viewController: UIViewController) {
         controllers.append(viewController)
     }
 
-    func transitionToView(viewControllerType: NavigationProtocol, special: ((NavigationProtocol) -> Void)?){
+    func transitionToView(viewControllerType: NavigationProtocol, special: ((UIViewController) -> Void)?){
         
         for i in 0 ..< controllers.count{
             if type(of: viewControllerType) == type(of: controllers[i]) {
-                
-                controllers[i].dismiss(animated: true, completion: nil) as? UIViewController
+                controllers[i].dismiss(animated: true, completion: nil)
                 controllers[i+1 ..< controllers.count] = []
                 return
             }

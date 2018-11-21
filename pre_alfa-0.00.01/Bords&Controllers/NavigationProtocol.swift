@@ -10,5 +10,5 @@ import UIKit
 
 protocol NavigationProtocol{
     var navigation: Navigation! {get set}
-    static func storyboardInstance(navigation: Navigation) -> UIViewController?
+    static func storyboardInstance(navigation: Navigation) -> NavigationProtocol?
 }

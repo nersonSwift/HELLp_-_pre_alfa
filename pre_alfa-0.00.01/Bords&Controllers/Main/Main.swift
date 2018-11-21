@@ -10,7 +10,7 @@ import UIKit
 
 
 class Main: UIViewController, NavigationProtocol {
-    static func storyboardInstance(navigation: Navigation) -> UIViewController? {return Main()}
+    static func storyboardInstance(navigation: Navigation) -> NavigationProtocol? {return Main()}
     
     
     var gameDataStorage: GameDataStorage!

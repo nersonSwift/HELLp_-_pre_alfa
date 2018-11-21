@@ -17,8 +17,9 @@ class FightAren: UIViewController, NavigationProtocol  {
     static func storyboardInstance(navigation: Navigation) -> UIViewController? {
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
         let fightAren = storyboard.instantiateInitialViewController() as? FightAren
-        fightAren!.castPlayer = navigation.castPlayer
-        fightAren!.room = navigation.castPlayer.map.mapRooms[navigation.castPlayer.player.xy]
+        fightAren!.navigation = navigation
+        fightAren!.castPlayer = navigation.gameDataStorage
+        fightAren!.room = navigation.gameDataStorage.map.mapRooms[navigation.gameDataStorage.player.xy]
         return fightAren
     }
     
@@ -27,20 +28,19 @@ class FightAren: UIViewController, NavigationProtocol  {
     }
     
     var room: Room!
-    var castPlayer: CastPlayer!
+    var castPlayer: GameDataStorage!
     
     private var brain: BrainFightAren!
-    private var stuel: SceneStuel!
+    private var stuel: StuelFightAren!
     
     var allEnemyInAren: [EnemyInAren?] = [nil, nil, nil]
-    var selectLiveEnemy = 0
     
     var endAnimStep = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         brain = BrainFightAren(fightAren: self, castPlayer: castPlayer, room: room)
-        stuel = SceneStuel(fightAren: self)
+        stuel = StuelFightAren(fightAren: self)
         
         stuel.createScen(view: self.view)
         stuel.createCam()
@@ -56,34 +56,6 @@ class FightAren: UIViewController, NavigationProtocol  {
         addSwipe()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         self.view.addGestureRecognizer(tapGesture)
-    }
-    
-    
-    func selectingEnemy(dir: Dir) -> Bool {
-        for _ in 0...2{
-            switch dir {
-            case .Left:
-                if selectLiveEnemy <= 0{
-                    selectLiveEnemy = allEnemyInAren.count - 1
-                }else{
-                    selectLiveEnemy -= 1
-                }
-            case .Right:
-                if selectLiveEnemy >= allEnemyInAren.count - 1{
-                    selectLiveEnemy = 0
-                }else{
-                    selectLiveEnemy += 1
-                }
-            default:break
-            }
-            if let a = allEnemyInAren[selectLiveEnemy]{
-                if !a.enemy!.dieFight{
-                    stuel.swipeEnemy(newSelectEnemy: allEnemyInAren[selectLiveEnemy]!.positionEnemy)
-                    return true
-                }
-            }
-        }
-        return false
     }
     
     func newCards(){
@@ -114,11 +86,11 @@ class FightAren: UIViewController, NavigationProtocol  {
                 for i in brain.chest{
                     brain.player.inventery.AddItem(steckItem: i)
                 }
-                self.dismiss(animated: true, completion: nil)
+                navigation.transitionToView(viewControllerType: Area(), special: nil)
             }
             
             if a.node.name == "Card"{
-                stuel.cardSelect(card: a.node)
+                stuel.animCardSelect(card: a.node)
             }
         }
     }
@@ -127,31 +99,42 @@ class FightAren: UIViewController, NavigationProtocol  {
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
-            case .right: _ = selectingEnemy(dir: .Left)
-            case .left:  _ = selectingEnemy(dir: .Right)
+            case .right:
+                let dir = brain.selectingEnemy(dir: .Left)
+                stuel.animSwipeEnemy(newSelectEnemy: dir!)
+            case .left:
+                let dir = brain.selectingEnemy(dir: .Right)
+                stuel.animSwipeEnemy(newSelectEnemy: dir!)
+                
             case .up:
                 brain.playerStep(card: stuel.selectCard!.card)
-                stuel.throwCard(completion: {
-                    self.brain.checkEnemysLive()
+                stuel.animThrowCard(completion: {
+                    let deadEnemy   = self.brain.checkEnemysDead()
+                    let killedEnemy = self.stuel.animEnemyDead(deadEnemy: deadEnemy)
+                    self.brain.getLoot(killedEnemys: killedEnemy)
+                    for i in killedEnemy{
+                        if i == self.brain.selectEnemy{
+                            if let dir = self.brain.selectingEnemy(dir: .Right){
+                                self.stuel.animSwipeEnemy(newSelectEnemy: dir)
+                            }else{
+                                self.brain.endFight()
+                            }
+                        }
+                    }
                     self.brain.enemyStep()
                     self.brain.checkPlayerLive()
-                    self.stuel.cardReset(completion: {
+                    self.stuel.animCardReset(completion: {
                         self.newCards()
-                        self.stuel.newHand(completion: {})
+                        self.stuel.animNewHand(completion: {})
                     })
                 })
-            case .down:  stuel.rotationCard()
+            case .down:  stuel.animRotationCard()
             default: break
             }
         }
     }
     
     func endFight(){
-        stuel.winBoxDown()
+        stuel.animWinBoxDown()
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-
 }

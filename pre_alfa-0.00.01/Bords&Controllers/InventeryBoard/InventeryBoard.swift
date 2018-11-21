@@ -15,7 +15,7 @@ class InventeryBoard: UIViewController, UITableViewDelegate, UITableViewDataSour
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
         let inventeryBoard = storyboard.instantiateInitialViewController() as? InventeryBoard
         inventeryBoard?.navigation = navigation
-        inventeryBoard?.player = navigation.castPlayer.player
+        inventeryBoard?.player = navigation.gameDataStorage.player
         return inventeryBoard
     }
     
@@ -62,6 +62,7 @@ class InventeryBoard: UIViewController, UITableViewDelegate, UITableViewDataSour
     
         return call
     }
+    
     //MARK: - UITableViewDataDelegat
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {

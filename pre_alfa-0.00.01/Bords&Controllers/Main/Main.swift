@@ -13,44 +13,45 @@ class Main: UIViewController, NavigationProtocol {
     static func storyboardInstance(navigation: Navigation) -> UIViewController? {return Main()}
     
     
-    let castPlayer = CastPlayer()
+    var gameDataStorage: GameDataStorage!
     var navigation: Navigation!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigation = Navigation(viewController: self, castPlayer: castPlayer)
+        navigation = Navigation(viewController: self)
+        gameDataStorage = navigation.gameDataStorage
     }
 
     @IBAction func startGame(_ sender: Any) {
         
-        if !castPlayer.playerSet{
+        if !gameDataStorage.playerSet{
             return
         }
-        try! castPlayer.realm.write {
-            castPlayer.realm.delete(castPlayer.savedRooms)
+        try! gameDataStorage.realm.write {
+            gameDataStorage.realm.delete(gameDataStorage.savedRooms)
         }
-        castPlayer.loadGame = false
+        gameDataStorage.loadGame = false
         navigation.transitionToView(viewControllerType: Area(), special: nil)
     }
     
     @IBAction func continueGame(_ sender: Any) {
-        if castPlayer.savedRooms.isEmpty{
+        if gameDataStorage.savedRooms.isEmpty{
             return
         }
         var x = 0
         var y = 0
-        castPlayer.loadGame = true
+        gameDataStorage.loadGame = true
         
-        castPlayer.player = Lilit()
-        castPlayer.player.stats.cards = [CardAtack(),HpCard()]
-        for i in castPlayer.savedRooms{
+        gameDataStorage.player = Lilit()
+        gameDataStorage.player.stats.cards = [CardAtack(),HpCard()]
+        for i in gameDataStorage.savedRooms{
             
             let newRoom = GetClass.getRoom(name: i.name)
-            newRoom.loadRoom(saveRoom: i, castPlayer: castPlayer)
-            castPlayer.map.mapRooms[String(newRoom.x) + String(newRoom.y)] = newRoom
+            newRoom.loadRoom(saveRoom: i, castPlayer: gameDataStorage)
+            gameDataStorage.map.mapRooms[String(newRoom.x) + String(newRoom.y)] = newRoom
             
             if !newRoom.firstVisitingTriger{
-                newRoom.criateBlockMapRoom(castPlayer: castPlayer)
+                newRoom.criateBlockMapRoom(castPlayer: gameDataStorage)
             }
             
             if i.inRoom{
@@ -58,10 +59,10 @@ class Main: UIViewController, NavigationProtocol {
                 y = i.y
             }
         }
-        castPlayer.player.x = x
-        castPlayer.player.y = y
+        gameDataStorage.player.x = x
+        gameDataStorage.player.y = y
        
-        for i in castPlayer.map.mapRooms{
+        for i in gameDataStorage.map.mapRooms{
             print(String(i.value.id) + " - " + i.value.nameRoom)
         }
         

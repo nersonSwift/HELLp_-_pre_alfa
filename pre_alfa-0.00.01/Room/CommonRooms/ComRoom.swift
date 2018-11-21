@@ -25,7 +25,7 @@ class ComRoom: Room {
     }
     override init(){super.init()}
     
-    init(castPlayer: CastPlayer){
+    init(castPlayer: GameDataStorage){
         super.init()
         nameRoom = "ComRoom"
         createCommonEnemy()

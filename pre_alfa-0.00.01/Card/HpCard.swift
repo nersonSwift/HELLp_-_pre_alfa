@@ -1,19 +1,21 @@
 //
-//  CardAtack.swift
+//  hpCard.swift
 //  pre_alfa-0.00.01
 //
-//  Created by Александр Сенин on 15.08.2018.
+//  Created by Александр Сенин on 20.08.2018.
 //  Copyright © 2018 Александр Сенин. All rights reserved.
 //
 
 import UIKit
 
-class CardAtack: Card {
+class HpCard: Card {
     override func effect(player: Player, selectEnemy: Enemy, allEnemy: [Enemy]) {
-        selectEnemy.fightStats.takeDMG(charactor: selectEnemy, dmg: player.fightStats.attackDmg)
+        for i in allEnemy{
+            i.fightStats.takeDMG(dmg: 10)
+        }
     }
     override init() {
         super.init()
-        name = "CardAtack"
+        name = "HpCard"
     }
 }

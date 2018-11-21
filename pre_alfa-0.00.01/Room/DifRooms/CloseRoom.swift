@@ -22,7 +22,7 @@ class CloseRoom: DifRoom {
         return true
     }
     
-    override func setDifRoom(x: Int, y: Int, castPlayer: CastPlayer) {
+    override func setDifRoom(x: Int, y: Int, castPlayer: GameDataStorage) {
         super.setDifRoom(x: x, y: y, castPlayer: castPlayer)
         nameRoom = "CloseRoom"
         typeDoors = Door.closeDoor
@@ -31,7 +31,7 @@ class CloseRoom: DifRoom {
         CheckNoRoom(castPlayer: castPlayer)
     }
     
-    override func InRoom(castPlayer: CastPlayer) {
+    override func InRoom(castPlayer: GameDataStorage) {
         super.InRoom(castPlayer: castPlayer)
         Doors = [.Up : Door.openDoor, .Right : Door.openDoor, .Down : Door.openDoor, .Left : Door.openDoor]
         

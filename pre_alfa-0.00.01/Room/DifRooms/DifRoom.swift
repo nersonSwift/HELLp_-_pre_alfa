@@ -13,12 +13,12 @@ class DifRoom: Room {
     
     override init(){super.init()}
     
-    func setDifRoom(x: Int, y: Int, castPlayer: CastPlayer){
+    func setDifRoom(x: Int, y: Int, castPlayer: GameDataStorage){
         self.x = x
         self.y = y
     }
     
-    func CheckNoRoom(castPlayer: CastPlayer){
+    func CheckNoRoom(castPlayer: GameDataStorage){
         
         let roomUp      = castPlayer.map.mapRooms[String(x) + String(y+1)]
         let roomRight   = castPlayer.map.mapRooms[String(x+1) + String(y)]

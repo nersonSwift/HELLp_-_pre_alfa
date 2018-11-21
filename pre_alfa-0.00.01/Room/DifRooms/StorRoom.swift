@@ -12,13 +12,13 @@ class StorRoom: CloseRoom{
     var itemInStor: [String : Int]!
     weak var player: Player?
     
-    override func setDifRoom(x: Int, y: Int, castPlayer: CastPlayer) {
+    override func setDifRoom(x: Int, y: Int, castPlayer: GameDataStorage) {
         super.setDifRoom(x: x, y: y, castPlayer: castPlayer)
         nameRoom = "StorRoom"
         addItems()
     }
     
-    override func InRoom(castPlayer: CastPlayer) {
+    override func InRoom(castPlayer: GameDataStorage) {
         super.InRoom(castPlayer: castPlayer)
         player = castPlayer.player
     }

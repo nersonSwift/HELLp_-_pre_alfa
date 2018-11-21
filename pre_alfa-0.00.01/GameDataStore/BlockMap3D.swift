@@ -10,14 +10,14 @@ import UIKit
 import QuartzCore
 import SceneKit
 
-class BlockMap: SCNNode {
-    var blocksMap: [Dir: BlockMap?] = [:]
+class BlockMap3D: SCNNode {
+    var blocksMap: [Dir: BlockMap3D?] = [:]
     var blocksMapDoors: [Dir: SCNNode]! = [:]
     weak var room: Room!
     
-    static func criateBlockMap(map: Map, x: Int, y: Int) -> BlockMap {
+    static func criateBlockMap(map: Map, x: Int, y: Int) -> BlockMap3D {
         
-        let blockMap = BlockMap()
+        let blockMap = BlockMap3D()
         blockMap.geometry = SCNBox.init(width: 0.9, height: 0.1, length: 0.9, chamferRadius: 0)
         blockMap.position = SCNVector3(-x, 0, y)
         blockMap.room = map.mapRooms[String(x)+String(y)]

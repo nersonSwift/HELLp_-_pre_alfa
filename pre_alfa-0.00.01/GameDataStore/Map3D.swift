@@ -16,8 +16,8 @@ class Map3D{
     var camera              = SCNNode()
     var scene               = SCNScene()
     
-    var blocksMap: [String: BlockMap] = [:]
-    var selectBlockMap: BlockMap!
+    var blocksMap: [String: BlockMap3D] = [:]
+    var selectBlockMap: BlockMap3D!
     
     init() {
         
@@ -42,7 +42,7 @@ class Map3D{
     }
     
     func criateBlockMap(map: Map, x: Int, y: Int){
-        let newBlockMap = BlockMap.criateBlockMap(map: map, x: x, y: y)
+        let newBlockMap = BlockMap3D.criateBlockMap(map: map, x: x, y: y)
         blocksMap[String(x) + String(y)] = newBlockMap
         scene.rootNode.addChildNode(newBlockMap)
         refrashBlockMap(map: map, x: x, y: y)

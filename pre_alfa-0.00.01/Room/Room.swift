@@ -121,14 +121,14 @@ class Room {
     init(){saveThisRoom()}
     func openRoom(player: Player) -> Bool{return true}
     
-    func criateBlockMapRoom(castPlayer: CastPlayer){
+    func criateBlockMapRoom(castPlayer: GameDataStorage){
         castPlayer.player.stats.counterRoom += 1
         print(castPlayer.player.stats.counterRoom)
         castPlayer.map.map3D.criateBlockMap(map: castPlayer.map, x: x, y: y)
     }
     
     
-    public func firstVisiting(castPlayer: CastPlayer){
+    public func firstVisiting(castPlayer: GameDataStorage){
         if firstVisitingTriger{
             castPlayer.player.stats.counterRoom += 1
             castPlayer.map.map3D.criateBlockMap(map: castPlayer.map, x: castPlayer.player.x, y: castPlayer.player.y)
@@ -139,7 +139,7 @@ class Room {
         }
     }
     
-    public func InRoom(castPlayer: CastPlayer){
+    public func InRoom(castPlayer: GameDataStorage){
         inRoom = true
         
     }
@@ -162,7 +162,7 @@ class Room {
         }
     }
     
-    func loadRoom(saveRoom: SaveRoom, castPlayer: CastPlayer){
+    func loadRoom(saveRoom: SaveRoom, castPlayer: GameDataStorage){
         try! realm.write {
             realm.delete(self.saveRoom)
             self.saveRoom = saveRoom

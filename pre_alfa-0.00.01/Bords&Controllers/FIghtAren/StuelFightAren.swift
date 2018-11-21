@@ -10,7 +10,7 @@ import UIKit
 import QuartzCore
 import SceneKit
 
-class SceneStuel{
+class StuelFightAren{
     
     weak var fightAren: FightAren!
     
@@ -52,10 +52,16 @@ class SceneStuel{
         }
     }
     
+    
+    
+    
     init(fightAren: FightAren) {
         self.fightAren = fightAren
     }
     
+//////////////////
+//MARK: - Create//
+//////////////////
     func createScen(view: UIView){
         self.view = view
         scnView = SCNView(frame: view.frame)
@@ -120,7 +126,20 @@ class SceneStuel{
         selectCard = cardMid
     }
     
-    func swipeEnemy(newSelectEnemy: Dir){
+////////////////
+//MARK: - Anim//
+////////////////
+    func animEnemyDead(deadEnemy: [EnemyInAren]) -> [EnemyInAren] {
+        var killedEnemys: [EnemyInAren] = []
+        for i in deadEnemy{
+            if i.dieAnim(){
+                killedEnemys.append(i)
+            }
+        }
+        return killedEnemys
+    }
+    
+    func animSwipeEnemy(newSelectEnemy: Dir){
         let down    = SCNVector3(0, 1, -6)
         let left    = SCNVector3(-2.222, 0, -7.87)
         let right   = SCNVector3(2.222, 0, -7.87)
@@ -129,20 +148,20 @@ class SceneStuel{
         switch newSelectEnemy{
         case .Left:
             
-            enemyLeft?.runAction(SCNAction.move(to: down , duration: 0.6))
+            enemyLeft?.runAction(SCNAction.move(to: down,  duration: 0.6))
             enemyDown?.runAction(SCNAction.move(to: right, duration: 0.6))
             enemyRight?.runAction(SCNAction.move(to: left, duration: 0.6))
             
         case .Down:
             
-            enemyLeft?.runAction(SCNAction.move(to: left , duration: 0.6))
-            enemyDown?.runAction(SCNAction.move(to: down, duration: 0.6))
+            enemyLeft?.runAction(SCNAction.move(to: left,   duration: 0.6))
+            enemyDown?.runAction(SCNAction.move(to: down,   duration: 0.6))
             enemyRight?.runAction(SCNAction.move(to: right, duration: 0.6))
             
         case .Right:
             
-            enemyLeft?.runAction(SCNAction.move(to: right , duration: 0.6))
-            enemyDown?.runAction(SCNAction.move(to: left, duration: 0.6))
+            enemyLeft?.runAction(SCNAction.move(to: right, duration: 0.6))
+            enemyDown?.runAction(SCNAction.move(to: left,  duration: 0.6))
             enemyRight?.runAction(SCNAction.move(to: down, duration: 0.6))
             
         default: break
@@ -150,15 +169,15 @@ class SceneStuel{
     }
     
     
-    func rotationCard() {
+    func animRotationCard() {
         selectCard?.runAction(SCNAction.rotate(by: CGFloat(Float.pi), around: selectCard!.position, duration: 0.7))
     }
     
-    func winBoxDown() {
+    func animWinBoxDown() {
         winBox.runAction(SCNAction.move(to: SCNVector3.init(0, 0, -4.3), duration: 0.6))
     }
     
-    func cardSelect(card: SCNNode){
+    func animCardSelect(card: SCNNode){
         
         selectCard  = card as? CardInAren
         
@@ -173,7 +192,7 @@ class SceneStuel{
         }
     }
     
-    func throwCard(completion: @escaping () -> Void) {
+    func animThrowCard(completion: @escaping () -> Void) {
         selectCard?.runAction(SCNAction.fadeOpacity(by: 0.001, duration: 1.7))
         switch selectCard!.positionCard {
         case .Left?:
@@ -188,9 +207,9 @@ class SceneStuel{
         selectCard?.runAction(SCNAction.fadeOut(duration: 0.3), completionHandler: {completion()})
     }
     
-    func cardReset(completion: @escaping () -> Void){
+    func animCardReset(completion: @escaping () -> Void){
         cardLeft?.runAction( SCNAction.move(to: SCNVector3.init(0, -0.5, 0), duration: 0.6))
-        cardMid?.runAction(  SCNAction.move(to: SCNVector3.init(0, 0   , 0), duration: 0.6))
+        cardMid?.runAction(  SCNAction.move(to: SCNVector3.init(0,    0, 0), duration: 0.6))
         cardRight?.runAction(SCNAction.move(to: SCNVector3.init(0, -0.5, 0), duration: 0.6))
         
         cardLeft?.runAction( SCNAction.fadeOut(duration: 0.6))
@@ -198,13 +217,13 @@ class SceneStuel{
         cardRight?.runAction(SCNAction.fadeOut(duration: 0.6), completionHandler: {completion()})
     }
     
-    func newHand(completion: @escaping () -> Void){
-        self.cardLeft?.runAction(SCNAction.move(to: SCNVector3.init(-1.476, 0, -2.557) , duration: 0.5))
-        self.cardMid?.runAction(SCNAction.move(to: SCNVector3.init(0, 0, -2.73), duration: 0.5))
-        self.cardRight?.runAction(SCNAction.move(to: SCNVector3.init(1.561, 0, -2.704), duration: 0.5), completionHandler: {
-            self.cardLeft?.runAction(SCNAction.move(to: SCNVector3.init(-1.227, 0, -2.125) , duration: 0.25))
-            self.cardMid?.runAction(SCNAction.move(to: SCNVector3.init(0, 0, -2.455), duration: 0.3))
-            self.cardRight?.runAction(SCNAction.move(to: SCNVector3.init(1.227, 0, -2.126), duration: 0.35))
+    func animNewHand(completion: @escaping () -> Void){
+        self.cardLeft?.runAction( SCNAction.move(to: SCNVector3.init(-1.476, 0, -2.557), duration: 0.5))
+        self.cardMid?.runAction(  SCNAction.move(to: SCNVector3.init(     0, 0, -2.73) , duration: 0.5))
+        self.cardRight?.runAction(SCNAction.move(to: SCNVector3.init( 1.561, 0, -2.704), duration: 0.5), completionHandler: {
+            self.cardLeft?.runAction( SCNAction.move(to: SCNVector3.init(-1.227, 0, -2.125), duration: 0.25))
+            self.cardMid?.runAction(  SCNAction.move(to: SCNVector3.init(     0, 0, -2.455), duration: 0.3))
+            self.cardRight?.runAction(SCNAction.move(to: SCNVector3.init( 1.227, 0, -2.126), duration: 0.35))
             })
             
         self.cardLeft?.runAction( SCNAction.fadeIn(duration: 0.6))

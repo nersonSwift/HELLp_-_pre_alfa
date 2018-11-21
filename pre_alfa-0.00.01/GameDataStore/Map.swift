@@ -9,14 +9,14 @@
 import UIKit
 
 class Map{
-    weak var castPlayer: CastPlayer?
+    weak var castPlayer: GameDataStorage?
     var mapRooms:[String: Room] = [:]
     var map3D: Map3D!
     
     init() {
     }
     
-    init(castPlayer: CastPlayer) {
+    init(castPlayer: GameDataStorage) {
         self.castPlayer = castPlayer
         map3D = Map3D()
     }

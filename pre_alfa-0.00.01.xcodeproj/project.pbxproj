@@ -10,7 +10,7 @@
 		30D79483C4C0940C3AC7C088 /* Pods_pre_alfa_0_00_01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F90BB9B0878CF98996CBA9 /* Pods_pre_alfa_0_00_01.framework */; };
 		510F0EA6211D7B8700BF7822 /* ComRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510F0EA5211D7B8700BF7822 /* ComRoom.swift */; };
 		51200F822121D7B10018E53E /* Map3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51200F812121D7B10018E53E /* Map3D.swift */; };
-		51200F842121D8FE0018E53E /* BlockMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51200F832121D8FE0018E53E /* BlockMap.swift */; };
+		51200F842121D8FE0018E53E /* BlockMap3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51200F832121D8FE0018E53E /* BlockMap3D.swift */; };
 		51200F872121EDAB0018E53E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51200F862121EDAB0018E53E /* MapView.swift */; };
 		51200F892121EE140018E53E /* MapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51200F882121EE140018E53E /* MapView.storyboard */; };
 		512863222120ADA30047326D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512863212120ADA30047326D /* LaunchScreen.storyboard */; };
@@ -28,7 +28,7 @@
 		5139D0D321563A3700CC92A3 /* StuelAnimArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5139D0D221563A3700CC92A3 /* StuelAnimArea.swift */; };
 		5143160A21202E38003A0C11 /* CardInAren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143160921202E38003A0C11 /* CardInAren.swift */; };
 		5143160C2120864E003A0C11 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143160B2120864E003A0C11 /* Skeleton.swift */; };
-		5147425B217350C300C2227E /* SceneStuel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5147425A217350C300C2227E /* SceneStuel.swift */; };
+		5147425B217350C300C2227E /* StuelFightAren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5147425A217350C300C2227E /* StuelFightAren.swift */; };
 		5157168520EFA2FC007FA2F5 /* NoDoorRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157168420EFA2FC007FA2F5 /* NoDoorRoom.swift */; };
 		5157930220EA1E7A00327D91 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157930120EA1E7A00327D91 /* Area.swift */; };
 		5157930720EA1E7C00327D91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5157930620EA1E7C00327D91 /* Assets.xcassets */; };
@@ -38,7 +38,7 @@
 		5186DF0F20F0A8CE006AF275 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5186DF0E20F0A8CE006AF275 /* Player.swift */; };
 		5186DF1220F0A927006AF275 /* Inventery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5186DF1120F0A927006AF275 /* Inventery.swift */; };
 		5186DF1520F0A941006AF275 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5186DF1420F0A941006AF275 /* Item.swift */; };
-		5186DF1920F0B4B3006AF275 /* key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5186DF1820F0B4B3006AF275 /* key.swift */; };
+		5186DF1920F0B4B3006AF275 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5186DF1820F0B4B3006AF275 /* Key.swift */; };
 		518977BA212ED82400BD8AF9 /* SaveRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518977B9212ED82400BD8AF9 /* SaveRoom.swift */; };
 		518977BE2131E9BB00BD8AF9 /* GetClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518977BD2131E9BB00BD8AF9 /* GetClass.swift */; };
 		5189AFC52109F59C00AD159C /* Dir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5189AFC42109F59C00AD159C /* Dir.swift */; };
@@ -55,7 +55,7 @@
 		51C373E5211EFC950091A34F /* EnemyInAren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C373E4211EFC950091A34F /* EnemyInAren.swift */; };
 		51D5DDAD214FB0E000420FF2 /* StorRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D5DDAC214FB0E000420FF2 /* StorRoom.swift */; };
 		51DE5C56210B376000CC002E /* Lilit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE5C55210B376000CC002E /* Lilit.swift */; };
-		51DE5C58210B505200CC002E /* CastPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE5C57210B505200CC002E /* CastPlayer.swift */; };
+		51DE5C58210B505200CC002E /* GameDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE5C57210B505200CC002E /* GameDataStorage.swift */; };
 		51DE5C5A210C165100CC002E /* StackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE5C59210C165100CC002E /* StackItem.swift */; };
 		51DE5C5C210CE63C00CC002E /* LostBord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51DE5C5B210CE63C00CC002E /* LostBord.storyboard */; };
 		51DE5C5E210CE67900CC002E /* LostBord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE5C5D210CE67900CC002E /* LostBord.swift */; };
@@ -76,7 +76,7 @@
 		32F90BB9B0878CF98996CBA9 /* Pods_pre_alfa_0_00_01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pre_alfa_0_00_01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		510F0EA5211D7B8700BF7822 /* ComRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComRoom.swift; sourceTree = "<group>"; };
 		51200F812121D7B10018E53E /* Map3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map3D.swift; sourceTree = "<group>"; };
-		51200F832121D8FE0018E53E /* BlockMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockMap.swift; sourceTree = "<group>"; };
+		51200F832121D8FE0018E53E /* BlockMap3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockMap3D.swift; sourceTree = "<group>"; };
 		51200F862121EDAB0018E53E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		51200F882121EE140018E53E /* MapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapView.storyboard; sourceTree = "<group>"; };
 		512863212120ADA30047326D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 		5139D0D221563A3700CC92A3 /* StuelAnimArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuelAnimArea.swift; sourceTree = "<group>"; };
 		5143160921202E38003A0C11 /* CardInAren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInAren.swift; sourceTree = "<group>"; };
 		5143160B2120864E003A0C11 /* Skeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
-		5147425A217350C300C2227E /* SceneStuel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStuel.swift; sourceTree = "<group>"; };
+		5147425A217350C300C2227E /* StuelFightAren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuelFightAren.swift; sourceTree = "<group>"; };
 		5157168420EFA2FC007FA2F5 /* NoDoorRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDoorRoom.swift; sourceTree = "<group>"; };
 		515792FC20EA1E7A00327D91 /* pre_alfa-0.00.01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pre_alfa-0.00.01.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5157930120EA1E7A00327D91 /* Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 		5186DF0E20F0A8CE006AF275 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		5186DF1120F0A927006AF275 /* Inventery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventery.swift; sourceTree = "<group>"; };
 		5186DF1420F0A941006AF275 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		5186DF1820F0B4B3006AF275 /* key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = key.swift; sourceTree = "<group>"; };
+		5186DF1820F0B4B3006AF275 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		518977B9212ED82400BD8AF9 /* SaveRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRoom.swift; sourceTree = "<group>"; };
 		518977BD2131E9BB00BD8AF9 /* GetClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetClass.swift; sourceTree = "<group>"; };
 		5189AFC42109F59C00AD159C /* Dir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dir.swift; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		51C373E4211EFC950091A34F /* EnemyInAren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyInAren.swift; sourceTree = "<group>"; };
 		51D5DDAC214FB0E000420FF2 /* StorRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorRoom.swift; sourceTree = "<group>"; };
 		51DE5C55210B376000CC002E /* Lilit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lilit.swift; sourceTree = "<group>"; };
-		51DE5C57210B505200CC002E /* CastPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastPlayer.swift; sourceTree = "<group>"; };
+		51DE5C57210B505200CC002E /* GameDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDataStorage.swift; sourceTree = "<group>"; };
 		51DE5C59210C165100CC002E /* StackItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackItem.swift; sourceTree = "<group>"; };
 		51DE5C5B210CE63C00CC002E /* LostBord.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LostBord.storyboard; path = "pre_alfa-0.00.01/Bords&Controllers/LostBord/LostBord.storyboard"; sourceTree = SOURCE_ROOT; };
 		51DE5C5D210CE67900CC002E /* LostBord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostBord.swift; sourceTree = "<group>"; };
@@ -200,16 +200,13 @@
 			path = Enemy;
 			sourceTree = "<group>";
 		};
-		5143160F21209200003A0C11 /* CastPlayer */ = {
+		5143160F21209200003A0C11 /* GameDataStore */ = {
 			isa = PBXGroup;
 			children = (
-				51DE5C57210B505200CC002E /* CastPlayer.swift */,
-				51E42D9B20F36065007DA454 /* Map.swift */,
-				518B716A212466FD005E9A47 /* Qality.swift */,
-				51200F812121D7B10018E53E /* Map3D.swift */,
-				51200F832121D8FE0018E53E /* BlockMap.swift */,
+				51DE5C57210B505200CC002E /* GameDataStorage.swift */,
+				5151E57721A2C1C90055811D /* Map */,
 			);
-			path = CastPlayer;
+			path = GameDataStore;
 			sourceTree = "<group>";
 		};
 		5143161021209217003A0C11 /* CommonRooms */ = {
@@ -230,6 +227,24 @@
 				51D5DDAC214FB0E000420FF2 /* StorRoom.swift */,
 			);
 			path = DifRooms;
+			sourceTree = "<group>";
+		};
+		5151E57721A2C1C90055811D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				51E42D9B20F36065007DA454 /* Map.swift */,
+				5151E57821A2C1CF0055811D /* Map3D */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		5151E57821A2C1CF0055811D /* Map3D */ = {
+			isa = PBXGroup;
+			children = (
+				51200F812121D7B10018E53E /* Map3D.swift */,
+				51200F832121D8FE0018E53E /* BlockMap3D.swift */,
+			);
+			name = Map3D;
 			sourceTree = "<group>";
 		};
 		515792F320EA1E7A00327D91 = {
@@ -260,6 +275,9 @@
 				516B10E1211C488D00DDE22A /* scenes.scnassets */,
 				51DE5C5F210D231200CC002E /* Bords&Controllers */,
 				5186DF0D20F0A877006AF275 /* Charactor */,
+				51DDD72E2134A6DE00457A6A /* Card */,
+				5186DF1020F0A8E0006AF275 /* Inventery */,
+				5143160F21209200003A0C11 /* GameDataStore */,
 				5186DF0A20F0A783006AF275 /* Room */,
 				518977B8212ED7A300BD8AF9 /* Save */,
 			);
@@ -285,8 +303,6 @@
 				5143160D212091AE003A0C11 /* Players */,
 				5143160E212091CE003A0C11 /* Enemy */,
 				51E42D9820F21017007DA454 /* Stats */,
-				5143160F21209200003A0C11 /* CastPlayer */,
-				5186DF1020F0A8E0006AF275 /* Inventery */,
 			);
 			path = Charactor;
 			sourceTree = "<group>";
@@ -303,8 +319,9 @@
 		5186DF1320F0A92E006AF275 /* Item */ = {
 			isa = PBXGroup;
 			children = (
+				518B716A212466FD005E9A47 /* Qality.swift */,
 				5186DF1420F0A941006AF275 /* Item.swift */,
-				5186DF1820F0B4B3006AF275 /* key.swift */,
+				5186DF1820F0B4B3006AF275 /* Key.swift */,
 				51DE5C59210C165100CC002E /* StackItem.swift */,
 			);
 			path = Item;
@@ -337,9 +354,9 @@
 				512863232120B1120047326D /* FightAren.storyboard */,
 				518F2F63210E5E1A008C036E /* FightAren.swift */,
 				51C20B572114A78800A63B7E /* BrainFightAren.swift */,
+				5147425A217350C300C2227E /* StuelFightAren.swift */,
 				51C373E4211EFC950091A34F /* EnemyInAren.swift */,
 				5143160921202E38003A0C11 /* CardInAren.swift */,
-				5147425A217350C300C2227E /* SceneStuel.swift */,
 			);
 			path = FIghtAren;
 			sourceTree = "<group>";
@@ -365,8 +382,8 @@
 				51200F852121EBF00018E53E /* MapView */,
 				511AEE622146AD4B007D2A2A /* InventeryBoard */,
 				51DE5C60210D235E00CC002E /* LostBord */,
-				51EBC66621997EED00BA3160 /* Navigation.swift */,
 				51EBC668219A3D9A00BA3160 /* NavigationProtocol.swift */,
+				51EBC66621997EED00BA3160 /* Navigation.swift */,
 			);
 			path = "Bords&Controllers";
 			sourceTree = "<group>";
@@ -410,7 +427,6 @@
 		51E42D9820F21017007DA454 /* Stats */ = {
 			isa = PBXGroup;
 			children = (
-				51DDD72E2134A6DE00457A6A /* Card */,
 				51E42D9620F21005007DA454 /* StatsPlayer.swift */,
 				512BE7E5210E23190035DF60 /* FightStats.swift */,
 				512BE7E7210E24340035DF60 /* FightStatsPlayer.swift */,
@@ -550,7 +566,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5186DF1920F0B4B3006AF275 /* key.swift in Sources */,
+				5186DF1920F0B4B3006AF275 /* Key.swift in Sources */,
 				5157168520EFA2FC007FA2F5 /* NoDoorRoom.swift in Sources */,
 				51D5DDAD214FB0E000420FF2 /* StorRoom.swift in Sources */,
 				516E27312117A05300409D97 /* AppDelegate.swift in Sources */,
@@ -561,7 +577,7 @@
 				5186DF1520F0A941006AF275 /* Item.swift in Sources */,
 				518B7169212466A2005E9A47 /* Card.swift in Sources */,
 				518977BE2131E9BB00BD8AF9 /* GetClass.swift in Sources */,
-				51200F842121D8FE0018E53E /* BlockMap.swift in Sources */,
+				51200F842121D8FE0018E53E /* BlockMap3D.swift in Sources */,
 				5139D0D321563A3700CC92A3 /* StuelAnimArea.swift in Sources */,
 				51E42D9A20F2384E007DA454 /* DmgRoom.swift in Sources */,
 				51F26F5420FB57C1003D326A /* DifRoom.swift in Sources */,
@@ -578,7 +594,7 @@
 				51DE5C56210B376000CC002E /* Lilit.swift in Sources */,
 				5143160A21202E38003A0C11 /* CardInAren.swift in Sources */,
 				51EBC66721997EED00BA3160 /* Navigation.swift in Sources */,
-				5147425B217350C300C2227E /* SceneStuel.swift in Sources */,
+				5147425B217350C300C2227E /* StuelFightAren.swift in Sources */,
 				51E42D9C20F36065007DA454 /* Map.swift in Sources */,
 				51EBC669219A3D9A00BA3160 /* NavigationProtocol.swift in Sources */,
 				51F24BDF2107A1AB00912E15 /* PlayMenu.swift in Sources */,
@@ -589,7 +605,7 @@
 				51C20B552114A0B700A63B7E /* Soul.swift in Sources */,
 				512BE7E6210E23190035DF60 /* FightStats.swift in Sources */,
 				51DE5C5E210CE67900CC002E /* LostBord.swift in Sources */,
-				51DE5C58210B505200CC002E /* CastPlayer.swift in Sources */,
+				51DE5C58210B505200CC002E /* GameDataStorage.swift in Sources */,
 				518B716D212484B0005E9A47 /* CardAtack.swift in Sources */,
 				51F26F5620FCC876003D326A /* CloseRoom.swift in Sources */,
 				518B716B212466FD005E9A47 /* Qality.swift in Sources */,

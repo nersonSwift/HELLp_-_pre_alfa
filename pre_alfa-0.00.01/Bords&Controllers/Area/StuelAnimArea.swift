@@ -133,16 +133,25 @@ class StuelAnimArea{
             atackView!.addSubview(atackButton)
             newRoomView.addSubview(atackView!)
         }
+        
+        if let a = room as? StorRoom{
+            let widthDoor   = area.view.frame.width/10
+            let heightDoor  = widthDoor
+            let payButtonFrame = CGRect(x:  roomView.frame.width/2 - widthDoor / 2, y: roomView.frame.height/2 - heightDoor / 2, width: widthDoor, height: heightDoor)
+            let payButton = UIButton(frame: payButtonFrame)
+            a.createLogiсButton(payButton: payButton)
+            payButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            newRoomView.addSubview(payButton)
+        }
     }
 ////////////////
 //MARK: - Anim//
 ////////////////
-    func animStep(dir: Dir, room: Room){
+    func animStep(dir: Dir){
         
         var offScreenFirst: CGAffineTransform
         var offScreenSecond: CGAffineTransform
         
-        createRoomView(room: room)
         switch dir {
         case .Up:
             offScreenFirst = CGAffineTransform(translationX: 0, y: -heightRoom + k)
@@ -205,16 +214,6 @@ class StuelAnimArea{
         for i in doors{
             i.value.backgroundColor = setColorDoor(door: room.Doors[i.key]!)
         }
-        countRoom.text = String(area!.castPlayer.player.stats.counterRoom)
-//
-        if let a = room as? StorRoom{
-            let widthDoor   = area.view.frame.width/10
-            let heightDoor  = widthDoor
-            let payButtonFrame = CGRect(x:  roomView.frame.width/2 - widthDoor / 2, y: roomView.frame.height/2 - heightDoor / 2, width: widthDoor, height: heightDoor)
-            let payButton = UIButton(frame: payButtonFrame)
-            a.createLogiсButton(payButton: payButton)
-            payButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-            roomView.addSubview(payButton)
-        }
+        countRoom.text = String(area!.gameDataStorage.player.stats.counterRoom)
     }
 }

@@ -11,35 +11,30 @@ import UIKit
 class BrainFightAren{
     weak var fightAren: FightAren!
     weak var room: Room!
-    weak var castPlayer: CastPlayer!
+    weak var castPlayer: GameDataStorage!
     
     var player: Player{
         return castPlayer.player
     }
     var selectEnemy: EnemyInAren?{
-        return fightAren!.allEnemyInAren[fightAren!.selectLiveEnemy]
+        return fightAren!.allEnemyInAren[selectLiveEnemy]
     }
     var cardsInHand: [Card] = []
     var chest: [StackItem] = []
     
-    var allEnemy: [Enemy]{
-        var allEnemy: [Enemy] = []
-        for i in fightAren!.allEnemyInAren{
-            if let enemyInAren = i{
-                allEnemy.append(enemyInAren.enemy!)
-            }
-        }
-        return allEnemy
+    var selectLiveEnemy = 0
+    var allEnemyInAren: [EnemyInAren?]{
+        return fightAren!.allEnemyInAren
     }
     
-    init(fightAren: FightAren, castPlayer: CastPlayer, room: Room) {
+    init(fightAren: FightAren, castPlayer: GameDataStorage, room: Room) {
         self.fightAren  = fightAren
         self.castPlayer = castPlayer
         self.room       = room
     }
     
     func playerStep(card: Card){
-        card.effect(player: player, selectEnemy: selectEnemy!.enemy, allEnemy: allEnemy)
+        card.effect(player: player, selectEnemy: selectEnemy!.enemy, allEnemy: room.enemys)
     }
     
     func setCardsInHand(){
@@ -51,34 +46,63 @@ class BrainFightAren{
         }
     }
     
-    func checkEnemysLive(){
-        for i in fightAren!.allEnemyInAren{
+    func checkEnemysDead() -> [EnemyInAren]{
+        var deadEnemys: [EnemyInAren] = []
+        for i in allEnemyInAren{
             if let enemyInAren = i{
-                
                 if enemyInAren.enemy!.dieFight{
-                    
-                    if enemyInAren.dieAnim(){
-                        
-                        if let dropedItem = enemyInAren.enemy.dropItem(){
-                            chest.append(dropedItem)
-                        }
-                        
-                        if !fightAren!.selectingEnemy(dir: .Right){
-                            room?.enemys = []
-                            player.fightStats.endFight(player: player)
-                            fightAren?.endFight()
-                        }
-                    }
+                    deadEnemys.append(enemyInAren)
                 }
+            }
+        }
+        return deadEnemys
+    }
+    
+    func endFight(){
+        room?.enemys = []
+        player.fightStats.endFight(player: player)
+        fightAren?.endFight()
+    }
+    
+    func getLoot(killedEnemys: [EnemyInAren]){
+        for i in killedEnemys{
+            if let dropedItem = i.enemy.dropItem(){
+                chest.append(dropedItem)
             }
         }
     }
     
+    func selectingEnemy(dir: Dir) -> Dir? {
+        for _ in 0...2{
+            switch dir {
+            case .Left:
+                if selectLiveEnemy <= 0{
+                    selectLiveEnemy = allEnemyInAren.count - 1
+                }else{
+                    selectLiveEnemy -= 1
+                }
+            case .Right:
+                if selectLiveEnemy >= allEnemyInAren.count - 1{
+                    selectLiveEnemy = 0
+                }else{
+                    selectLiveEnemy += 1
+                }
+            default:break
+            }
+            if let a = allEnemyInAren[selectLiveEnemy]{
+                if !a.enemy!.dieFight{
+                    return allEnemyInAren[selectLiveEnemy]!.positionEnemy
+                }
+            }
+        }
+        return nil
+    }
+    
     func enemyStep(){
         
-        for i in fightAren!.allEnemyInAren{
+        for i in allEnemyInAren{
             if let enemyInAren = i{
-                player.fightStats.takeDMG(charactor: player, dmg: enemyInAren.enemy!.fightStats.attackDmg)
+                player.fightStats.takeDMG(dmg: enemyInAren.enemy!.fightStats.attackDmg)
             }
         }
         

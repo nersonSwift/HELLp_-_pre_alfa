@@ -11,7 +11,7 @@ import QuartzCore
 import SceneKit
 import RealmSwift
 
-class CastPlayer{
+class GameDataStore{
     
     var player = Player()
     var defaultPlayer = Player()

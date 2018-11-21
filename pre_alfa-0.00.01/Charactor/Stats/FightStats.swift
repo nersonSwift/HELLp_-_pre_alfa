@@ -10,17 +10,17 @@ import UIKit
 
 class FightStats{
     
-    
     var fightHP         = 0
     var startFightHP    = 0
     var maxFightHP      = 0
     var attackDmg       = 0
     
+    
     func startFight(charactor: Charactor){}
     
     func endFight(player: Player){}
     
-    func takeDMG(charactor: Charactor, dmg: Int){
-        charactor.fightStats.fightHP -= dmg
+    func takeDMG(dmg: Int){
+        fightHP -= dmg
     }
 }

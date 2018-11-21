@@ -11,7 +11,9 @@ import UIKit
 class BrainArea {
     weak var area: Area!
     
-    var castPlayer: CastPlayer!
+    var castPlayer: GameDataStorage!{
+        return area.gameDataStorage
+    }
     var thisRoom: Room!
     
     var y: Int{

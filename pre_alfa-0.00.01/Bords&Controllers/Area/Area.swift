@@ -26,11 +26,10 @@ class Area: UIViewController, NavigationProtocol {
     }
     
     static func storyboardInstance(navigation: Navigation) -> UIViewController? {
-        print(String(describing: self))
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
         let area = storyboard.instantiateInitialViewController() as? Area
         area!.navigation = navigation
-        area!.castPlayer = navigation.castPlayer
+        area!.gameDataStorage = navigation.gameDataStorage
         return area
     }
     
@@ -41,7 +40,7 @@ class Area: UIViewController, NavigationProtocol {
     private var stuel: StuelAnimArea!
     var navigation: Navigation!
     
-    var castPlayer: CastPlayer!
+    var gameDataStorage: GameDataStorage!
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -50,7 +49,7 @@ class Area: UIViewController, NavigationProtocol {
         let directions: [UISwipeGestureRecognizer.Direction] = [.right, .left, .up, .down]
         for direction in directions {
             let gesture = UISwipeGestureRecognizer(target: self,
-                                                   action: #selector(self.respondToSwipeGesture))
+                                                   action: #selector(respondToSwipeGesture))
             gesture.direction = direction
             self.view.addGestureRecognizer(gesture)
         }
@@ -68,7 +67,8 @@ class Area: UIViewController, NavigationProtocol {
             default: break
             }
             if let nextRoom = brain.step(dir: dir!){
-                stuel.animStep(dir: dir!, room: nextRoom)
+                stuel.createRoomView(room: nextRoom)
+                stuel.animStep(dir: dir!)
                 stuel.outputRoom(room: nextRoom)
                 stuel.animEnemyView()
             }
@@ -99,9 +99,8 @@ class Area: UIViewController, NavigationProtocol {
         
         brain = BrainArea(area: self)
         stuel = StuelAnimArea(area: self)
-        brain.castPlayer = castPlayer
         
-        if castPlayer.loadGame{
+        if gameDataStorage.loadGame{
             brain.continueGame()
         }else{
             brain.startGame()
@@ -117,14 +116,5 @@ class Area: UIViewController, NavigationProtocol {
         }
         addSwipe()
     }
-    
-    @IBAction func unwindToArea (sender: UIStoryboardSegue){}
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    
-     
 }
 

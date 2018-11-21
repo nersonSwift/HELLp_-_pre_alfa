@@ -10,13 +10,13 @@ import UIKit
 
 class PlayerCast: UIViewController, NavigationProtocol {
     var navigation: Navigation!
-    var castPlayer: CastPlayer!
+    var castPlayer: GameDataStorage!
     
     static func storyboardInstance(navigation: Navigation) -> UIViewController? {
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
         let playerCast = storyboard.instantiateInitialViewController() as? PlayerCast
         playerCast!.navigation = navigation
-        playerCast!.castPlayer = navigation.castPlayer
+        playerCast!.castPlayer = navigation.gameDataStorage
         return playerCast
     }
     

@@ -12,10 +12,10 @@ import RealmSwift
 
 class Room {
     
-    var saveRoom = SaveRoom()
+    var saveRoom = roomProp()
     
     let realm = try! Realm()
-    var savedRooms: Results<SaveRoom>!
+    var savedRooms: Results<roomProp>!
     
 ////////////////////
 //MARK: - Property//
@@ -38,16 +38,6 @@ class Room {
         }
         get{
             return saveRoom.firstVisitingTriger
-        }
-    }
-    var nameRoom : String{
-        set(nameRoom) {
-            try! realm.write {
-                saveRoom.name = nameRoom
-            }
-        }
-        get{
-            return saveRoom.name
         }
     }
     var close: Bool{
@@ -162,7 +152,7 @@ class Room {
         }
     }
     
-    func loadRoom(saveRoom: SaveRoom, castPlayer: GameDataStorage){
+    func loadRoom(saveRoom: roomProp, castPlayer: GameDataStorage){
         try! realm.write {
             realm.delete(self.saveRoom)
             self.saveRoom = saveRoom

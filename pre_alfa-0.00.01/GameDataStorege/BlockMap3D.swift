@@ -23,7 +23,7 @@ class BlockMap3D: SCNNode {
         blockMap.room = map.mapRooms[String(x)+String(y)]
         
         let mat = SCNMaterial()
-        switch blockMap.room.nameRoom {
+        switch blockMap.room.saveRoom.nameRoo {
             case "ComRoom":     mat.diffuse.contents = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
             case "DmgRoom":     mat.diffuse.contents = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
             case "CloseRoom":   mat.diffuse.contents = #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1)

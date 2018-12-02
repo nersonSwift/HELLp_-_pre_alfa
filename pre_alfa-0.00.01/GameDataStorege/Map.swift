@@ -16,8 +16,8 @@ class Map{
     init() {
     }
     
-    init(castPlayer: GameDataStorage) {
-        self.castPlayer = castPlayer
+    init(gameDataStorage: GameDataStorage) {
+        self.castPlayer = gameDataStorage
         map3D = Map3D()
     }
     

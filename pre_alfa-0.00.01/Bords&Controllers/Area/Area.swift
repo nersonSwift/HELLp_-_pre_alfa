@@ -26,7 +26,7 @@ class Area: UIViewController, NavigationProtocol {
     }
     
     static func storyboardInstance(navigation: Navigation) -> UIViewController? {
-        let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
+        let storyboard = UIStoryboard(name: "\(self)", bundle: nil)
         let area = storyboard.instantiateInitialViewController() as? Area
         area!.navigation = navigation
         area!.gameDataStorage = navigation.gameDataStorage

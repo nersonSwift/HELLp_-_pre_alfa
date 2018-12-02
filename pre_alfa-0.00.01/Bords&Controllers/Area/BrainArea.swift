@@ -87,6 +87,7 @@ class BrainArea {
         castPlayer.startGame()
         thisRoom = ComRoom(castPlayer: castPlayer)
         castPlayer.map.mapRooms = ["00" : thisRoom]
+        thisRoom.enemys = []
         thisRoom.InRoom(castPlayer: castPlayer)
         refreshDoors()
         thisRoom.firstVisiting(castPlayer: castPlayer)

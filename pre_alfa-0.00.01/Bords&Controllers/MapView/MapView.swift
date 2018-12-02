@@ -14,7 +14,7 @@ class MapView: UIViewController, NavigationProtocol  {
     var navigation: Navigation!
     
     static func storyboardInstance(navigation: Navigation) -> UIViewController? {
-        let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
+        let storyboard = UIStoryboard(name: "\(self)", bundle: nil)
         let viewController = storyboard.instantiateInitialViewController() as? MapView
         viewController!.sceneMap = navigation.gameDataStorage.map.map3D.scene
         viewController!.navigation = navigation

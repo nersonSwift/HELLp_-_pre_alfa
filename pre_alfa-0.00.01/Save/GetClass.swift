@@ -90,5 +90,30 @@ class GetClass{
         }
     }
     
+    static func getNewSizeImage(image: UIImage, size: CGSize, rotate: CGFloat) -> UIImage{
+        let rect = CGSize(width: size.width + 1, height: size.height + 1)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: size.width, height: size.height), true, 0)
+        let a = UIGraphicsGetCurrentContext()!
+        a.draw(image.cgImage!, in: CGRect(origin: CGPoint(x: 0, y: 0), size: rect))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        
+        return newImage
+    }
+    
+    static func getNewRotateImage(image: UIImage) -> UIImage{
+        let size = image.size
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: size.height, height: size.width), true, 0)
+        let a = UIGraphicsGetCurrentContext()!
+        a.rotate(by: CGFloat.pi / 2)
+        a.draw(image.cgImage!, in: CGRect(origin: CGPoint(x: 0, y: -size.height), size: size))
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        
+        return newImage
+    }
     
 }

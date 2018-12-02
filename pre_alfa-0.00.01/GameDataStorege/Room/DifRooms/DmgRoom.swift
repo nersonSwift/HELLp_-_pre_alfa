@@ -1,24 +1,28 @@
 //
-//  NoDoor.swift
+//  DmgRoom.swift
 //  pre_alfa-0.00.01
 //
-//  Created by Александр Сенин on 06.07.2018.
+//  Created by Александр Сенин on 08.07.2018.
 //  Copyright © 2018 Александр Сенин. All rights reserved.
 //
 
 import UIKit
 
-class NoDoorRoom: DifRoom {
-    
+class DmgRoom: DifRoom {
     override init(){super.init()}
-    override func openRoom(player: Player) -> Bool{return false}
     
     override func setDifRoom(x: Int, y: Int, castPlayer: GameDataStorage) {
         super.setDifRoom(x: x, y: y, castPlayer: castPlayer)
-        self.nameRoom = "NoDoorRoom"
-        typeDoors = Door.noDoor
+        saveRoom.nameRoo = "DmgRoom"
+        typeDoors = Door.dmgDoor
         Doors = [.Up : typeDoors, .Right : typeDoors, .Down : typeDoors, .Left : typeDoors]
-        close = true
+        
+        CheckNoRoom(castPlayer: castPlayer)
     }
-}
+ 
+    override func InRoom(castPlayer: GameDataStorage) {
+        super.InRoom(castPlayer: castPlayer)
+        castPlayer.player.DMG(dmg: 2)
+    }
 
+}

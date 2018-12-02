@@ -13,7 +13,7 @@ class PlayerCast: UIViewController, NavigationProtocol {
     var castPlayer: GameDataStorage!
     
     static func storyboardInstance(navigation: Navigation) -> UIViewController? {
-        let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
+        let storyboard = UIStoryboard(name: "\(self)", bundle: nil)
         let playerCast = storyboard.instantiateInitialViewController() as? PlayerCast
         playerCast!.navigation = navigation
         playerCast!.castPlayer = navigation.gameDataStorage
@@ -43,7 +43,17 @@ class PlayerCast: UIViewController, NavigationProtocol {
         navigation.transitionToView(viewControllerType: Main(), special: nil)
     }
     @IBAction func Player2(_ sender: Any) {
-        
+        castPlayer.playerSet = true
+        castPlayer.defaultPlayer = Lu()
+        castPlayer.defaultPlayer.stats.cards = [CardAtack(), HpCard()]
+        navigation.transitionToView(viewControllerType: Main(), special: nil)
+    }
+    
+    @IBAction func sashka(_ sender: Any) {
+        castPlayer.playerSet = true
+        castPlayer.defaultPlayer = Sashka()
+        castPlayer.defaultPlayer.stats.cards = [CardAtack(), HpCard()]
+        navigation.transitionToView(viewControllerType: Main(), special: nil)
     }
     
     override func viewDidLoad() {

@@ -23,12 +23,20 @@ class StuelAnimArea{
     
     var doors: [Dir: UIView] = [:]
     
-    var k: CGFloat = 0
+    var floor: UIView!
+    
+    var offsetFactor: CGFloat{
+        if (2.16 < (areaView!.frame.height / widthRoom)) && ((areaView!.frame.height / widthRoom) < 2.17) {
+            return 30
+        }
+        return 0
+    }
+    
     var widthRoom: CGFloat{
         return areaView!.frame.width
     }
     var heightRoom: CGFloat{
-        return areaView!.frame.height - k
+        return areaView!.frame.height - offsetFactor
     }
     
     init(area: Area){
@@ -40,31 +48,57 @@ class StuelAnimArea{
 //////////////////
     func createWall(){
         
-        let thicknessWall = ((heightRoom + widthRoom) / 2) / 15
-        let a = #imageLiteral(resourceName: "scenes.scnassets/textures/wall.jpg")
+        let thicknessWall = ((heightRoom + widthRoom) / 2) / 20
+        //let wallTexture = #imageLiteral(resourceName: "scenes.scnassets/textures/wall.jpg")
+        var wallT = #imageLiteral(resourceName: "scenes.scnassets/textures/wallT.jpg")
+        var wallF = GetClass.getNewSizeImage(image: wallT, size: CGSize(width: thicknessWall, height: widthRoom), rotate: 0)
+        wallF = GetClass.getNewRotateImage(image: wallF)
+        wallT = GetClass.getNewSizeImage(image: wallT, size: CGSize(width: thicknessWall, height: heightRoom), rotate: 0)
+        let mirrorImage = wallT.withHorizontallyFlippedOrientation()
         
-        let rightWallFrame = CGRect(x:  widthRoom - thicknessWall, y: 0, width: thicknessWall, height: heightRoom)
-        let rightWall = UIView(frame: rightWallFrame)
-        rightWall.backgroundColor = UIColor(patternImage: a)
-        newRoomView.addSubview(rightWall)
         
         print(thicknessWall)
-        let upWallFrame = CGRect(x:  0, y: 0, width: widthRoom, height: thicknessWall)
+        let upWallFrame = CGRect(x: 0, y: 0, width: widthRoom, height: thicknessWall)
         let upWall = UIView(frame: upWallFrame)
-        upWall.backgroundColor = UIColor(patternImage: a)
+        upWall.backgroundColor = UIColor(patternImage: wallF)
         newRoomView.addSubview(upWall)
         
-        let leftWallFrame = CGRect(x:  0, y: 0, width: thicknessWall, height: heightRoom)
-        let leftWall = UIView(frame: leftWallFrame)
-        leftWall.backgroundColor = UIColor(patternImage: a)
-        newRoomView.addSubview(leftWall)
-        
-        let downWallFrame = CGRect(x:  0, y: heightRoom - thicknessWall, width: widthRoom, height: thicknessWall)
+        let downWallFrame = CGRect(x: 0, y: heightRoom - thicknessWall, width: widthRoom, height: thicknessWall)
         let downWall = UIView(frame: downWallFrame)
-        downWall.backgroundColor = UIColor(patternImage: a)
+        downWall.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         newRoomView.addSubview(downWall)
         
+        let rightWallFrame = CGRect(x: widthRoom - thicknessWall, y: 0, width: thicknessWall, height: heightRoom)
+        let rightWall = UIView(frame: rightWallFrame)
+        rightWall.backgroundColor = UIColor(patternImage: mirrorImage)
+        newRoomView.addSubview(rightWall)
+        
+        let leftWallFrame = CGRect(x: 0, y: 0, width: thicknessWall, height: heightRoom)
+        let leftWall = UIView(frame: leftWallFrame)
+        leftWall.backgroundColor = UIColor(patternImage: wallT)
+        newRoomView.addSubview(leftWall)
+        
     }
+    
+    func createFloor(){
+        let thicknessWall = ((heightRoom + widthRoom) / 2) / 20
+        //
+        let b = #imageLiteral(resourceName: "scenes.scnassets/textures/ComRoom.jpg")
+        let floorFrame = CGRect(x: thicknessWall, y: thicknessWall, width: widthRoom - (thicknessWall * 2), height: heightRoom - (thicknessWall * 2))
+
+        let wid = (widthRoom - (thicknessWall * 2)) / 4
+        let hid = (heightRoom - (thicknessWall * 2)) / CGFloat(Int((heightRoom - (thicknessWall * 2)) / wid))
+        
+        let size = CGSize(width: wid, height: hid)
+        let newImage = GetClass.getNewSizeImage(image: b, size: size, rotate: 0)
+        
+        
+        floor = UIView(frame: floorFrame)
+        //
+        floor.backgroundColor = UIColor(patternImage: newImage)
+        newRoomView.addSubview(floor)
+    }
+    
     func createDoor(){
         let widthDoor   = ((heightRoom + widthRoom) / 2) / 15
         let heightDoor  = widthDoor
@@ -90,20 +124,17 @@ class StuelAnimArea{
         let widthDoor   = areaView!.frame.width/10
         let heightDoor  = widthDoor
         
-        if (2.16 < (heightRoom / widthRoom)) && ((heightRoom / widthRoom) < 2.17) {
-            k = heightRoom / 27
-        }
-        
-        let fd = CGRect(x: 0, y: k, width: widthRoom, height: heightRoom)
+        let fd = CGRect(x: 0, y: offsetFactor, width: widthRoom, height: heightRoom)
         newRoomView = UIView(frame: fd)
         areaView!.addSubview(newRoomView)
         
-        let forTen = CGRect(x:  0, y: 0, width: widthRoom, height: k)
+        let forTen = CGRect(x:  0, y: 0, width: widthRoom, height: offsetFactor)
         let forTenE = UIView(frame: forTen)
         forTenE.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         areaView!.addSubview(forTenE)
         
         createWall()
+        createFloor()
         createDoor()
         
         let countRoomFrame = CGRect(x: widthRoom / 2 - widthDoor * 1.5, y: heightDoor * 2, width: widthDoor * 3, height: heightDoor)
@@ -135,9 +166,7 @@ class StuelAnimArea{
         }
         
         if let a = room as? StorRoom{
-            let widthDoor   = area.view.frame.width/10
-            let heightDoor  = widthDoor
-            let payButtonFrame = CGRect(x:  roomView.frame.width/2 - widthDoor / 2, y: roomView.frame.height/2 - heightDoor / 2, width: widthDoor, height: heightDoor)
+            let payButtonFrame = CGRect(x:  newRoomView.frame.width/2 - widthDoor / 2, y: newRoomView.frame.height/2 - heightDoor / 2, width: widthDoor, height: heightDoor)
             let payButton = UIButton(frame: payButtonFrame)
             a.createLogiсButton(payButton: payButton)
             payButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -154,14 +183,14 @@ class StuelAnimArea{
         
         switch dir {
         case .Up:
-            offScreenFirst = CGAffineTransform(translationX: 0, y: -heightRoom + k)
-            offScreenSecond = CGAffineTransform(translationX: 0, y: heightRoom - k)
+            offScreenFirst = CGAffineTransform(translationX: 0, y: -heightRoom)
+            offScreenSecond = CGAffineTransform(translationX: 0, y: heightRoom)
         case .Right:
             offScreenFirst = CGAffineTransform(translationX: widthRoom, y: 0)
             offScreenSecond = CGAffineTransform(translationX: -widthRoom, y: 0)
         case .Down:
-            offScreenFirst = CGAffineTransform(translationX: 0, y: heightRoom - k)
-            offScreenSecond = CGAffineTransform(translationX: 0, y: -heightRoom + k)
+            offScreenFirst = CGAffineTransform(translationX: 0, y: heightRoom)
+            offScreenSecond = CGAffineTransform(translationX: 0, y: -heightRoom)
         case .Left:
             offScreenFirst = CGAffineTransform(translationX: -widthRoom, y: 0)
             offScreenSecond = CGAffineTransform(translationX: widthRoom, y: 0)
@@ -204,8 +233,10 @@ class StuelAnimArea{
     }
     
     func outputRoom(room: Room){
-        switch room.nameRoom {
-        case "ComRoom":     roomView.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        //let a = #imageLiteral(resourceName: "scenes.scnassets/textures/ComRoom.jpg")
+        
+        switch room.saveRoom.nameRoo {
+        case "ComRoom":     break
         case "DmgRoom":     roomView.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         case "CloseRoom":   roomView.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
             

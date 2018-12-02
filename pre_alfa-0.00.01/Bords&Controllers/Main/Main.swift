@@ -63,7 +63,7 @@ class Main: UIViewController, NavigationProtocol {
         gameDataStorage.player.y = y
        
         for i in gameDataStorage.map.mapRooms{
-            print(String(i.value.id) + " - " + i.value.nameRoom)
+            print(String(i.value.id) + " - " + i.value.saveRoom.nameRoo)
         }
         
         navigation.transitionToView(viewControllerType: Area(), special: nil)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Charactor: NSObject {
+class Charactor{
     var dieFight : Bool{
         if fightStats.fightHP <= 0{
             return true
@@ -18,6 +18,5 @@ class Charactor: NSObject {
     var name = ""
     var inventery = Inventery()
     var fightStats = FightStats()
-    
     
 }

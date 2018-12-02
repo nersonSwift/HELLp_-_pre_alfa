@@ -27,7 +27,7 @@ class ComRoom: Room {
     
     init(castPlayer: GameDataStorage){
         super.init()
-        nameRoom = "ComRoom"
+        saveRoom.nameRoo = "ComRoom"
         createCommonEnemy()
         
         Ginirate()

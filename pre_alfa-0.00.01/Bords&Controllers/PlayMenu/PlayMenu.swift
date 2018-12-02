@@ -14,7 +14,7 @@ class PlayMenu: UIViewController, NavigationProtocol {
     var navigation: Navigation!
     
     static func storyboardInstance(navigation: Navigation) -> UIViewController? {
-        let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
+        let storyboard = UIStoryboard(name: "\(self)", bundle: nil)
         let playMenu = storyboard.instantiateInitialViewController() as? PlayMenu
         playMenu!.navigation = navigation
         return playMenu

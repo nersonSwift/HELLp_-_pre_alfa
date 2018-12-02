@@ -14,7 +14,12 @@ class StorRoom: CloseRoom{
     
     override func setDifRoom(x: Int, y: Int, castPlayer: GameDataStorage) {
         super.setDifRoom(x: x, y: y, castPlayer: castPlayer)
-        nameRoom = "StorRoom"
+        saveRoom.nameRoo = "StorRoom"
+        addItems()
+    }
+    
+    override func loadRoom(saveRoom: roomProp, castPlayer: GameDataStorage) {
+        super.loadRoom(saveRoom: saveRoom, castPlayer: castPlayer)
         addItems()
     }
     

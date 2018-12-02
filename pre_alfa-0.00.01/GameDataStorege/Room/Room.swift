@@ -10,12 +10,12 @@ import UIKit
 import RealmSwift
 
 
-class Room: RoomProp {
+class Room {
     
-    var saveRoom = RoomProp()
+    var saveRoom = roomProp()
     
     let realm = try! Realm()
-    var savedRooms: Results<RoomProp>!
+    var savedRooms: Results<roomProp>!
     
 ////////////////////
 //MARK: - Property//
@@ -152,7 +152,7 @@ class Room: RoomProp {
         }
     }
     
-    func loadRoom(saveRoom: RoomProp, castPlayer: GameDataStorage){
+    func loadRoom(saveRoom: roomProp, castPlayer: GameDataStorage){
         try! realm.write {
             realm.delete(self.saveRoom)
             self.saveRoom = saveRoom

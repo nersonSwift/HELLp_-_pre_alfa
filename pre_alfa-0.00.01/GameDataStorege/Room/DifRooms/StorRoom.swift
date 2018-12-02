@@ -18,7 +18,7 @@ class StorRoom: CloseRoom{
         addItems()
     }
     
-    override func loadRoom(saveRoom: roomProp, castPlayer: GameDataStorage) {
+    override func loadRoom(saveRoom: RoomProp, castPlayer: GameDataStorage) {
         super.loadRoom(saveRoom: saveRoom, castPlayer: castPlayer)
         addItems()
     }

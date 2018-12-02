@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class roomProp: Object {
+class RoomProp: Object {
     @objc dynamic var id = 0
     @objc dynamic var name = ""
     @objc dynamic var firstVisitingTriger = true
@@ -38,8 +38,8 @@ class roomProp: Object {
             return name
         }
     }
-    func copy() -> roomProp{
-        let copySelf = roomProp()
+    func copy() -> RoomProp{
+        let copySelf = RoomProp()
         copySelf.id                     = id
         copySelf.name                   = name
         copySelf.firstVisitingTriger    = firstVisitingTriger

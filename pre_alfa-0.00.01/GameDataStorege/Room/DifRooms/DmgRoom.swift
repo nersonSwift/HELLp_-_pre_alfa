@@ -9,14 +9,15 @@
 import UIKit
 
 class DmgRoom: DifRoom {
+    override init(){super.init()}
     
     override func setDifRoom(x: Int, y: Int, castPlayer: GameDataStorage) {
         super.setDifRoom(x: x, y: y, castPlayer: castPlayer)
-        name = "DmgRoom"
+        saveRoom.nameRoo = "DmgRoom"
         typeDoors = Door.dmgDoor
         Doors = [.Up : typeDoors, .Right : typeDoors, .Down : typeDoors, .Left : typeDoors]
         
-        checkNoRoom(castPlayer: castPlayer)
+        CheckNoRoom(castPlayer: castPlayer)
     }
  
     override func InRoom(castPlayer: GameDataStorage) {

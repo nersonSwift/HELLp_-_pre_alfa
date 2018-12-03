@@ -11,13 +11,15 @@ import UIKit
 class DifRoom: Room {
     var typeDoors: Door!
     
+    override init(){super.init()}
+    
     func setDifRoom(x: Int, y: Int, castPlayer: GameDataStorage){
-        saveThisRoom()
         self.x = x
         self.y = y
     }
     
-    func checkNoRoom(castPlayer: GameDataStorage){
+    func CheckNoRoom(castPlayer: GameDataStorage){
+        
         let roomUp      = castPlayer.map.mapRooms[String(x) + String(y+1)]
         let roomRight   = castPlayer.map.mapRooms[String(x+1) + String(y)]
         let roomDown    = castPlayer.map.mapRooms[String(x) + String(y-1)]

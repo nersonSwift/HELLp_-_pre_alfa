@@ -10,11 +10,12 @@ import UIKit
 
 class NoDoorRoom: DifRoom {
     
+    override init(){super.init()}
     override func openRoom(player: Player) -> Bool{return false}
     
     override func setDifRoom(x: Int, y: Int, castPlayer: GameDataStorage) {
         super.setDifRoom(x: x, y: y, castPlayer: castPlayer)
-        name = "NoDoorRoom"
+        self.saveRoom.nameRoo = "NoDoorRoom"
         typeDoors = Door.noDoor
         Doors = [.Up : typeDoors, .Right : typeDoors, .Down : typeDoors, .Left : typeDoors]
         close = true

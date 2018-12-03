@@ -23,9 +23,11 @@ class ComRoom: Room {
             }
         }
     }
-    func setComRoom(castPlayer: GameDataStorage){
-        saveThisRoom()
-        name = "ComRoom"
+    override init(){super.init()}
+    
+    init(castPlayer: GameDataStorage){
+        super.init()
+        saveRoom.nameRoo = "ComRoom"
         createCommonEnemy()
         
         Ginirate()
@@ -44,5 +46,8 @@ class ComRoom: Room {
         if let roomLeft = castPlayer.map.mapRooms[String(x-1) + String(y)]{
             Doors[Dir.Left] = roomLeft.Doors[Dir.Right]
         }
+        
+        
+        
     }
 }

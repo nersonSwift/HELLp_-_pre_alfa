@@ -10,5 +10,5 @@ import UIKit
 import RealmSwift
 
 class AllSave: Object {
-    var saveRoom: Results<roomProp>!
+    var saveRoom: Results<RoomProp>!
 }

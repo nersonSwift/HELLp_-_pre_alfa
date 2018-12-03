@@ -19,20 +19,20 @@ class GameDataStorage{
     var playerSet = false
     var loadGame = false
     var realm: Realm!
-    var savedRooms: Results<roomProp>!
+    var savedRooms: Results<Room>!
     
     init() {
         do{
             //try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
             realm = try Realm()
-            savedRooms = realm.objects(roomProp.self)
+            savedRooms = realm.objects(Room.self)
             print(Realm.Configuration.defaultConfiguration.fileURL!)
         }catch{
-            var lCopySavedRooms: [roomProp] = []
+            var lCopySavedRooms: [RoomProp] = []
             autoreleasepool{
-                let config = Realm.Configuration(objectTypes: [roomProp.self])
+                let config = Realm.Configuration(objectTypes: [RoomProp.self])
                 let realms = try! Realm(configuration: config)
-                let lSavedRooms = realms.objects(roomProp.self)
+                let lSavedRooms = realms.objects(RoomProp.self)
                 for i in lSavedRooms{
                     lCopySavedRooms.append(i.copy())
                 }
@@ -50,8 +50,8 @@ class GameDataStorage{
                     realm.add(i)
                 }
             }
-            savedRooms = realm.objects(roomProp.self)
-            print(savedRooms[1].name)
+            savedRooms = realm.objects(Room.self)
+            print(savedRooms[1].nameS)
         }
         /*
         let saveRoom = SaveRoomsd()

@@ -70,8 +70,9 @@ class BrainArea {
         else{
             castPlayer.player.x = nX
             castPlayer.player.y = nY
-            castPlayer.map.mapRooms[xy] = ComRoom(castPlayer: castPlayer)
-            
+            let comRoom = ComRoom()
+            comRoom.setComRoom(castPlayer: castPlayer)
+            castPlayer.map.mapRooms[xy] = comRoom
         }
         
         thisRoom.NoInRoom()
@@ -85,7 +86,9 @@ class BrainArea {
     
     func startGame(){
         castPlayer.startGame()
-        thisRoom = ComRoom(castPlayer: castPlayer)
+        let comRoom = ComRoom()
+        comRoom.setComRoom(castPlayer: castPlayer)
+        thisRoom = comRoom
         castPlayer.map.mapRooms = ["00" : thisRoom]
         thisRoom.enemys = []
         thisRoom.InRoom(castPlayer: castPlayer)

@@ -235,7 +235,7 @@ class StuelAnimArea{
     func outputRoom(room: Room){
         //let a = #imageLiteral(resourceName: "scenes.scnassets/textures/ComRoom.jpg")
         
-        switch room.saveRoom.nameRoo {
+        switch room.name {
         case "ComRoom":     break
         case "DmgRoom":     roomView.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         case "CloseRoom":   roomView.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)

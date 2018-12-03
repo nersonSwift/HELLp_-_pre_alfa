@@ -46,8 +46,8 @@ class Main: UIViewController, NavigationProtocol {
         gameDataStorage.player.stats.cards = [CardAtack(),HpCard()]
         for i in gameDataStorage.savedRooms{
             
-            let newRoom = GetClass.getRoom(name: i.name)
-            newRoom.loadRoom(saveRoom: i, castPlayer: gameDataStorage)
+            let newRoom = i
+            //newRoom.loadRoom(saveRoom: i, castPlayer: gameDataStorage)
             gameDataStorage.map.mapRooms[String(newRoom.x) + String(newRoom.y)] = newRoom
             
             if !newRoom.firstVisitingTriger{
@@ -61,10 +61,6 @@ class Main: UIViewController, NavigationProtocol {
         }
         gameDataStorage.player.x = x
         gameDataStorage.player.y = y
-       
-        for i in gameDataStorage.map.mapRooms{
-            print(String(i.value.id) + " - " + i.value.saveRoom.nameRoo)
-        }
         
         navigation.transitionToView(viewControllerType: Area(), special: nil)
     }

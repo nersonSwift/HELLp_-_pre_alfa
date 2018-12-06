@@ -13,21 +13,24 @@ import RealmSwift
 
 class GameDataStorage{
     
-    var player = Player()
-    var defaultPlayer = Player()
+    var player: Player!
+    var defaultPlayer: Player!
     var map: Map!
     var playerSet = false
     var loadGame = false
     var realm: Realm!
-    var savedRooms: Results<Room>!
     
     init() {
+        loadOrCreateRealm()
+        createMap()
+    }
+    func loadOrCreateRealm(){
         do{
             //try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
             realm = try Realm()
-            savedRooms = realm.objects(Room.self)
-            print(Realm.Configuration.defaultConfiguration.fileURL!)
+            //print(Realm.Configuration.defaultConfiguration.fileURL!)
         }catch{
+            /*
             var lCopySavedRooms: [RoomProp] = []
             autoreleasepool{
                 let config = Realm.Configuration(objectTypes: [RoomProp.self])
@@ -37,31 +40,30 @@ class GameDataStorage{
                     lCopySavedRooms.append(i.copy())
                 }
             }
+            */
             try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
-            
             realm = try! Realm()
-            let f = SaveRoomsd()
-            f.enemy2 = " d "
-            try! realm.write {
-                realm.add(f)
-            }
+            /*
             for i in lCopySavedRooms{
                 try! realm.write {
                     realm.add(i)
                 }
             }
-            savedRooms = realm.objects(Room.self)
-            print(savedRooms[1].nameS)
+            */
         }
-        /*
-        let saveRoom = SaveRoomsd()
-        try! realm.write {
-            realm.add(saveRoom)
-        }*/
+    }
     
-        //let a = realm.objects(SaveRoomsd.self)
-        
+    func createMap(){
         map = Map(gameDataStorage: self)
+        for objectType in realm.configuration.objectTypes!{
+            if objectType.init() is Room{
+                let resaults = realm.objects(objectType)
+                for object in resaults{
+                    let room = object as! Room
+                    map.mapRooms[room.xy] = room
+                }
+            }
+        }
     }
     
     func startGame(){

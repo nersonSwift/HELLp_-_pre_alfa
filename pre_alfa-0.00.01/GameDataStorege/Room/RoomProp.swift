@@ -19,10 +19,10 @@ class RoomProp: Object {
     @objc dynamic var xS = 0
     @objc dynamic var yS = 0
     
-    @objc dynamic var upS    = ""
-    @objc dynamic var rightS = ""
-    @objc dynamic var downS  = ""
-    @objc dynamic var leftS  = ""
+    @objc dynamic var up    = ""
+    @objc dynamic var right = ""
+    @objc dynamic var down  = ""
+    @objc dynamic var left  = ""
     
     @objc dynamic var enemy0S = ""
     @objc dynamic var enemy1S = ""
@@ -122,7 +122,8 @@ class RoomProp: Object {
         }
     }
     func copy() -> RoomProp{
-        let copySelf = RoomProp()
+        let copySelf = type(of: self).init()
+        
         copySelf.idS                     = idS
         copySelf.nameS                   = nameS
         copySelf.firstVisitingTrigerS    = firstVisitingTrigerS
@@ -130,10 +131,10 @@ class RoomProp: Object {
         copySelf.inRoomS                 = inRoomS
         copySelf.xS                      = xS
         copySelf.yS                      = yS
-        copySelf.upS                     = upS
-        copySelf.rightS                  = rightS
-        copySelf.downS                   = downS
-        copySelf.leftS                   = leftS
+        copySelf.up                      = up
+        copySelf.right                   = right
+        copySelf.down                    = down
+        copySelf.left                    = left
         copySelf.enemy0S                 = enemy0S
         copySelf.enemy1S                 = enemy1S
         copySelf.enemy2S                 = enemy2S
@@ -151,10 +152,4 @@ class RoomProp: Object {
             try! Realm().delete(self)
         }
     }
-}
-
-
-class SaveRoomsd: Object {
-    @objc dynamic var enemy2 = ""
-   // @objc dynamic var enemy3 = ""
 }

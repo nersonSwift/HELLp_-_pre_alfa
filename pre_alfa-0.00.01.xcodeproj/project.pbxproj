@@ -292,6 +292,7 @@
 		5186DF0A20F0A783006AF275 /* Room */ = {
 			isa = PBXGroup;
 			children = (
+				518977B9212ED82400BD8AF9 /* RoomProp.swift */,
 				5157931120EA1F5000327D91 /* Room.swift */,
 				514316112120922C003A0C11 /* DifRooms */,
 				5143161021209217003A0C11 /* CommonRooms */,
@@ -334,7 +335,6 @@
 		518977B8212ED7A300BD8AF9 /* Save */ = {
 			isa = PBXGroup;
 			children = (
-				518977B9212ED82400BD8AF9 /* RoomProp.swift */,
 				51309F79215BB3AF000A8B94 /* AllSave.swift */,
 				518977BD2131E9BB00BD8AF9 /* GetClass.swift */,
 			);

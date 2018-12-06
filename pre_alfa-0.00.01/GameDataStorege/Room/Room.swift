@@ -11,24 +11,8 @@ import RealmSwift
 
 
 class Room: RoomProp {
-    
-    //var saveRoom = RoomProp()
-    
-    //let realm = try! Realm()
-    var savedRooms: Results<RoomProp>!
-    
-////////////////////
-//MARK: - Property//
-////////////////////
-
- 
     var enemys: [Enemy] = []
-    
-/////////////////
-//MARK: - Func//
-////////////////
-    
-    ///required init(){saveThisRoom()}
+
     func openRoom(player: Player) -> Bool{return true}
     
     func criateBlockMapRoom(castPlayer: GameDataStorage){
@@ -36,7 +20,6 @@ class Room: RoomProp {
         print(castPlayer.player.stats.counterRoom)
         castPlayer.map.map3D.criateBlockMap(map: castPlayer.map, x: x, y: y)
     }
-    
     
     public func firstVisiting(castPlayer: GameDataStorage){
         if firstVisitingTriger{
@@ -56,13 +39,5 @@ class Room: RoomProp {
     public func NoInRoom(){
         inRoom = false
     }
-    
-/////////////////////
-//MARK: - RealmFunc//
-/////////////////////
-    
-    
-    
-    
     
 }

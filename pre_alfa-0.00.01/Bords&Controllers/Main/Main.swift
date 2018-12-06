@@ -28,37 +28,37 @@ class Main: UIViewController, NavigationProtocol {
             return
         }
         try! gameDataStorage.realm.write {
-            gameDataStorage.realm.delete(gameDataStorage.savedRooms)
+            gameDataStorage.realm.deleteAll()
         }
         gameDataStorage.loadGame = false
         navigation.transitionToView(viewControllerType: Area(), special: nil)
     }
     
     @IBAction func continueGame(_ sender: Any) {
-        if gameDataStorage.savedRooms.isEmpty{
+        if gameDataStorage.map.mapRooms.isEmpty{
             return
         }
         var x = 0
         var y = 0
-        gameDataStorage.loadGame = true
         
+        gameDataStorage.loadGame = true
         gameDataStorage.player = Lilit()
         gameDataStorage.player.stats.cards = [CardAtack(),HpCard()]
-        for i in gameDataStorage.savedRooms{
+        
+        for i in gameDataStorage.map.mapRooms{
             
-            let newRoom = i
-            //newRoom.loadRoom(saveRoom: i, castPlayer: gameDataStorage)
-            gameDataStorage.map.mapRooms[String(newRoom.x) + String(newRoom.y)] = newRoom
+            let newRoom = i.value
             
             if !newRoom.firstVisitingTriger{
                 newRoom.criateBlockMapRoom(castPlayer: gameDataStorage)
             }
             
-            if i.inRoom{
-                x = i.x
-                y = i.y
+            if newRoom.inRoom{
+                x = newRoom.x
+                y = newRoom.y
             }
         }
+        
         gameDataStorage.player.x = x
         gameDataStorage.player.y = y
         

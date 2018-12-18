@@ -10,7 +10,6 @@ import UIKit
 import RealmSwift
 
 class RoomProp: Object {
-    @objc dynamic var asd: RoomProp?
     @objc dynamic var idS = 0
     @objc dynamic var nameS = ""
     @objc dynamic var firstVisitingTrigerS = true
@@ -116,8 +115,8 @@ class RoomProp: Object {
             var doors: [Dir: Door] = [:]
             let dirDoor: [Dir] = [.Up, .Right, .Down, .Left]
             for i in dirDoor{
-                let nameDoor = self[i.rawValue] as! String
-                doors[i] = GetClass.getDoor(name: nameDoor)
+                let nameRoom = self[i.rawValue] as! String
+                doors[i] = GetClass.getDoor(name: nameRoom)
             }
             return doors
         }

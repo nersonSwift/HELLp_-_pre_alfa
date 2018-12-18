@@ -38,7 +38,7 @@ class Player: Charactor {
     public func copy() -> Player{
         let copyPlayer = type(of: self).init()
         copyPlayer.stats = stats
-        copyPlayer.inventery = inventery.copy()
+        copyPlayer.inventery = inventery
         return copyPlayer
         
     }

@@ -9,6 +9,9 @@
 import UIKit
 
 class Key: Item {
-    
+    override init() {
+        super.init()
+        name = "Key"
+    }
     
 }

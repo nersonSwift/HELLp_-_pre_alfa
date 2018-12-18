@@ -19,7 +19,7 @@ class Enemy: Charactor {
         fightStats = FightStatsEnemy()
     }
     
-    func dropItem() -> Item? {
+    func dropItem() -> StackItem? {
         return nil
     }
     

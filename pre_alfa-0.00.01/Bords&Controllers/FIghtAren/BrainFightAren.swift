@@ -20,7 +20,7 @@ class BrainFightAren{
         return fightAren!.allEnemyInAren[selectLiveEnemy]
     }
     var cardsInHand: [Card] = []
-    var chest: [Item] = []
+    var chest: [StackItem] = []
     
     var selectLiveEnemy = 0
     var allEnemyInAren: [EnemyInAren?]{

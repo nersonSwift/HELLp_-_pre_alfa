@@ -27,17 +27,8 @@ class GameDataStorage{
     func loadOrCreateRealm(){
         do{
             //try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
-            
-            let manager = FileManager.default
-            try! manager.createDirectory(at: Realm.Configuration.defaultConfiguration.fileURL!.deletingLastPathComponent().appendingPathComponent("123"), withIntermediateDirectories: true, attributes: nil)
-            
-            var config = Realm.Configuration()
-            config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("123/123.realm")
-            print(config.fileURL)
-            realm = try Realm(configuration: config)
-            Realm.Configuration.defaultConfiguration = config
-            print(Door.init(rawValue: "woodDoor"))
-            print(Realm.Configuration.defaultConfiguration.fileURL!)
+            realm = try Realm()
+            //print(Realm.Configuration.defaultConfiguration.fileURL!)
         }catch{
             /*
             var lCopySavedRooms: [RoomProp] = []
@@ -50,7 +41,8 @@ class GameDataStorage{
                 }
             }
             */
-            try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!.deletingLastPathComponent().appendingPathComponent("123"))
+            try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
+            realm = try! Realm()
             /*
             for i in lCopySavedRooms{
                 try! realm.write {
@@ -59,12 +51,10 @@ class GameDataStorage{
             }
             */
         }
-       
     }
     
     func createMap(){
         map = Map(gameDataStorage: self)
-        
         for objectType in realm.configuration.objectTypes!{
             if objectType.init() is Room{
                 let resaults = realm.objects(objectType)

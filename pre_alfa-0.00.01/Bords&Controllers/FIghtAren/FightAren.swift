@@ -84,7 +84,7 @@ class FightAren: UIViewController, NavigationProtocol  {
             
             if a.node.name == "WinBox" && endAnimStep{
                 for i in brain.chest{
-                    brain.player.inventery.addItem(item: i)
+                    brain.player.inventery.AddItem(steckItem: i)
                 }
                 navigation.transitionToView(viewControllerType: Area(), special: nil)
             }

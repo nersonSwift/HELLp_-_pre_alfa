@@ -7,29 +7,50 @@
 //
 
 import UIKit
+import RealmSwift
 
-struct Inventery{
-    var bag: [String: StackItem] = [:]
+
+class Inventery: Object{
+    @objc dynamic var urlRealmItems = ""
+    var realmItem: Realm{
+        var config = Realm.Configuration()
+        config.fileURL = URL(fileURLWithPath: urlRealmItems)
+        let realm = try! Realm(configuration: config)
+        Realm.Configuration.defaultConfiguration = config
+        return realm
+    }
     
-    mutating func AddItem(steckItem: StackItem){
-        if bag[steckItem.name] != nil{
-            bag[steckItem.name]?.quantity += steckItem.quantity
+    var bag: [String: Item] = [:]
+    
+    func addItem(item: Item){
+        
+        if bag[item.name] != nil{
+            bag[item.name]!.quantity += item.quantity
         }else{
-            bag[steckItem.name] = steckItem
+            bag[item.name] = item
         }
     }
     
-    mutating func DellItem(steckItem: StackItem) -> Bool{
-        if bag[steckItem.name] == nil{
+    func dellItem(item: Item) -> Bool{
+        if bag[item.name] == nil{
             return false
         }
-        if bag[steckItem.name]!.quantity < steckItem.quantity{
+        if bag[item.name]!.quantity < item.quantity{
             return false
         }
-        bag[steckItem.name]!.quantity -= steckItem.quantity
-        if bag[steckItem.name]!.quantity == 0{
-            bag[steckItem.name] = nil
+        bag[item.name]!.quantity -= item.quantity
+        if bag[item.name]!.quantity == 0{
+            bag[item.name] = nil
         }
         return true
     }
+    
+    func copy() -> Inventery{
+        let inventery = type(of: self).init()
+        for item in bag{
+            inventery.bag[item.key] = item.value.copy()
+        }
+        return inventery
+    }
+    
 }

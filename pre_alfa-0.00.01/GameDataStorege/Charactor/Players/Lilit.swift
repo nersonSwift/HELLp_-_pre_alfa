@@ -17,7 +17,9 @@ class Lilit: Player {
         stats.maxHP = 10
         stats.hP = 10
         
-        inventery.AddItem(steckItem: StackItem(item: Key(), quantity: 2))
+        let key = Key()
+        key.quantity = 2
+        inventery.addItem(item: key)
     }
     
 }

@@ -77,7 +77,7 @@ class GetClass{
         default: return Enemy()
         }
     }
-    
+    /*
     static func getRoom(name: String)  -> Room{
         switch name{
             case "ComRoom":     return ComRoom()
@@ -89,7 +89,7 @@ class GetClass{
         default: return Room()
         }
     }
-    
+    */
     static func getNewSizeImage(image: UIImage, size: CGSize, rotate: CGFloat) -> UIImage{
         let rect = CGSize(width: size.width + 1, height: size.height + 1)
         UIGraphicsBeginImageContextWithOptions(CGSize(width: size.width, height: size.height), true, 0)

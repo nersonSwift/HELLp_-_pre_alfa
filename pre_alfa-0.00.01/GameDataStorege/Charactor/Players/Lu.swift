@@ -16,6 +16,8 @@ class Lu: Player {
         stats.maxHP = 9
         stats.hP = 9
         
-        inventery.AddItem(steckItem: StackItem(item: Key(), quantity: 1))
+        let key = Key()
+        key.quantity = 1
+        inventery.addItem(item: key)
     }
 }

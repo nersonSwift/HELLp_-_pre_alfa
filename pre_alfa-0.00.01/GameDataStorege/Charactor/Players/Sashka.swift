@@ -16,6 +16,8 @@ class Sashka: Player {
         stats.maxHP = 5
         stats.hP = 5
         
-        inventery.AddItem(steckItem: StackItem(item: Key(), quantity: 3))
+        let key = Key()
+        key.quantity = 3
+        inventery.addItem(item: key)
     }
 }

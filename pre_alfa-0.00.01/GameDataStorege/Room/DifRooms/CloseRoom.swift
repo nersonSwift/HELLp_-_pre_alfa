@@ -13,7 +13,9 @@ class CloseRoom: DifRoom {
     
     override func openRoom(player: Player) -> Bool{
         if close{
-            if player.inventery.DellItem(steckItem: StackItem(item: Key(), quantity: 1)){
+            let key = Key()
+            key.quantity = 1
+            if player.inventery.dellItem(item: key){
                 close = false
                 return true
             }

@@ -9,7 +9,7 @@
 import UIKit
 
 class StorRoom: CloseRoom{
-    var itemInStor: [String : Int]!
+    //var itemInStor: [String : Int]!
     weak var player: Player?
     
     override func setDifRoom(x: Int, y: Int, castPlayer: GameDataStorage) {
@@ -29,8 +29,8 @@ class StorRoom: CloseRoom{
     }
     
     func addItems(){
-        let a = GetClass.getItemInStore()
-        itemInStor = [a : 5]
+        //let a = GetClass.getItemInStore()
+        //itemInStor = [a : 5]
     }
     
     func createLogiсButton(payButton: UIButton){
@@ -39,10 +39,12 @@ class StorRoom: CloseRoom{
     
     @objc func pay(_ sender: UIButton){
         player?.stats.hP -= 1
-        for i in itemInStor{
-            let newStack = StackItem(item: GetClass.getItem(name: i.key), quantity: i.value)
-            player?.inventery.AddItem(steckItem: newStack)
-        }
+        
+        //for i in itemInStor{
+        let key = Key()
+        key.quantity = 1
+        player?.inventery.addItem(item: key)
+        //}
         
     }
 

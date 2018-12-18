@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import RealmSwift
 
-class Item{
-    var name = ""
+class Item: Object{
+    var name: String{
+        return ("\(type(of: self))")
+    }
     
-    init() {}
+    @objc dynamic var quantity = 0
     
+    func copy() -> Item{
+        let item = type(of: self).init()
+        item.quantity = quantity
+        return item
+    }
 }

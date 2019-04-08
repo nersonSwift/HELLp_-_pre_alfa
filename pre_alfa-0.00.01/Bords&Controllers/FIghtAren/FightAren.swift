@@ -86,7 +86,10 @@ class FightAren: UIViewController, NavigationProtocol  {
                 for i in brain.chest{
                     brain.player.inventery.addItem(item: i)
                 }
-                navigation.transitionToView(viewControllerType: Area(), special: nil)
+                navigation.transitionToView(viewControllerType: Area(), special: {(nextViewController: UIViewController) in
+                    let area = nextViewController as? Area
+                    area?.updateRoom()
+                })
             }
             
             if a.node.name == "Card"{

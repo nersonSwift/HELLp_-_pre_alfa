@@ -72,6 +72,17 @@ class Area: UIViewController, NavigationProtocol {
                 stuel.outputRoom(room: nextRoom)
                 stuel.animEnemyView()
             }
+            updateRoom()
+        }
+    }
+    
+    func updateRoom(){
+        stuel.checkHp(player: gameDataStorage.player)
+        if gameDataStorage.player.dieGame{
+            navigation.transitionToView(viewControllerType: LostBord(), special: {(nextViewController: UIViewController) in
+                let lostBord = nextViewController as? LostBord
+                lostBord?.modalPresentationStyle = .custom
+            })
         }
     }
 
@@ -107,6 +118,7 @@ class Area: UIViewController, NavigationProtocol {
         }
         
         stuel.createRoomView(room: brain.thisRoom)
+        stuel.createHpBar(player: gameDataStorage.player)
         stuel.roomView = stuel.newRoomView
         
         stuel.outputRoom(room: brain.thisRoom)

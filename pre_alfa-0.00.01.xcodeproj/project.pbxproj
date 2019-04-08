@@ -34,8 +34,6 @@
 		5157930720EA1E7C00327D91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5157930620EA1E7C00327D91 /* Assets.xcassets */; };
 		5157931220EA1F5000327D91 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157931120EA1F5000327D91 /* Room.swift */; };
 		516B10E2211C488D00DDE22A /* scenes.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 516B10E1211C488D00DDE22A /* scenes.scnassets */; };
-		516DD6F321C969CF001DA45C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 516DD6F221C969CF001DA45C /* Realm.framework */; };
-		516DD6F521C969D3001DA45C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 516DD6F421C969D3001DA45C /* RealmSwift.framework */; };
 		516E27312117A05300409D97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516E27302117A05300409D97 /* AppDelegate.swift */; };
 		5186DF0F20F0A8CE006AF275 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5186DF0E20F0A8CE006AF275 /* Player.swift */; };
 		5186DF1220F0A927006AF275 /* Inventery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5186DF1120F0A927006AF275 /* Inventery.swift */; };
@@ -50,6 +48,7 @@
 		518B716B212466FD005E9A47 /* Qality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518B716A212466FD005E9A47 /* Qality.swift */; };
 		518B716D212484B0005E9A47 /* CardAtack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518B716C212484B0005E9A47 /* CardAtack.swift */; };
 		518F2F64210E5E1A008C036E /* FightAren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518F2F63210E5E1A008C036E /* FightAren.swift */; };
+		5196D90621E3DE0300FD18E0 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5196D90521E3DE0300FD18E0 /* Gif.swift */; };
 		519FA31D212AACAD00FAE753 /* HpCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FA31C212AACAD00FAE753 /* HpCard.swift */; };
 		51A2C2862103FF2A00E8ADC4 /* BrainArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A2C2852103FF2A00E8ADC4 /* BrainArea.swift */; };
 		51BB556721A8546B0081ED9D /* Lu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BB556621A8546B0081ED9D /* Lu.swift */; };
@@ -60,6 +59,7 @@
 		51D5DDAD214FB0E000420FF2 /* StorRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D5DDAC214FB0E000420FF2 /* StorRoom.swift */; };
 		51DE5C56210B376000CC002E /* Lilit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE5C55210B376000CC002E /* Lilit.swift */; };
 		51DE5C58210B505200CC002E /* GameDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE5C57210B505200CC002E /* GameDataStorage.swift */; };
+		51DE5C5A210C165100CC002E /* StackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE5C59210C165100CC002E /* StackItem.swift */; };
 		51DE5C5C210CE63C00CC002E /* LostBord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51DE5C5B210CE63C00CC002E /* LostBord.storyboard */; };
 		51DE5C5E210CE67900CC002E /* LostBord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE5C5D210CE67900CC002E /* LostBord.swift */; };
 		51E42D9A20F2384E007DA454 /* DmgRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E42D9920F2384E007DA454 /* DmgRoom.swift */; };
@@ -81,7 +81,6 @@
 		51200F832121D8FE0018E53E /* BlockMap3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockMap3D.swift; sourceTree = "<group>"; };
 		51200F862121EDAB0018E53E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		51200F882121EE140018E53E /* MapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapView.storyboard; sourceTree = "<group>"; };
-		5123B0EA21BADAC600731003 /* pre_alfa-0.00.01.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "pre_alfa-0.00.01.entitlements"; sourceTree = "<group>"; };
 		512863212120ADA30047326D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		512863232120B1120047326D /* FightAren.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FightAren.storyboard; sourceTree = "<group>"; };
 		512863252120B1A90047326D /* Area.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Area.storyboard; sourceTree = "<group>"; };
@@ -105,8 +104,6 @@
 		5157930B20EA1E7C00327D91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5157931120EA1F5000327D91 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		516B10E1211C488D00DDE22A /* scenes.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = scenes.scnassets; sourceTree = "<group>"; };
-		516DD6F221C969CF001DA45C /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		516DD6F421C969D3001DA45C /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		516E27302117A05300409D97 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5186DF0E20F0A8CE006AF275 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		5186DF1120F0A927006AF275 /* Inventery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventery.swift; sourceTree = "<group>"; };
@@ -121,6 +118,7 @@
 		518B716A212466FD005E9A47 /* Qality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Qality.swift; sourceTree = "<group>"; };
 		518B716C212484B0005E9A47 /* CardAtack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAtack.swift; sourceTree = "<group>"; };
 		518F2F63210E5E1A008C036E /* FightAren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightAren.swift; sourceTree = "<group>"; };
+		5196D90521E3DE0300FD18E0 /* Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
 		519FA31C212AACAD00FAE753 /* HpCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HpCard.swift; sourceTree = "<group>"; };
 		51A2C2852103FF2A00E8ADC4 /* BrainArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainArea.swift; sourceTree = "<group>"; };
 		51BB556621A8546B0081ED9D /* Lu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lu.swift; sourceTree = "<group>"; };
@@ -131,6 +129,7 @@
 		51D5DDAC214FB0E000420FF2 /* StorRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorRoom.swift; sourceTree = "<group>"; };
 		51DE5C55210B376000CC002E /* Lilit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lilit.swift; sourceTree = "<group>"; };
 		51DE5C57210B505200CC002E /* GameDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDataStorage.swift; sourceTree = "<group>"; };
+		51DE5C59210C165100CC002E /* StackItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackItem.swift; sourceTree = "<group>"; };
 		51DE5C5B210CE63C00CC002E /* LostBord.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LostBord.storyboard; path = "pre_alfa-0.00.01/Bords&Controllers/LostBord/LostBord.storyboard"; sourceTree = SOURCE_ROOT; };
 		51DE5C5D210CE67900CC002E /* LostBord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostBord.swift; sourceTree = "<group>"; };
 		51E42D9920F2384E007DA454 /* DmgRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DmgRoom.swift; sourceTree = "<group>"; };
@@ -152,8 +151,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				516DD6F521C969D3001DA45C /* RealmSwift.framework in Frameworks */,
-				516DD6F321C969CF001DA45C /* Realm.framework in Frameworks */,
 				30D79483C4C0940C3AC7C088 /* Pods_pre_alfa_0_00_01.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,10 +279,10 @@
 		515792FE20EA1E7A00327D91 /* pre_alfa-0.00.01 */ = {
 			isa = PBXGroup;
 			children = (
-				5123B0EA21BADAC600731003 /* pre_alfa-0.00.01.entitlements */,
 				516E27302117A05300409D97 /* AppDelegate.swift */,
 				5157930B20EA1E7C00327D91 /* Info.plist */,
 				512863212120ADA30047326D /* LaunchScreen.storyboard */,
+				5196D90521E3DE0300FD18E0 /* Gif.swift */,
 				5157930620EA1E7C00327D91 /* Assets.xcassets */,
 				516B10E1211C488D00DDE22A /* scenes.scnassets */,
 				51DE5C5F210D231200CC002E /* Bords&Controllers */,
@@ -333,6 +330,7 @@
 			children = (
 				5186DF1420F0A941006AF275 /* Item.swift */,
 				5186DF1820F0B4B3006AF275 /* Key.swift */,
+				51DE5C59210C165100CC002E /* StackItem.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -446,8 +444,6 @@
 		EE1DCD5D787341FB09436086 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				516DD6F421C969D3001DA45C /* RealmSwift.framework */,
-				516DD6F221C969CF001DA45C /* Realm.framework */,
 				32F90BB9B0878CF98996CBA9 /* Pods_pre_alfa_0_00_01.framework */,
 			);
 			name = Frameworks;
@@ -487,15 +483,7 @@
 				TargetAttributes = {
 					515792FB20EA1E7A00327D91 = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1000;
-						SystemCapabilities = {
-							com.apple.NearFieldCommunicationTagReading = {
-								enabled = 0;
-							};
-							com.apple.SafariKeychain = {
-								enabled = 0;
-							};
-						};
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -604,6 +592,7 @@
 				512BE7EA210E244E0035DF60 /* FightStatsEnemy.swift in Sources */,
 				5157930220EA1E7A00327D91 /* Area.swift in Sources */,
 				51395A9720EAA8970054207E /* Door.swift in Sources */,
+				51DE5C5A210C165100CC002E /* StackItem.swift in Sources */,
 				512EA5AC2103E72D003AFE21 /* Main.swift in Sources */,
 				5186DF0F20F0A8CE006AF275 /* Player.swift in Sources */,
 				5189AFC52109F59C00AD159C /* Dir.swift in Sources */,
@@ -615,6 +604,7 @@
 				5147425B217350C300C2227E /* StuelFightAren.swift in Sources */,
 				51E42D9C20F36065007DA454 /* Map.swift in Sources */,
 				51EBC669219A3D9A00BA3160 /* NavigationProtocol.swift in Sources */,
+				5196D90621E3DE0300FD18E0 /* Gif.swift in Sources */,
 				51F24BDF2107A1AB00912E15 /* PlayMenu.swift in Sources */,
 				51C20B582114A78800A63B7E /* BrainFightAren.swift in Sources */,
 				519FA31D212AACAD00FAE753 /* HpCard.swift in Sources */,
@@ -762,6 +752,7 @@
 			baseConfigurationReference = B8B02FBC1B08D8457C72B1BF /* Pods-pre_alfa-0.00.01.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XKSTMW7C69;
 				ENABLE_BITCODE = YES;
@@ -772,6 +763,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "LightStorm.pre-alfa-0-00-01";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -782,6 +774,7 @@
 			baseConfigurationReference = EEE14E7AB41F0BBD7C845B03 /* Pods-pre_alfa-0.00.01.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XKSTMW7C69;
 				ENABLE_BITCODE = YES;

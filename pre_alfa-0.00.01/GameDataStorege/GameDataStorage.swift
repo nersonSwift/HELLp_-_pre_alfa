@@ -33,10 +33,10 @@ class GameDataStorage{
             
             var config = Realm.Configuration()
             config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("123/123.realm")
-            print(config.fileURL)
+            //print(config.fileURL)
             realm = try Realm(configuration: config)
             Realm.Configuration.defaultConfiguration = config
-            print(Door.init(rawValue: "woodDoor"))
+            
             print(Realm.Configuration.defaultConfiguration.fileURL!)
         }catch{
             /*

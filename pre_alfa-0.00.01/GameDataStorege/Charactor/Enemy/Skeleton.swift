@@ -14,7 +14,7 @@ class Skeleton: Enemy {
         name = "Skeleton"
         taunt = false
         fightStats.maxFightHP = 20
-        fightStats.attackDmg = 3
+        fightStats.attackDmg = 10
     }
     
     override func dropItem() -> Item? {

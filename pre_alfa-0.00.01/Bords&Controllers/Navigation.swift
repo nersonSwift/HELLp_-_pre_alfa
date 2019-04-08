@@ -23,8 +23,12 @@ class Navigation{
         
         for i in 0 ..< controllers.count{
             if type(of: viewControllerType) == type(of: controllers[i]) {
-                controllers[i].dismiss(animated: true, completion: nil)
                 controllers[i+1 ..< controllers.count] = []
+                controllers[i].dismiss(animated: true, completion: {
+                    special?(self.controllers[i])
+                })
+                
+                
                 return
             }
         }

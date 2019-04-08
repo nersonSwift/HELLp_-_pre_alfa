@@ -12,9 +12,9 @@ class Soul: Enemy {
     override init() {
         super.init()
         name = "Soul"
-        taunt = true
+        taunt = false
         fightStats.maxFightHP = 30
-        fightStats.attackDmg = 2
+        fightStats.attackDmg = 10
     }
     override func dropItem() -> Item? {
         switch arc4random_uniform(100) {

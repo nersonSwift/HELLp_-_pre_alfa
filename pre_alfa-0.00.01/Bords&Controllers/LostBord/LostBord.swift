@@ -8,11 +8,14 @@
 
 import UIKit
 
-class LostBord: UIViewController {
-
-    static func storyboardInstance() -> LostBord? {
-        let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
-        return storyboard.instantiateInitialViewController() as? LostBord
+class LostBord: UIViewController, NavigationProtocol {
+    var navigation: Navigation!
+    
+    static func storyboardInstance(navigation: Navigation) -> UIViewController? {
+        let storyboard = UIStoryboard(name: "\(self)", bundle: nil)
+        let lostBord = storyboard.instantiateInitialViewController() as? LostBord
+        lostBord?.navigation = navigation
+        return lostBord
     }
     
     override func viewDidLoad() {

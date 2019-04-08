@@ -21,7 +21,7 @@ class DmgRoom: DifRoom {
  
     override func InRoom(castPlayer: GameDataStorage) {
         super.InRoom(castPlayer: castPlayer)
-        castPlayer.player.DMG(dmg: 2)
+        castPlayer.player.DMG(dmg: 1)
     }
 
 }

@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import SpriteKit
 
 class StuelAnimArea{
     weak var areaView: UIView?
     weak var area: Area!
+    
+    var hpBar: UIImageView!
     
     var stopButton: UIButton!
     var countRoom: UILabel!
@@ -50,17 +53,14 @@ class StuelAnimArea{
         
         let thicknessWall = ((heightRoom + widthRoom) / 2) / 20
         //let wallTexture = #imageLiteral(resourceName: "scenes.scnassets/textures/wall.jpg")
-        var wallT = #imageLiteral(resourceName: "scenes.scnassets/textures/wallT.jpg")
-        var wallF = GetClass.getNewSizeImage(image: wallT, size: CGSize(width: thicknessWall, height: widthRoom), rotate: 0)
-        wallF = GetClass.getNewRotateImage(image: wallF)
-        wallT = GetClass.getNewSizeImage(image: wallT, size: CGSize(width: thicknessWall, height: heightRoom), rotate: 0)
-        let mirrorImage = wallT.withHorizontallyFlippedOrientation()
+        let wallT = #imageLiteral(resourceName: "scenes.scnassets/textures/wallT.jpg")
         
+        let wallF = GetClass.getNewRotateImage(image: wallT)
         
         print(thicknessWall)
         let upWallFrame = CGRect(x: 0, y: 0, width: widthRoom, height: thicknessWall)
         let upWall = UIView(frame: upWallFrame)
-        upWall.backgroundColor = UIColor(patternImage: wallF)
+        upWall.layer.contents = wallF.cgImage
         newRoomView.addSubview(upWall)
         
         let downWallFrame = CGRect(x: 0, y: heightRoom - thicknessWall, width: widthRoom, height: thicknessWall)
@@ -70,12 +70,12 @@ class StuelAnimArea{
         
         let rightWallFrame = CGRect(x: widthRoom - thicknessWall, y: 0, width: thicknessWall, height: heightRoom)
         let rightWall = UIView(frame: rightWallFrame)
-        rightWall.backgroundColor = UIColor(patternImage: mirrorImage)
+        rightWall.layer.contents = wallT.cgImage
         newRoomView.addSubview(rightWall)
         
         let leftWallFrame = CGRect(x: 0, y: 0, width: thicknessWall, height: heightRoom)
         let leftWall = UIView(frame: leftWallFrame)
-        leftWall.backgroundColor = UIColor(patternImage: wallT)
+        leftWall.layer.contents = wallT.cgImage
         newRoomView.addSubview(leftWall)
         
     }
@@ -88,7 +88,7 @@ class StuelAnimArea{
 
         let wid = (widthRoom - (thicknessWall * 2)) / 4
         let hid = (heightRoom - (thicknessWall * 2)) / CGFloat(Int((heightRoom - (thicknessWall * 2)) / wid))
-        
+
         let size = CGSize(width: wid, height: hid)
         let newImage = GetClass.getNewSizeImage(image: b, size: size, rotate: 0)
         
@@ -137,6 +137,7 @@ class StuelAnimArea{
         createFloor()
         createDoor()
         
+        
         let countRoomFrame = CGRect(x: widthRoom / 2 - widthDoor * 1.5, y: heightDoor * 2, width: widthDoor * 3, height: heightDoor)
         countRoom = UILabel(frame: countRoomFrame)
         countRoom.font = UIFont(descriptor: UIFontDescriptor(name: "System", size: 0), size: ((heightRoom + widthRoom) / 2) / 12)
@@ -172,6 +173,40 @@ class StuelAnimArea{
             payButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             newRoomView.addSubview(payButton)
         }
+    }
+    
+    func createHpBar(player: Player){
+        
+        let sizeHeards = widthRoom / 10
+        let frameHpBar = CGRect(x: 0,
+                                y: 0,
+                                width: sizeHeards,
+                                height: sizeHeards * CGFloat(player.stats.hP) / 2)
+        hpBar = UIImageView(frame: frameHpBar)
+        hpBar.layer.anchorPointZ = -1
+        var heard = #imageLiteral(resourceName: "scenes.scnassets/textures/ComRoom.png")//UIImage.gifImageWithName("scenes.scnassets/textures/Heart1", speed: 1)!
+            // #imageLiteral(resourceName: "scenes.scnassets/textures/ComRoom.gif")
+        
+        //hpBar.image = heard
+
+        heard = GetClass.getNewSizeImage(image: heard, size: CGSize(width: sizeHeards, height: sizeHeards), rotate: 0)
+        UIImage.animatedImage(with: [heard], duration: 0)
+        hpBar.layer.backgroundColor = UIColor(patternImage: heard).cgColor
+        areaView?.addSubview(hpBar)
+    }
+    
+    func checkHp(player: Player){
+        let sizeHeards = widthRoom / 10
+        let newFrame = CGRect(x: 0,
+                              y: 0,
+                              width: sizeHeards,
+                              height: sizeHeards * CGFloat(player.stats.hP) / 2)
+        if hpBar.frame != newFrame{
+            UIView.animate(withDuration: 1, animations: {
+                self.hpBar.frame = newFrame
+            })
+        }
+        
     }
 ////////////////
 //MARK: - Anim//

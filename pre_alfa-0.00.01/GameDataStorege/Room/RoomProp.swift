@@ -117,7 +117,7 @@ class RoomProp: Object {
             let dirDoor: [Dir] = [.Up, .Right, .Down, .Left]
             for i in dirDoor{
                 let nameDoor = self[i.rawValue] as! String
-                doors[i] = GetClass.getDoor(name: nameDoor)
+                doors[i] = Door.init(rawValue: nameDoor)
             }
             return doors
         }

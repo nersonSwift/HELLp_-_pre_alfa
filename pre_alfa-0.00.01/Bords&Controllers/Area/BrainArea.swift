@@ -59,7 +59,6 @@ class BrainArea {
         }
         
         if let nextRoom = castPlayer.map.mapRooms[String(nX) + String(nY)]{
-            //print(nextRoom.close)
             if !nextRoom.openRoom(player: castPlayer.player){
                 return nil
             }
